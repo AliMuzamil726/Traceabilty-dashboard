@@ -13,6 +13,7 @@ const TONES: Record<Tone, { pill: string; dot: string }> = {
   danger: { pill: 'bg-danger-tint text-danger border-danger/20', dot: 'bg-danger' },
 };
 
+
 export interface BadgeProps {
   tone?: Tone;
   children: ReactNode;
