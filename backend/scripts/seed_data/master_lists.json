@@ -1,0 +1,1954 @@
+[
+  {
+    "list_key": "country",
+    "value": "PK",
+    "label": "Pakistan",
+    "sort_order": 1,
+    "country": null,
+    "crop": null
+  },
+  {
+    "list_key": "country",
+    "value": "GB",
+    "label": "United Kingdom",
+    "sort_order": 2,
+    "country": null,
+    "crop": null
+  },
+  {
+    "list_key": "crop",
+    "value": "cotton",
+    "label": "Cotton",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "crop",
+    "value": "hemp",
+    "label": "Hemp",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "variety",
+    "value": "fh-142",
+    "label": "FH-142",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "fh-lalazar",
+    "label": "FH-Lalazar",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "iub-13",
+    "label": "IUB-13",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "mnh-886",
+    "label": "MNH-886",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "bs-15",
+    "label": "BS-15",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "niab-878",
+    "label": "NIAB-878",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "cim-663",
+    "label": "CIM-663",
+    "sort_order": 7,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "other_approved",
+    "label": "Other (approved)",
+    "sort_order": 8,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "variety",
+    "value": "futura_75",
+    "label": "Futura 75",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "variety",
+    "value": "fedora_17",
+    "label": "Fedora 17",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "variety",
+    "value": "santhica_27",
+    "label": "Santhica 27",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "variety",
+    "value": "felina_32",
+    "label": "Felina 32",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "variety",
+    "value": "finola",
+    "label": "Finola",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "variety",
+    "value": "uso_31",
+    "label": "USO 31",
+    "sort_order": 6,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "variety",
+    "value": "earlina_8_fc",
+    "label": "Earlina 8 FC",
+    "sort_order": 7,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "variety",
+    "value": "other_approved",
+    "label": "Other (approved)",
+    "sort_order": 8,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "tenure",
+    "value": "owner",
+    "label": "Owner",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "tenure",
+    "value": "tenant",
+    "label": "Tenant",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "tenure",
+    "value": "sharecropper",
+    "label": "Sharecropper",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "tenure",
+    "value": "owner_occupier",
+    "label": "Owner occupier",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "tenure",
+    "value": "tenant",
+    "label": "Tenant",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "tenure",
+    "value": "contract_grower",
+    "label": "Contract grower",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "wheat",
+    "label": "Wheat",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "rice",
+    "label": "Rice",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "sugarcane",
+    "label": "Sugarcane",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "maize",
+    "label": "Maize",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "gram",
+    "label": "Gram",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "fodder_berseem",
+    "label": "Fodder (berseem)",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "fodder_other",
+    "label": "Fodder (other)",
+    "sort_order": 7,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "sunflower",
+    "label": "Sunflower",
+    "sort_order": 8,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "mustard",
+    "label": "Mustard",
+    "sort_order": 9,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "vegetables",
+    "label": "Vegetables",
+    "sort_order": 10,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "orchard",
+    "label": "Orchard",
+    "sort_order": 11,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "fallow",
+    "label": "Fallow",
+    "sort_order": 12,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 13,
+    "country": "PK",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "winter_wheat",
+    "label": "Winter wheat",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "winter_barley",
+    "label": "Winter barley",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "spring_barley",
+    "label": "Spring barley",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "oats",
+    "label": "Oats",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "oilseed_rape",
+    "label": "Oilseed rape",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "peas_and_beans",
+    "label": "Peas and beans",
+    "sort_order": 6,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "potatoes",
+    "label": "Potatoes",
+    "sort_order": 7,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "sugar_beet",
+    "label": "Sugar beet",
+    "sort_order": 8,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "maize",
+    "label": "Maize",
+    "sort_order": 9,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "grass_ley",
+    "label": "Grass ley",
+    "sort_order": 10,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "fallow",
+    "label": "Fallow",
+    "sort_order": 11,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "previous_crop",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 12,
+    "country": "GB",
+    "crop": null
+  },
+  {
+    "list_key": "crop_season",
+    "value": "kharif",
+    "label": "Kharif",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "crop_season",
+    "value": "rabi",
+    "label": "Rabi",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "crop_season",
+    "value": "zaid_kharif",
+    "label": "Zaid Kharif",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "crop_season",
+    "value": "zaid_rabi",
+    "label": "Zaid Rabi",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "sand",
+    "label": "Sand",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "loamy_sand",
+    "label": "Loamy sand",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "sandy_loam",
+    "label": "Sandy loam",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "loam",
+    "label": "Loam",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "silt_loam",
+    "label": "Silt loam",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "clay_loam",
+    "label": "Clay loam",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "silty_clay",
+    "label": "Silty clay",
+    "sort_order": 7,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "soil_texture",
+    "value": "clay",
+    "label": "Clay",
+    "sort_order": 8,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "drainage_status",
+    "value": "well_drained",
+    "label": "Well drained",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "drainage_status",
+    "value": "moderately_well_drained",
+    "label": "Moderately well drained",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "drainage_status",
+    "value": "imperfectly_drained",
+    "label": "Imperfectly drained",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "drainage_status",
+    "value": "poorly_drained",
+    "label": "Poorly drained",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "deep_ploughing",
+    "label": "Deep ploughing",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "chisel_ploughing",
+    "label": "Chisel ploughing",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "cultivator",
+    "label": "Cultivator",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "rotavator",
+    "label": "Rotavator",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "disc_harrow",
+    "label": "Disc harrow",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "laser_levelling",
+    "label": "Laser levelling",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "planking",
+    "label": "Planking",
+    "sort_order": 7,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "sub_soiler",
+    "label": "Sub-soiler",
+    "sort_order": 8,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "operation_type_cotton",
+    "value": "ridger_bed_former",
+    "label": "Ridger / bed former",
+    "sort_order": 9,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "machinery_type",
+    "value": "tractor_owned",
+    "label": "Tractor (owned)",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "machinery_type",
+    "value": "tractor_hired",
+    "label": "Tractor (hired)",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "machinery_type",
+    "value": "bullock_drawn",
+    "label": "Bullock-drawn",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "machinery_type",
+    "value": "manual",
+    "label": "Manual",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "residue_handling",
+    "value": "incorporated",
+    "label": "Incorporated",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "residue_handling",
+    "value": "removed",
+    "label": "Removed",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "residue_handling",
+    "value": "burnt",
+    "label": "Burnt",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "residue_handling",
+    "value": "left_on_surface",
+    "label": "Left on surface",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "residue_handling",
+    "value": "grazed",
+    "label": "Grazed",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "cover_crop",
+    "value": "none",
+    "label": "None",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "cover_crop",
+    "value": "sesbania_jantar",
+    "label": "Sesbania (jantar)",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "cover_crop",
+    "value": "guar",
+    "label": "Guar",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "cover_crop",
+    "value": "berseem",
+    "label": "Berseem",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "cover_crop",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "seed_source",
+    "value": "registered_dealer",
+    "label": "Registered dealer",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "seed_source",
+    "value": "government_extension",
+    "label": "Government / extension",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "seed_source",
+    "value": "own_saved_seed",
+    "label": "Own saved seed",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "seed_source",
+    "value": "neighbour_local",
+    "label": "Neighbour / local",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "seed_source",
+    "value": "company_direct",
+    "label": "Company direct",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_method",
+    "value": "bed_and_furrow",
+    "label": "Bed and furrow",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_method",
+    "value": "ridge_sowing",
+    "label": "Ridge sowing",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_method",
+    "value": "flat_drill",
+    "label": "Flat drill",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_method",
+    "value": "broadcast",
+    "label": "Broadcast",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_method",
+    "value": "dibbling",
+    "label": "Dibbling",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_equipment",
+    "value": "seed_drill",
+    "label": "Seed drill",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_equipment",
+    "value": "ridge_bed_planter",
+    "label": "Ridge / bed planter",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_equipment",
+    "value": "precision_planter",
+    "label": "Precision planter",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_equipment",
+    "value": "zero_till_drill",
+    "label": "Zero-till drill",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_equipment",
+    "value": "manual_dibbling",
+    "label": "Manual dibbling",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "sowing_equipment",
+    "value": "broadcast_manual",
+    "label": "Broadcast (manual)",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "urea",
+    "label": "Urea",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "dap",
+    "label": "DAP",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "np",
+    "label": "NP",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "sop",
+    "label": "SOP",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "mop",
+    "label": "MOP",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "can",
+    "label": "CAN",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "ssp",
+    "label": "SSP",
+    "sort_order": 7,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "zinc_sulphate",
+    "label": "Zinc sulphate",
+    "sort_order": 8,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "boron",
+    "label": "Boron",
+    "sort_order": 9,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "fym_compost",
+    "label": "FYM / compost",
+    "sort_order": 10,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "green_manure",
+    "label": "Green manure",
+    "sort_order": 11,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "fertiliser_product_cotton",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 12,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "nutrient_crop_stage",
+    "value": "basal",
+    "label": "Basal",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "nutrient_crop_stage",
+    "value": "seedling",
+    "label": "Seedling",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "nutrient_crop_stage",
+    "value": "squaring",
+    "label": "Squaring",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "nutrient_crop_stage",
+    "value": "flowering",
+    "label": "Flowering",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "nutrient_crop_stage",
+    "value": "boll_formation",
+    "label": "Boll formation",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "nutrient_crop_stage",
+    "value": "boll_opening",
+    "label": "Boll opening",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_source",
+    "value": "canal",
+    "label": "Canal",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_source",
+    "value": "tubewell_electric",
+    "label": "Tubewell (electric)",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_source",
+    "value": "tubewell_diesel",
+    "label": "Tubewell (diesel)",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_source",
+    "value": "tubewell_solar",
+    "label": "Tubewell (solar)",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_source",
+    "value": "lift_pump",
+    "label": "Lift pump",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_source",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_method",
+    "value": "furrow",
+    "label": "Furrow",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_method",
+    "value": "flood",
+    "label": "Flood",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_method",
+    "value": "bed",
+    "label": "Bed",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_method",
+    "value": "drip",
+    "label": "Drip",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "irrigation_method",
+    "value": "sprinkler",
+    "label": "Sprinkler",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "weed_method",
+    "value": "manual_weeding",
+    "label": "Manual weeding",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "weed_method",
+    "value": "hoeing_inter_culture",
+    "label": "Hoeing / inter-culture",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "weed_method",
+    "value": "chemical",
+    "label": "Chemical",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "weed_method",
+    "value": "mixed",
+    "label": "Mixed",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "spraying_implement",
+    "value": "knapsack_manual",
+    "label": "Knapsack (manual)",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "spraying_implement",
+    "value": "knapsack_motorised",
+    "label": "Knapsack (motorised)",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "spraying_implement",
+    "value": "boom_sprayer",
+    "label": "Boom sprayer",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "spraying_implement",
+    "value": "air_assisted_sprayer",
+    "label": "Air-assisted sprayer",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "spraying_implement",
+    "value": "granular_applicator",
+    "label": "Granular applicator",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "pest_product_type",
+    "value": "insecticide",
+    "label": "Insecticide",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "pest_product_type",
+    "value": "fungicide",
+    "label": "Fungicide",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "pest_product_type",
+    "value": "acaricide",
+    "label": "Acaricide",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "pest_product_type",
+    "value": "bio_pesticide",
+    "label": "Bio-pesticide",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "pest_product_type",
+    "value": "growth_regulator",
+    "label": "Growth regulator",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "pest_product_type",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "beneficial_insects",
+    "value": "ladybird_beetles",
+    "label": "Ladybird beetles",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "beneficial_insects",
+    "value": "lacewing",
+    "label": "Lacewing",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "beneficial_insects",
+    "value": "spiders",
+    "label": "Spiders",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "beneficial_insects",
+    "value": "trichogramma",
+    "label": "Trichogramma",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "beneficial_insects",
+    "value": "predatory_bugs",
+    "label": "Predatory bugs",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "beneficial_insects",
+    "value": "none_observed",
+    "label": "None observed",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "beneficial_insects",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 7,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "picking_number",
+    "value": "1st",
+    "label": "1st",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "picking_number",
+    "value": "2nd",
+    "label": "2nd",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "picking_number",
+    "value": "3rd",
+    "label": "3rd",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "picking_number",
+    "value": "4th",
+    "label": "4th",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "picking_number",
+    "value": "5th",
+    "label": "5th",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "harvest_method_cotton",
+    "value": "manual_picking",
+    "label": "Manual picking",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "harvest_method_cotton",
+    "value": "mechanical_picker",
+    "label": "Mechanical picker",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "storage_material",
+    "value": "cotton_cloth",
+    "label": "Cotton cloth",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "storage_material",
+    "value": "jute_sheet",
+    "label": "Jute sheet",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "storage_material",
+    "value": "polypropylene_not_recommended",
+    "label": "Polypropylene (not recommended)",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "storage_material",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "transport_mode_cotton",
+    "value": "tractor_trolley",
+    "label": "Tractor-trolley",
+    "sort_order": 1,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "transport_mode_cotton",
+    "value": "truck",
+    "label": "Truck",
+    "sort_order": 2,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "transport_mode_cotton",
+    "value": "mini_truck",
+    "label": "Mini truck",
+    "sort_order": 3,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "transport_mode_cotton",
+    "value": "loader_rickshaw",
+    "label": "Loader rickshaw",
+    "sort_order": 4,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "transport_mode_cotton",
+    "value": "bull_cart",
+    "label": "Bull cart",
+    "sort_order": 5,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "transport_mode_cotton",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 6,
+    "country": "PK",
+    "crop": "cotton"
+  },
+  {
+    "list_key": "hemp_season",
+    "value": "spring_sowing",
+    "label": "Spring sowing",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "hemp_season",
+    "value": "autumn_sowing",
+    "label": "Autumn sowing",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "sand",
+    "label": "Sand",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "loamy_sand",
+    "label": "Loamy sand",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "sandy_loam",
+    "label": "Sandy loam",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "loam",
+    "label": "Loam",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "clay_loam",
+    "label": "Clay loam",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "clay",
+    "label": "Clay",
+    "sort_order": 6,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "peat",
+    "label": "Peat",
+    "sort_order": 7,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "soil_type_uk",
+    "value": "chalk",
+    "label": "Chalk",
+    "sort_order": 8,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "operation_type_hemp",
+    "value": "plough",
+    "label": "Plough",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "operation_type_hemp",
+    "value": "min_till_discs",
+    "label": "Min-till discs",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "operation_type_hemp",
+    "value": "cultivator",
+    "label": "Cultivator",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "operation_type_hemp",
+    "value": "power_harrow",
+    "label": "Power harrow",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "operation_type_hemp",
+    "value": "rolling",
+    "label": "Rolling",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "operation_type_hemp",
+    "value": "stale_seedbed",
+    "label": "Stale seedbed",
+    "sort_order": 6,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "seedbed_condition",
+    "value": "fine_and_firm",
+    "label": "Fine and firm",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "seedbed_condition",
+    "value": "cloddy",
+    "label": "Cloddy",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "seedbed_condition",
+    "value": "too_loose",
+    "label": "Too loose",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "seedbed_condition",
+    "value": "wet",
+    "label": "Wet",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "seedbed_condition",
+    "value": "crusted",
+    "label": "Crusted",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "crop_purpose",
+    "value": "fibre",
+    "label": "Fibre",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "crop_purpose",
+    "value": "dual_purpose_fibre_and_seed",
+    "label": "Dual purpose (fibre and seed)",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "crop_purpose",
+    "value": "seed",
+    "label": "Seed",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "drill_type",
+    "value": "combine_drill",
+    "label": "Combine drill",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "drill_type",
+    "value": "air_seeder",
+    "label": "Air seeder",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "drill_type",
+    "value": "precision_drill",
+    "label": "Precision drill",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "drill_type",
+    "value": "broadcast_and_roll",
+    "label": "Broadcast and roll",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "drill_type",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "ammonium_nitrate",
+    "label": "Ammonium nitrate",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "urea",
+    "label": "Urea",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "compound_npk",
+    "label": "Compound NPK",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "digestate",
+    "label": "Digestate",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "fym",
+    "label": "FYM",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "compost",
+    "label": "Compost",
+    "sort_order": 6,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "lime",
+    "label": "Lime",
+    "sort_order": 7,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_product_hemp",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 8,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_rate_unit",
+    "value": "kg_per_ha",
+    "label": "kg per ha",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_rate_unit",
+    "value": "t_per_ha",
+    "label": "t per ha",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_method",
+    "value": "broadcast",
+    "label": "Broadcast",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_method",
+    "value": "placed",
+    "label": "Placed",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_method",
+    "value": "spread_organic",
+    "label": "Spread (organic)",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "nutrient_method",
+    "value": "injected",
+    "label": "Injected",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "hemp_growth_stage",
+    "value": "emergence",
+    "label": "Emergence",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "hemp_growth_stage",
+    "value": "vegetative",
+    "label": "Vegetative",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "hemp_growth_stage",
+    "value": "early_flowering",
+    "label": "Early flowering",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "hemp_growth_stage",
+    "value": "full_flowering",
+    "label": "Full flowering",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "hemp_growth_stage",
+    "value": "seed_set",
+    "label": "Seed set",
+    "sort_order": 5,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "hemp_growth_stage",
+    "value": "senescence",
+    "label": "Senescence",
+    "sort_order": 6,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "canopy_closure",
+    "value": "open",
+    "label": "Open",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "canopy_closure",
+    "value": "partially_closed",
+    "label": "Partially closed",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "canopy_closure",
+    "value": "closed",
+    "label": "Closed",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "severity",
+    "value": "none",
+    "label": "None",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "severity",
+    "value": "low",
+    "label": "Low",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "severity",
+    "value": "medium",
+    "label": "Medium",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "severity",
+    "value": "high",
+    "label": "High",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "cutting_method",
+    "value": "mower_conditioner",
+    "label": "Mower conditioner",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "cutting_method",
+    "value": "swather",
+    "label": "Swather",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "cutting_method",
+    "value": "hand_cut",
+    "label": "Hand cut",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "cutting_method",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "growth_stage_at_cutting",
+    "value": "early_flowering",
+    "label": "Early flowering",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "growth_stage_at_cutting",
+    "value": "full_flowering",
+    "label": "Full flowering",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "growth_stage_at_cutting",
+    "value": "seed_set",
+    "label": "Seed set",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "growth_stage_at_cutting",
+    "value": "seed_maturity",
+    "label": "Seed maturity",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "bale_type",
+    "value": "small_square",
+    "label": "Small square",
+    "sort_order": 1,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "bale_type",
+    "value": "large_square",
+    "label": "Large square",
+    "sort_order": 2,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "bale_type",
+    "value": "round",
+    "label": "Round",
+    "sort_order": 3,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "bale_type",
+    "value": "other",
+    "label": "Other",
+    "sort_order": 4,
+    "country": "GB",
+    "crop": "hemp"
+  },
+  {
+    "list_key": "yes_no",
+    "value": "yes",
+    "label": "Yes",
+    "sort_order": 1,
+    "country": null,
+    "crop": null
+  },
+  {
+    "list_key": "yes_no",
+    "value": "no",
+    "label": "No",
+    "sort_order": 2,
+    "country": null,
+    "crop": null
+  }
+]

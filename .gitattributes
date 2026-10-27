@@ -1,0 +1,5 @@
+# Windows batch files must keep CRLF line endings or cmd.exe misreads labels.
+*.bat text eol=crlf
+* text=auto
+*.png binary
+*.woff2 binary

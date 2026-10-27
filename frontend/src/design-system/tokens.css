@@ -1,0 +1,99 @@
+/*
+ * SAWIE design tokens. One theme, two brand colours (Forest, Wheat), warm neutrals,
+ * and one error red reserved for validation errors, destructive actions and map
+ * overlap warnings. Tailwind's palette (tailwind.config.ts) mirrors these values.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Forest (primary) */
+  --forest-950: #0b2418;
+  --forest-900: #10331f;
+  --forest-800: #164a2c;
+  --forest-700: #1d6039;
+  --forest-600: #25774a;
+  --forest-500: #2f915a;
+  --forest-100: #e3f1e8;
+  --forest-50: #f1f8f3;
+
+  /* Wheat (accent) */
+  --wheat-600: #a67c1f;
+  --wheat-500: #c79a2e;
+  --wheat-300: #e3c479;
+  --wheat-100: #f7ebcb;
+  --wheat-50: #fbf5e4;
+
+  /* Warm neutrals */
+  --canvas: #f5f6f2;
+  --surface: #ffffff;
+  --line: #e3e6de;
+  --muted: #5b675f;
+  --ink: #15221b;
+
+  /* Single exception */
+  --danger: #b42318;
+  --danger-tint: #fdecea;
+
+  /* Semantic mapping (no new hues) */
+  --success: var(--forest-700);
+  --success-tint: var(--forest-50);
+  --warning: var(--wheat-600);
+  --warning-tint: var(--wheat-50);
+  --info: var(--forest-700);
+  --info-tint: var(--forest-100);
+
+  /* Motion */
+  --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter Variable', Inter, system-ui, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  body {
+    @apply bg-canvas text-ink;
+    margin: 0;
+    min-height: 100vh;
+  }
+  ::selection {
+    background: var(--wheat-100);
+    color: var(--ink);
+  }
+  /* Focus ring: 2px forest-500 with 2px offset on every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--forest-500);
+    outline-offset: 2px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .mono-id {
+    font-family: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shimmer {
+    animation: none;
+  }
+}

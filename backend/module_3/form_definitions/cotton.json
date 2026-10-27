@@ -1,0 +1,1010 @@
+{
+  "crop": "cotton",
+  "country": "PK",
+  "version": "2026.1",
+  "title": "Cotton fieldbook",
+  "area_unit": "acre",
+  "area_ref": "field.area_acre",
+  "sowing_date_ref": "step.sowing.sowing_date",
+  "harvest_step": "harvest",
+  "pickup": {
+    "step": "harvest",
+    "field": "ready_for_pickup",
+    "label_field": "picking_number"
+  },
+  "steps": [
+    {
+      "key": "field_info",
+      "title": "Field info",
+      "order": 1,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{crop_season}, {area_sown} acres sown",
+      "fields": [
+        {
+          "key": "crop_season",
+          "label": "Crop season",
+          "type": "select",
+          "list_key": "crop_season",
+          "required": true
+        },
+        {
+          "key": "area_sown",
+          "label": "Area sown",
+          "type": "number",
+          "unit": "acres",
+          "min": 0.01,
+          "max": 5000,
+          "required": true,
+          "default_from": "field.area_acre",
+          "help": "Defaults to the mapped field area. It may not exceed it by more than 5 percent."
+        },
+        {
+          "key": "soil_texture",
+          "label": "Soil texture class",
+          "type": "select",
+          "list_key": "soil_texture",
+          "required": true
+        },
+        {
+          "key": "drainage_status",
+          "label": "Drainage status",
+          "type": "select",
+          "list_key": "drainage_status",
+          "required": true
+        },
+        {
+          "key": "photos",
+          "label": "Add photo",
+          "type": "photos",
+          "required": false,
+          "help": "Crop pictures or other. Up to 8 images, JPEG, PNG or WebP, 8 MB each."
+        }
+      ],
+      "rules": [
+        {
+          "kind": "max_ref",
+          "field": "area_sown",
+          "ref": "field.area_acre",
+          "factor": 1.05,
+          "level": "error",
+          "message": "Area sown is more than 5 percent above the mapped field area of {ref} acres."
+        }
+      ]
+    },
+    {
+      "key": "land_preparation",
+      "title": "Land preparation",
+      "order": 2,
+      "repeatable": true,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{operation_type} on {operation_date}, {passes} passes",
+      "totals": [
+        {
+          "label": "Operations",
+          "kind": "count"
+        },
+        {
+          "label": "Area covered",
+          "kind": "sum",
+          "field": "area_covered",
+          "unit": "acres"
+        }
+      ],
+      "fields": [
+        {
+          "key": "operation_date",
+          "label": "Operation date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "operation_type",
+          "label": "Operation type",
+          "type": "select",
+          "list_key": "operation_type_cotton",
+          "required": true
+        },
+        {
+          "key": "machinery_type",
+          "label": "Machinery type",
+          "type": "select",
+          "list_key": "machinery_type",
+          "required": true
+        },
+        {
+          "key": "passes",
+          "label": "Number of passes",
+          "type": "number",
+          "integer": true,
+          "min": 1,
+          "max": 12,
+          "required": true
+        },
+        {
+          "key": "tillage_depth",
+          "label": "Tillage depth",
+          "type": "number",
+          "unit": "cm",
+          "min": 0,
+          "max": 60,
+          "required": true
+        },
+        {
+          "key": "area_covered",
+          "label": "Area covered per operation",
+          "type": "number",
+          "unit": "acres",
+          "min": 0,
+          "max": 5000,
+          "required": true
+        },
+        {
+          "key": "diesel_per_pass",
+          "label": "Diesel per pass",
+          "type": "number",
+          "unit": "L per acre",
+          "min": 0,
+          "max": 30,
+          "required": false,
+          "visible_if": {
+            "field": "machinery_type",
+            "not_in": [
+              "bullock_drawn",
+              "manual"
+            ]
+          }
+        },
+        {
+          "key": "residue_handling",
+          "label": "Previous crop residue",
+          "type": "select",
+          "list_key": "residue_handling",
+          "required": true
+        },
+        {
+          "key": "cover_crop",
+          "label": "Cover crop before cotton",
+          "type": "select",
+          "list_key": "cover_crop",
+          "required": true
+        }
+      ],
+      "rules": [
+        {
+          "kind": "date_vs_sowing",
+          "field": "operation_date",
+          "op": "not_after",
+          "level": "warning",
+          "message": "This operation is dated after sowing."
+        },
+        {
+          "kind": "max_ref",
+          "field": "area_covered",
+          "ref": "step.field_info.area_sown",
+          "multiply_by_field": "passes",
+          "level": "warning",
+          "message": "Area covered is more than the area sown times the number of passes."
+        }
+      ]
+    },
+    {
+      "key": "sowing",
+      "title": "Sowing",
+      "order": 3,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "Sown on {sowing_date}, {variety}",
+      "fields": [
+        {
+          "key": "sowing_date",
+          "label": "Sowing date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "variety",
+          "label": "Variety",
+          "type": "select",
+          "list_key": "variety",
+          "required": true,
+          "default_from": "season.variety"
+        },
+        {
+          "key": "seed_source",
+          "label": "Seed source",
+          "type": "select",
+          "list_key": "seed_source",
+          "required": true
+        },
+        {
+          "key": "seed_rate",
+          "label": "Seed rate",
+          "type": "number",
+          "unit": "kg per acre",
+          "min": 0,
+          "max": 50,
+          "required": true
+        },
+        {
+          "key": "sowing_method",
+          "label": "Sowing method",
+          "type": "select",
+          "list_key": "sowing_method",
+          "required": true
+        },
+        {
+          "key": "sowing_equipment",
+          "label": "Sowing equipment",
+          "type": "select",
+          "list_key": "sowing_equipment",
+          "required": true
+        },
+        {
+          "key": "plant_population",
+          "label": "Plant population",
+          "type": "number",
+          "integer": true,
+          "unit": "plants per acre",
+          "min": 0,
+          "max": 200000,
+          "required": true
+        }
+      ],
+      "rules": []
+    },
+    {
+      "key": "nutrient_management",
+      "title": "Nutrient management",
+      "order": 4,
+      "repeatable": true,
+      "required": false,
+      "allow_not_applicable": true,
+      "summary": "{product}, {quantity} kg per acre on {application_date}",
+      "totals": [
+        {
+          "label": "Applications",
+          "kind": "count"
+        },
+        {
+          "label": "Product applied",
+          "kind": "sum",
+          "field": "quantity",
+          "unit": "kg per acre"
+        },
+        {
+          "label": "Nitrogen applied",
+          "kind": "sum_product",
+          "fields": [
+            "quantity",
+            "n_content"
+          ],
+          "factor": 0.01,
+          "unit": "kg N per acre"
+        }
+      ],
+      "fields": [
+        {
+          "key": "application_date",
+          "label": "Application date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "product",
+          "label": "Product",
+          "type": "select",
+          "list_key": "fertiliser_product_cotton",
+          "required": true
+        },
+        {
+          "key": "n_content",
+          "label": "Nitrogen content",
+          "type": "number",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "required": false,
+          "suggest_from": {
+            "field": "product",
+            "part": "n"
+          }
+        },
+        {
+          "key": "pk_content",
+          "label": "P2O5 / K2O content",
+          "type": "paired_number",
+          "unit": "%",
+          "required": false,
+          "parts": [
+            {
+              "key": "p2o5",
+              "label": "P2O5",
+              "unit": "%",
+              "min": 0,
+              "max": 100
+            },
+            {
+              "key": "k2o",
+              "label": "K2O",
+              "unit": "%",
+              "min": 0,
+              "max": 100
+            }
+          ],
+          "suggest_from": {
+            "field": "product"
+          }
+        },
+        {
+          "key": "quantity",
+          "label": "Quantity",
+          "type": "number",
+          "unit": "kg per acre",
+          "min": 0,
+          "max": 2000,
+          "required": true
+        },
+        {
+          "key": "crop_stage",
+          "label": "Crop stage at application",
+          "type": "select",
+          "list_key": "nutrient_crop_stage",
+          "required": true
+        }
+      ],
+      "suggestions": {
+        "product": {
+          "urea": {
+            "n": 46,
+            "p2o5": 0,
+            "k2o": 0
+          },
+          "dap": {
+            "n": 18,
+            "p2o5": 46,
+            "k2o": 0
+          },
+          "np": {
+            "n": 22,
+            "p2o5": 20,
+            "k2o": 0
+          },
+          "sop": {
+            "n": 0,
+            "p2o5": 0,
+            "k2o": 50
+          },
+          "mop": {
+            "n": 0,
+            "p2o5": 0,
+            "k2o": 60
+          },
+          "can": {
+            "n": 26,
+            "p2o5": 0,
+            "k2o": 0
+          },
+          "ssp": {
+            "n": 0,
+            "p2o5": 18,
+            "k2o": 0
+          },
+          "zinc_sulphate": {
+            "n": 0,
+            "p2o5": 0,
+            "k2o": 0
+          },
+          "boron": {
+            "n": 0,
+            "p2o5": 0,
+            "k2o": 0
+          },
+          "fym_compost": {
+            "n": 0.5,
+            "p2o5": 0.2,
+            "k2o": 0.5
+          },
+          "green_manure": {
+            "n": 0,
+            "p2o5": 0,
+            "k2o": 0
+          }
+        }
+      },
+      "rules": [
+        {
+          "kind": "date_vs_sowing",
+          "field": "application_date",
+          "op": "not_before_minus",
+          "days": 30,
+          "level": "warning",
+          "message": "This application is more than 30 days before sowing."
+        }
+      ]
+    },
+    {
+      "key": "irrigation",
+      "title": "Irrigation",
+      "order": 5,
+      "repeatable": true,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{source}, {water_applied} mm on {irrigation_date}",
+      "totals": [
+        {
+          "label": "Irrigations",
+          "kind": "count"
+        },
+        {
+          "label": "Water applied",
+          "kind": "sum",
+          "field": "water_applied",
+          "unit": "mm"
+        }
+      ],
+      "fields": [
+        {
+          "key": "irrigation_date",
+          "label": "Irrigation date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "source",
+          "label": "Source",
+          "type": "select",
+          "list_key": "irrigation_source",
+          "required": true
+        },
+        {
+          "key": "method",
+          "label": "Method",
+          "type": "select",
+          "list_key": "irrigation_method",
+          "required": true
+        },
+        {
+          "key": "duration",
+          "label": "Duration",
+          "type": "number",
+          "unit": "hours",
+          "min": 0,
+          "max": 72,
+          "required": true
+        },
+        {
+          "key": "water_applied",
+          "label": "Water applied per irrigation",
+          "type": "number",
+          "unit": "mm",
+          "min": 0,
+          "max": 300,
+          "required": true
+        },
+        {
+          "key": "diesel_used",
+          "label": "Diesel used",
+          "type": "number",
+          "unit": "litres",
+          "min": 0,
+          "max": 1000,
+          "required": false,
+          "visible_if": {
+            "field": "source",
+            "in": [
+              "tubewell_diesel"
+            ]
+          }
+        },
+        {
+          "key": "electricity_used",
+          "label": "Electricity used",
+          "type": "number",
+          "unit": "kWh",
+          "min": 0,
+          "max": 10000,
+          "required": false,
+          "visible_if": {
+            "field": "source",
+            "in": [
+              "tubewell_electric"
+            ]
+          }
+        },
+        {
+          "key": "pumping_head",
+          "label": "Pumping head, water-table depth",
+          "type": "number",
+          "unit": "m",
+          "min": 0,
+          "max": 300,
+          "required": false,
+          "visible_if": {
+            "field": "source",
+            "in": [
+              "tubewell_electric",
+              "tubewell_diesel",
+              "tubewell_solar"
+            ]
+          }
+        },
+        {
+          "key": "pump_efficiency",
+          "label": "Pump efficiency",
+          "type": "number",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "required": false,
+          "visible_if": {
+            "field": "source",
+            "in": [
+              "tubewell_electric",
+              "tubewell_diesel",
+              "tubewell_solar"
+            ]
+          }
+        },
+        {
+          "key": "drip_area",
+          "label": "Drip / sprinkler area",
+          "type": "number",
+          "unit": "acres",
+          "min": 0,
+          "max": 5000,
+          "required": false,
+          "visible_if": {
+            "field": "method",
+            "in": [
+              "drip",
+              "sprinkler"
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "kind": "date_vs_sowing",
+          "field": "irrigation_date",
+          "op": "not_before_minus",
+          "days": 30,
+          "level": "warning",
+          "message": "This irrigation is more than 30 days before sowing."
+        }
+      ]
+    },
+    {
+      "key": "weed_management",
+      "title": "Weed management",
+      "order": 6,
+      "repeatable": true,
+      "required": false,
+      "allow_not_applicable": true,
+      "summary": "{method} on {weed_date}",
+      "totals": [
+        {
+          "label": "Weed controls",
+          "kind": "count"
+        },
+        {
+          "label": "Area treated",
+          "kind": "sum",
+          "field": "area_treated",
+          "unit": "acres"
+        }
+      ],
+      "fields": [
+        {
+          "key": "weed_date",
+          "label": "Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "method",
+          "label": "Method",
+          "type": "select",
+          "list_key": "weed_method",
+          "required": true
+        },
+        {
+          "key": "chemical_product",
+          "label": "Chemical product",
+          "type": "text",
+          "required": true,
+          "visible_if": {
+            "field": "method",
+            "in": [
+              "chemical",
+              "mixed"
+            ]
+          }
+        },
+        {
+          "key": "herbicide_ai_content",
+          "label": "Herbicide active ingredient content",
+          "type": "number",
+          "unit": "% or g/L",
+          "min": 0,
+          "max": 1000,
+          "required": false,
+          "visible_if": {
+            "field": "method",
+            "in": [
+              "chemical",
+              "mixed"
+            ]
+          }
+        },
+        {
+          "key": "herbicide_dose",
+          "label": "Herbicide dose",
+          "type": "number",
+          "unit": "ml or g per acre",
+          "min": 0,
+          "max": 10000,
+          "required": false,
+          "visible_if": {
+            "field": "method",
+            "in": [
+              "chemical",
+              "mixed"
+            ]
+          }
+        },
+        {
+          "key": "area_treated",
+          "label": "Area treated",
+          "type": "number",
+          "unit": "acres",
+          "min": 0,
+          "max": 5000,
+          "required": false,
+          "visible_if": {
+            "field": "method",
+            "in": [
+              "chemical",
+              "mixed"
+            ]
+          }
+        },
+        {
+          "key": "spraying_implement",
+          "label": "Spraying implement",
+          "type": "select",
+          "list_key": "spraying_implement",
+          "required": false,
+          "visible_if": {
+            "field": "method",
+            "in": [
+              "chemical",
+              "mixed"
+            ]
+          }
+        }
+      ],
+      "rules": []
+    },
+    {
+      "key": "pest_disease",
+      "title": "Pest and disease (IPM)",
+      "order": 7,
+      "repeatable": true,
+      "required": false,
+      "allow_not_applicable": true,
+      "summary": "{product_applied} ({product_type})",
+      "totals": [
+        {
+          "label": "Sprays",
+          "kind": "count"
+        },
+        {
+          "label": "Area sprayed",
+          "kind": "sum",
+          "field": "area_sprayed",
+          "unit": "acres"
+        }
+      ],
+      "fields": [
+        {
+          "key": "product_applied",
+          "label": "Product applied",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "product_type",
+          "label": "Product type",
+          "type": "select",
+          "list_key": "pest_product_type",
+          "required": true
+        },
+        {
+          "key": "ai_content",
+          "label": "Active ingredient content",
+          "type": "number",
+          "unit": "% or g/L",
+          "min": 0,
+          "max": 1000,
+          "required": false
+        },
+        {
+          "key": "dose",
+          "label": "Dose",
+          "type": "number",
+          "unit": "ml or g per acre",
+          "min": 0,
+          "max": 10000,
+          "required": false
+        },
+        {
+          "key": "area_sprayed",
+          "label": "Area sprayed",
+          "type": "number",
+          "unit": "acres",
+          "min": 0,
+          "max": 5000,
+          "required": false
+        },
+        {
+          "key": "pheromone_traps",
+          "label": "Pheromone traps",
+          "type": "number",
+          "integer": true,
+          "unit": "per acre",
+          "min": 0,
+          "max": 100,
+          "required": false
+        },
+        {
+          "key": "beneficial_insects",
+          "label": "Beneficial insects seen",
+          "type": "multiselect",
+          "list_key": "beneficial_insects",
+          "required": false
+        }
+      ],
+      "rules": []
+    },
+    {
+      "key": "energy",
+      "title": "Energy",
+      "order": 8,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{total_diesel} L diesel, {grid_electricity} kWh",
+      "fields": [
+        {
+          "key": "total_diesel",
+          "label": "Total field diesel",
+          "type": "number",
+          "unit": "litres per season",
+          "min": 0,
+          "max": 20000,
+          "required": true
+        },
+        {
+          "key": "grid_electricity",
+          "label": "Grid electricity",
+          "type": "number",
+          "unit": "kWh",
+          "min": 0,
+          "max": 200000,
+          "required": true
+        }
+      ],
+      "rules": []
+    },
+    {
+      "key": "labour_social",
+      "title": "Labour and social",
+      "order": 9,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{family_labour} family, {hired_labour} hired, {women_pickers} women pickers",
+      "fields": [
+        {
+          "key": "family_labour",
+          "label": "Family labour",
+          "type": "number",
+          "integer": true,
+          "unit": "people",
+          "min": 0,
+          "max": 200,
+          "required": true
+        },
+        {
+          "key": "hired_labour",
+          "label": "Hired labour",
+          "type": "number",
+          "integer": true,
+          "unit": "people",
+          "min": 0,
+          "max": 1000,
+          "required": true
+        },
+        {
+          "key": "women_pickers",
+          "label": "Women pickers",
+          "type": "number",
+          "integer": true,
+          "unit": "people",
+          "min": 0,
+          "max": 1200,
+          "required": true
+        },
+        {
+          "key": "picking_wage",
+          "label": "Picking wage",
+          "type": "number",
+          "unit": "PKR per maund",
+          "min": 0,
+          "max": 100000,
+          "required": true
+        },
+        {
+          "key": "training_attended",
+          "label": "Training attended",
+          "type": "yesno",
+          "list_key": "yes_no",
+          "required": true
+        },
+        {
+          "key": "training_name",
+          "label": "Training name",
+          "type": "text",
+          "required": true,
+          "visible_if": {
+            "field": "training_attended",
+            "in": [
+              "yes"
+            ]
+          }
+        }
+      ],
+      "rules": [
+        {
+          "kind": "lte_sum",
+          "field": "women_pickers",
+          "sum": [
+            "family_labour",
+            "hired_labour"
+          ],
+          "level": "error",
+          "message": "Women pickers cannot exceed family plus hired labour."
+        }
+      ]
+    },
+    {
+      "key": "harvest",
+      "title": "Harvest",
+      "order": 10,
+      "repeatable": true,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{picking_number} picking on {picking_date}, {yield} maunds per acre",
+      "totals": [
+        {
+          "label": "Pickings",
+          "kind": "count"
+        },
+        {
+          "label": "Total yield",
+          "kind": "sum",
+          "field": "yield",
+          "unit": "maunds per acre"
+        }
+      ],
+      "fields": [
+        {
+          "key": "picking_date",
+          "label": "Picking date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "picking_number",
+          "label": "Picking number",
+          "type": "select",
+          "list_key": "picking_number",
+          "required": true
+        },
+        {
+          "key": "harvest_method",
+          "label": "Harvest method",
+          "type": "select",
+          "list_key": "harvest_method_cotton",
+          "required": true
+        },
+        {
+          "key": "yield",
+          "label": "Yield",
+          "type": "number",
+          "unit": "maunds per acre",
+          "min": 0,
+          "max": 100,
+          "required": true,
+          "help": "1 maund is 40 kg."
+        },
+        {
+          "key": "moisture",
+          "label": "Moisture",
+          "type": "number",
+          "unit": "%",
+          "min": 0,
+          "max": 40,
+          "required": false,
+          "warn_above": 12,
+          "warn_message": "Moisture above 12 percent risks spoilage in storage."
+        },
+        {
+          "key": "storage_material",
+          "label": "Storage material",
+          "type": "select",
+          "list_key": "storage_material",
+          "required": true,
+          "warn_values": [
+            "polypropylene_not_recommended"
+          ],
+          "warn_message": "Polypropylene sheets contaminate lint; cotton cloth or jute is recommended."
+        },
+        {
+          "key": "ready_for_pickup",
+          "label": "Ready for pickup",
+          "type": "yesno",
+          "list_key": "yes_no",
+          "required": true
+        }
+      ],
+      "rules": [
+        {
+          "kind": "date_vs_sowing",
+          "field": "picking_date",
+          "op": "after",
+          "level": "error",
+          "message": "The picking date must be after the sowing date."
+        },
+        {
+          "kind": "unique_across_entries",
+          "field": "picking_number",
+          "level": "error",
+          "message": "This picking number is already recorded in this fieldbook."
+        }
+      ]
+    },
+    {
+      "key": "transport",
+      "title": "Transport",
+      "order": 11,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{transport_distance} km by {transport_mode}",
+      "fields": [
+        {
+          "key": "transport_distance",
+          "label": "Transport distance to ginner",
+          "type": "number",
+          "unit": "km",
+          "min": 0,
+          "max": 2000,
+          "required": true
+        },
+        {
+          "key": "transport_mode",
+          "label": "Transport mode",
+          "type": "select",
+          "list_key": "transport_mode_cotton",
+          "required": true
+        }
+      ],
+      "rules": []
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "crop": "hemp",
+  "country": "GB",
+  "version": "2026.1",
+  "title": "Hemp fieldbook",
+  "area_unit": "ha",
+  "area_ref": "field.area_ha",
+  "sowing_date_ref": "step.sowing.drilling_date",
+  "harvest_step": "harvest",
+  "pickup": { "step": "baling", "field": "ready_for_pickup", "label_field": null },
+  "steps": [
+    {
+      "key": "field_info",
+      "title": "Field info",
+      "order": 1,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{season}, {area_drilled} ha drilled",
+      "fields": [
+        { "key": "season", "label": "Season", "type": "select", "list_key": "hemp_season", "required": true },
+        { "key": "licence_no", "label": "Home Office licence number", "type": "text", "required": false, "readonly": true, "default_from": "farmer.licence", "help": "From the farmer record. Change it in Register Farmer." },
+        { "key": "licence_expiry", "label": "Licence expiry", "type": "date", "required": true, "not_future": false },
+        { "key": "area_drilled", "label": "Area drilled", "type": "number", "unit": "ha", "min": 0.01, "max": 2000, "required": true, "default_from": "field.area_ha", "help": "Defaults to the mapped field area. It may not exceed it by more than 5 percent." },
+        { "key": "soil_type", "label": "Soil type", "type": "select", "list_key": "soil_type_uk", "required": true },
+        { "key": "previous_crop", "label": "Previous crop", "type": "select", "list_key": "previous_crop", "required": true, "default_from": "season.previous_crop" },
+        { "key": "photos", "label": "Add photo", "type": "photos", "required": false, "help": "Up to 8 images, JPEG, PNG or WebP, 8 MB each." }
+      ],
+      "rules": [
+        { "kind": "max_ref", "field": "area_drilled", "ref": "field.area_ha", "factor": 1.05, "level": "error", "message": "Area drilled is more than 5 percent above the mapped field area of {ref} ha." },
+        { "kind": "date_not_before_ref", "field": "licence_expiry", "ref": "step.sowing.drilling_date", "level": "warning", "message": "The licence expires before the drilling date." }
+      ]
+    },
+    {
+      "key": "land_preparation",
+      "title": "Land preparation",
+      "order": 2,
+      "repeatable": true,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{operation_type} on {operation_date}, {passes} passes",
+      "totals": [ { "label": "Operations", "kind": "count" } ],
+      "fields": [
+        { "key": "operation_date", "label": "Operation date", "type": "date", "required": true },
+        { "key": "operation_type", "label": "Operation type", "type": "select", "list_key": "operation_type_hemp", "required": true },
+        { "key": "passes", "label": "Number of passes", "type": "number", "integer": true, "min": 1, "max": 12, "required": true },
+        { "key": "seedbed_condition", "label": "Seedbed condition", "type": "select", "list_key": "seedbed_condition", "required": true },
+        { "key": "soil_temperature", "label": "Soil temperature at drilling", "type": "number", "unit": "°C", "min": -5, "max": 40, "required": false }
+      ],
+      "rules": [
+        { "kind": "date_vs_sowing", "field": "operation_date", "op": "not_after", "level": "warning", "message": "This operation is dated after drilling." }
+      ]
+    },
+    {
+      "key": "sowing",
+      "title": "Sowing",
+      "order": 3,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "Drilled on {drilling_date}, {variety}",
+      "fields": [
+        { "key": "drilling_date", "label": "Drilling date", "type": "date", "required": true },
+        { "key": "crop_purpose", "label": "Crop purpose", "type": "select", "list_key": "crop_purpose", "required": true },
+        { "key": "variety", "label": "Variety", "type": "select", "list_key": "variety", "required": true, "default_from": "season.variety" },
+        { "key": "seed_lot", "label": "Certified seed label / lot no.", "type": "text", "required": true },
+        { "key": "seed_rate", "label": "Seed rate", "type": "number", "unit": "kg per ha", "min": 0, "max": 200, "required": true },
+        { "key": "drill_type", "label": "Drill type", "type": "select", "list_key": "drill_type", "required": true },
+        { "key": "row_width", "label": "Row width", "type": "number", "unit": "cm", "min": 0, "max": 100, "required": true },
+        { "key": "drilling_depth", "label": "Drilling depth", "type": "number", "unit": "cm", "min": 0, "max": 10, "required": true }
+      ],
+      "rules": []
+    },
+    {
+      "key": "nutrient_management",
+      "title": "Nutrient management",
+      "order": 4,
+      "repeatable": true,
+      "required": false,
+      "allow_not_applicable": true,
+      "summary": "{product} on {application_date}",
+      "totals": [
+        { "label": "Applications", "kind": "count" },
+        { "label": "Nitrogen applied", "kind": "sum_part", "field": "nutrient_content", "part": "n", "unit": "kg N per ha" }
+      ],
+      "fields": [
+        { "key": "application_date", "label": "Application date", "type": "date", "required": true },
+        { "key": "product", "label": "Product", "type": "select", "list_key": "nutrient_product_hemp", "required": true },
+        { "key": "rate", "label": "Rate", "type": "number", "min": 0, "max": 100000, "required": true },
+        { "key": "rate_unit", "label": "Rate unit", "type": "select", "list_key": "nutrient_rate_unit", "required": true },
+        { "key": "nutrient_content", "label": "Nutrient content", "type": "paired_number", "unit": "kg per ha", "required": false, "parts": [
+            { "key": "n", "label": "N", "unit": "kg per ha", "min": 0, "max": 1000 },
+            { "key": "p2o5", "label": "P2O5", "unit": "kg per ha", "min": 0, "max": 1000 },
+            { "key": "k2o", "label": "K2O", "unit": "kg per ha", "min": 0, "max": 1000 }
+          ] },
+        { "key": "method", "label": "Method", "type": "select", "list_key": "nutrient_method", "required": true }
+      ],
+      "rules": [
+        { "kind": "date_vs_sowing", "field": "application_date", "op": "not_before_minus", "days": 30, "level": "warning", "message": "This application is more than 30 days before drilling." }
+      ]
+    },
+    {
+      "key": "crop_monitoring",
+      "title": "Crop monitoring",
+      "order": 5,
+      "repeatable": true,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "Visit on {visit_date}, {growth_stage}",
+      "totals": [ { "label": "Visits", "kind": "count" } ],
+      "fields": [
+        { "key": "visit_date", "label": "Visit date", "type": "date", "required": true },
+        { "key": "growth_stage", "label": "Growth stage", "type": "select", "list_key": "hemp_growth_stage", "required": true },
+        { "key": "plant_height", "label": "Plant height", "type": "number", "unit": "cm", "min": 0, "max": 500, "required": false },
+        { "key": "plants_per_m2", "label": "Plants per m2", "type": "number", "unit": "per m2", "min": 0, "max": 1000, "required": false },
+        { "key": "canopy_closure", "label": "Canopy closure", "type": "select", "list_key": "canopy_closure", "required": false }
+      ],
+      "rules": []
+    },
+    {
+      "key": "weeds_pests",
+      "title": "Weeds, pests and disease",
+      "order": 6,
+      "repeatable": true,
+      "required": false,
+      "allow_not_applicable": true,
+      "summary": "{issue} ({severity}) on {issue_date}",
+      "totals": [ { "label": "Issues", "kind": "count" } ],
+      "fields": [
+        { "key": "issue_date", "label": "Date", "type": "date", "required": true },
+        { "key": "issue", "label": "Issue", "type": "text", "required": true },
+        { "key": "severity", "label": "Severity", "type": "select", "list_key": "severity", "required": true },
+        { "key": "action_taken", "label": "Action taken", "type": "text", "required": false }
+      ],
+      "rules": []
+    },
+    {
+      "key": "harvest",
+      "title": "Harvest",
+      "order": 7,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "Cut on {cutting_date}, {area_cut} ha",
+      "fields": [
+        { "key": "seed_harvest_date", "label": "Seed harvest date", "type": "date", "required": false },
+        { "key": "seed_yield", "label": "Seed yield", "type": "number", "unit": "kg", "min": 0, "max": 1000000, "required": false },
+        { "key": "seed_moisture", "label": "Seed moisture", "type": "number", "unit": "%", "min": 0, "max": 60, "required": false },
+        { "key": "cutting_date", "label": "Cutting date", "type": "date", "required": true },
+        { "key": "growth_stage_at_cutting", "label": "Growth stage at cutting", "type": "select", "list_key": "growth_stage_at_cutting", "required": true },
+        { "key": "cutting_method", "label": "Cutting method", "type": "select", "list_key": "cutting_method", "required": true },
+        { "key": "stem_length", "label": "Stem length", "type": "number", "unit": "cm", "min": 0, "max": 500, "required": false },
+        { "key": "area_cut", "label": "Area cut", "type": "number", "unit": "ha", "min": 0, "max": 2000, "required": true }
+      ],
+      "rules": [
+        { "kind": "date_vs_sowing", "field": "seed_harvest_date", "op": "after", "level": "error", "message": "The seed harvest date must be after the drilling date." },
+        { "kind": "date_vs_sowing", "field": "cutting_date", "op": "after", "level": "error", "message": "The cutting date must be after the drilling date." },
+        { "kind": "max_ref", "field": "area_cut", "ref": "step.field_info.area_drilled", "factor": 1, "level": "error", "message": "Area cut cannot exceed the area drilled ({ref} ha)." }
+      ]
+    },
+    {
+      "key": "retting",
+      "title": "Field retting",
+      "order": 8,
+      "repeatable": false,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{days_in_swath} days in swath, {number_of_turns} turns",
+      "fields": [
+        { "key": "retting_start", "label": "Retting start date", "type": "date", "required": true },
+        { "key": "turning_dates", "label": "Turning dates", "type": "dates", "required": false },
+        { "key": "number_of_turns", "label": "Number of turns", "type": "number", "integer": true, "readonly": true, "computed": { "kind": "count", "of": "turning_dates" } },
+        { "key": "retting_end", "label": "Retting end date", "type": "date", "required": true },
+        { "key": "days_in_swath", "label": "Days in swath", "type": "number", "integer": true, "unit": "days", "readonly": true, "computed": { "kind": "days_between", "from": "retting_start", "to": "retting_end" } },
+        { "key": "location", "label": "Location", "type": "text", "required": true }
+      ],
+      "rules": [
+        { "kind": "date_on_or_after", "field": "retting_end", "other": "retting_start", "level": "error", "message": "The retting end date must be on or after the start date." }
+      ]
+    },
+    {
+      "key": "baling",
+      "title": "Straw baling and storage",
+      "order": 9,
+      "repeatable": true,
+      "required": true,
+      "allow_not_applicable": false,
+      "summary": "{number_of_bales} {bale_type} bales on {baling_date}",
+      "totals": [
+        { "label": "Bale batches", "kind": "count" },
+        { "label": "Bales", "kind": "sum", "field": "number_of_bales", "unit": "bales" },
+        { "label": "Total straw", "kind": "sum", "field": "total_straw_weight", "unit": "kg" }
+      ],
+      "fields": [
+        { "key": "baling_date", "label": "Baling date", "type": "date", "required": true },
+        { "key": "bale_type", "label": "Bale type", "type": "select", "list_key": "bale_type", "required": true },
+        { "key": "number_of_bales", "label": "Number of bales", "type": "number", "integer": true, "unit": "bales", "min": 1, "max": 100000, "required": true },
+        { "key": "avg_bale_weight", "label": "Average bale weight", "type": "number", "unit": "kg", "min": 0, "max": 2000, "required": true },
+        { "key": "total_straw_weight", "label": "Total straw weight", "type": "number", "unit": "kg", "readonly": true, "computed": { "kind": "product", "of": ["number_of_bales", "avg_bale_weight"] } },
+        { "key": "straw_moisture", "label": "Straw moisture", "type": "number", "unit": "%", "min": 0, "max": 60, "required": false },
+        { "key": "storage_location", "label": "Storage location", "type": "text", "required": true },
+        { "key": "ready_for_pickup", "label": "Ready for pickup", "type": "yesno", "list_key": "yes_no", "required": true }
+      ],
+      "rules": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[
+  {"code": "PK-MUL", "name": "Multan Field Office", "country": "PK", "province": "Punjab", "district": "Multan", "location": "PK-PB-MUL"},
+  {"code": "PK-BWP", "name": "Bahawalpur Field Office", "country": "PK", "province": "Punjab", "district": "Bahawalpur", "location": "PK-PB-BWP"},
+  {"code": "PK-LOD", "name": "Lodhran Field Office", "country": "PK", "province": "Punjab", "district": "Lodhran", "location": "PK-PB-LOD"},
+  {"code": "GB-EOE", "name": "East of England Field Office", "country": "GB", "province": "East of England", "district": "Cambridgeshire", "location": "GB-EOE-CAM"},
+  {"code": "GB-EMD", "name": "East Midlands Field Office", "country": "GB", "province": "East Midlands", "district": "Lincolnshire", "location": "GB-EMD-LIN"}
+]

@@ -1,0 +1,630 @@
+{
+  "_meta": {
+    "status": "SEED DATA - TO BE VERIFIED",
+    "purpose": "Fallback mapping from UK postcode area to county and region, used only when the postcodes.io lookup is unavailable.",
+    "note": "One representative county per postcode area. Areas span administrative boundaries, so a postcode lookup is always preferred over this table. Verify against Royal Mail PAF and ONS geographies before production use.",
+    "count": 124
+  },
+  "items": [
+    {
+      "area": "AB",
+      "county": "Aberdeenshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "AL",
+      "county": "Hertfordshire",
+      "region": "East of England"
+    },
+    {
+      "area": "B",
+      "county": "West Midlands",
+      "region": "West Midlands"
+    },
+    {
+      "area": "BA",
+      "county": "Somerset",
+      "region": "South West"
+    },
+    {
+      "area": "BB",
+      "county": "Lancashire",
+      "region": "North West"
+    },
+    {
+      "area": "BD",
+      "county": "West Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "BH",
+      "county": "Dorset",
+      "region": "South West"
+    },
+    {
+      "area": "BL",
+      "county": "Greater Manchester",
+      "region": "North West"
+    },
+    {
+      "area": "BN",
+      "county": "East Sussex",
+      "region": "South East"
+    },
+    {
+      "area": "BR",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "BS",
+      "county": "Bristol",
+      "region": "South West"
+    },
+    {
+      "area": "BT",
+      "county": "County Antrim",
+      "region": "Northern Ireland"
+    },
+    {
+      "area": "CA",
+      "county": "Cumbria",
+      "region": "North West"
+    },
+    {
+      "area": "CB",
+      "county": "Cambridgeshire",
+      "region": "East of England"
+    },
+    {
+      "area": "CF",
+      "county": "South Glamorgan",
+      "region": "Wales"
+    },
+    {
+      "area": "CH",
+      "county": "Cheshire",
+      "region": "North West"
+    },
+    {
+      "area": "CM",
+      "county": "Essex",
+      "region": "East of England"
+    },
+    {
+      "area": "CO",
+      "county": "Essex",
+      "region": "East of England"
+    },
+    {
+      "area": "CR",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "CT",
+      "county": "Kent",
+      "region": "South East"
+    },
+    {
+      "area": "CV",
+      "county": "West Midlands",
+      "region": "West Midlands"
+    },
+    {
+      "area": "CW",
+      "county": "Cheshire",
+      "region": "North West"
+    },
+    {
+      "area": "DA",
+      "county": "Kent",
+      "region": "South East"
+    },
+    {
+      "area": "DD",
+      "county": "Angus",
+      "region": "Scotland"
+    },
+    {
+      "area": "DE",
+      "county": "Derbyshire",
+      "region": "East Midlands"
+    },
+    {
+      "area": "DG",
+      "county": "Dumfries and Galloway",
+      "region": "Scotland"
+    },
+    {
+      "area": "DH",
+      "county": "County Durham",
+      "region": "North East"
+    },
+    {
+      "area": "DL",
+      "county": "County Durham",
+      "region": "North East"
+    },
+    {
+      "area": "DN",
+      "county": "South Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "DT",
+      "county": "Dorset",
+      "region": "South West"
+    },
+    {
+      "area": "DY",
+      "county": "West Midlands",
+      "region": "West Midlands"
+    },
+    {
+      "area": "E",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "EC",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "EH",
+      "county": "Midlothian",
+      "region": "Scotland"
+    },
+    {
+      "area": "EN",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "EX",
+      "county": "Devon",
+      "region": "South West"
+    },
+    {
+      "area": "FK",
+      "county": "Stirlingshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "FY",
+      "county": "Lancashire",
+      "region": "North West"
+    },
+    {
+      "area": "G",
+      "county": "Lanarkshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "GL",
+      "county": "Gloucestershire",
+      "region": "South West"
+    },
+    {
+      "area": "GU",
+      "county": "Surrey",
+      "region": "South East"
+    },
+    {
+      "area": "GY",
+      "county": "Guernsey",
+      "region": "Channel Islands"
+    },
+    {
+      "area": "HA",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "HD",
+      "county": "West Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "HG",
+      "county": "North Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "HP",
+      "county": "Hertfordshire",
+      "region": "East of England"
+    },
+    {
+      "area": "HR",
+      "county": "Herefordshire",
+      "region": "West Midlands"
+    },
+    {
+      "area": "HS",
+      "county": "Na h-Eileanan Siar",
+      "region": "Scotland"
+    },
+    {
+      "area": "HU",
+      "county": "East Riding of Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "HX",
+      "county": "West Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "IG",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "IM",
+      "county": "Isle of Man",
+      "region": "Isle of Man"
+    },
+    {
+      "area": "IP",
+      "county": "Suffolk",
+      "region": "East of England"
+    },
+    {
+      "area": "IV",
+      "county": "Inverness-shire",
+      "region": "Scotland"
+    },
+    {
+      "area": "JE",
+      "county": "Jersey",
+      "region": "Channel Islands"
+    },
+    {
+      "area": "KA",
+      "county": "Ayrshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "KT",
+      "county": "Surrey",
+      "region": "South East"
+    },
+    {
+      "area": "KW",
+      "county": "Orkney",
+      "region": "Scotland"
+    },
+    {
+      "area": "KY",
+      "county": "Fife",
+      "region": "Scotland"
+    },
+    {
+      "area": "L",
+      "county": "Merseyside",
+      "region": "North West"
+    },
+    {
+      "area": "LA",
+      "county": "Lancashire",
+      "region": "North West"
+    },
+    {
+      "area": "LD",
+      "county": "Powys",
+      "region": "Wales"
+    },
+    {
+      "area": "LE",
+      "county": "Leicestershire",
+      "region": "East Midlands"
+    },
+    {
+      "area": "LL",
+      "county": "Gwynedd",
+      "region": "Wales"
+    },
+    {
+      "area": "LN",
+      "county": "Lincolnshire",
+      "region": "East Midlands"
+    },
+    {
+      "area": "LS",
+      "county": "West Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "LU",
+      "county": "Bedfordshire",
+      "region": "East of England"
+    },
+    {
+      "area": "M",
+      "county": "Greater Manchester",
+      "region": "North West"
+    },
+    {
+      "area": "ME",
+      "county": "Kent",
+      "region": "South East"
+    },
+    {
+      "area": "MK",
+      "county": "Buckinghamshire",
+      "region": "South East"
+    },
+    {
+      "area": "ML",
+      "county": "Lanarkshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "N",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "NE",
+      "county": "Tyne and Wear",
+      "region": "North East"
+    },
+    {
+      "area": "NG",
+      "county": "Nottinghamshire",
+      "region": "East Midlands"
+    },
+    {
+      "area": "NN",
+      "county": "Northamptonshire",
+      "region": "East Midlands"
+    },
+    {
+      "area": "NP",
+      "county": "Gwent",
+      "region": "Wales"
+    },
+    {
+      "area": "NR",
+      "county": "Norfolk",
+      "region": "East of England"
+    },
+    {
+      "area": "NW",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "OL",
+      "county": "Greater Manchester",
+      "region": "North West"
+    },
+    {
+      "area": "OX",
+      "county": "Oxfordshire",
+      "region": "South East"
+    },
+    {
+      "area": "PA",
+      "county": "Renfrewshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "PE",
+      "county": "Cambridgeshire",
+      "region": "East of England"
+    },
+    {
+      "area": "PH",
+      "county": "Perthshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "PL",
+      "county": "Devon",
+      "region": "South West"
+    },
+    {
+      "area": "PO",
+      "county": "Hampshire",
+      "region": "South East"
+    },
+    {
+      "area": "PR",
+      "county": "Lancashire",
+      "region": "North West"
+    },
+    {
+      "area": "RG",
+      "county": "Berkshire",
+      "region": "South East"
+    },
+    {
+      "area": "RH",
+      "county": "Surrey",
+      "region": "South East"
+    },
+    {
+      "area": "RM",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "S",
+      "county": "South Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "SA",
+      "county": "West Glamorgan",
+      "region": "Wales"
+    },
+    {
+      "area": "SE",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "SG",
+      "county": "Hertfordshire",
+      "region": "East of England"
+    },
+    {
+      "area": "SK",
+      "county": "Cheshire",
+      "region": "North West"
+    },
+    {
+      "area": "SL",
+      "county": "Berkshire",
+      "region": "South East"
+    },
+    {
+      "area": "SM",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "SN",
+      "county": "Wiltshire",
+      "region": "South West"
+    },
+    {
+      "area": "SO",
+      "county": "Hampshire",
+      "region": "South East"
+    },
+    {
+      "area": "SP",
+      "county": "Wiltshire",
+      "region": "South West"
+    },
+    {
+      "area": "SR",
+      "county": "Tyne and Wear",
+      "region": "North East"
+    },
+    {
+      "area": "SS",
+      "county": "Essex",
+      "region": "East of England"
+    },
+    {
+      "area": "ST",
+      "county": "Staffordshire",
+      "region": "West Midlands"
+    },
+    {
+      "area": "SW",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "SY",
+      "county": "Shropshire",
+      "region": "West Midlands"
+    },
+    {
+      "area": "TA",
+      "county": "Somerset",
+      "region": "South West"
+    },
+    {
+      "area": "TD",
+      "county": "Roxburghshire",
+      "region": "Scotland"
+    },
+    {
+      "area": "TF",
+      "county": "Shropshire",
+      "region": "West Midlands"
+    },
+    {
+      "area": "TN",
+      "county": "Kent",
+      "region": "South East"
+    },
+    {
+      "area": "TQ",
+      "county": "Devon",
+      "region": "South West"
+    },
+    {
+      "area": "TR",
+      "county": "Cornwall",
+      "region": "South West"
+    },
+    {
+      "area": "TS",
+      "county": "North Yorkshire",
+      "region": "North East"
+    },
+    {
+      "area": "TW",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "UB",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "W",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "WA",
+      "county": "Cheshire",
+      "region": "North West"
+    },
+    {
+      "area": "WC",
+      "county": "Greater London",
+      "region": "London"
+    },
+    {
+      "area": "WD",
+      "county": "Hertfordshire",
+      "region": "East of England"
+    },
+    {
+      "area": "WF",
+      "county": "West Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "WN",
+      "county": "Greater Manchester",
+      "region": "North West"
+    },
+    {
+      "area": "WR",
+      "county": "Worcestershire",
+      "region": "West Midlands"
+    },
+    {
+      "area": "WS",
+      "county": "West Midlands",
+      "region": "West Midlands"
+    },
+    {
+      "area": "WV",
+      "county": "West Midlands",
+      "region": "West Midlands"
+    },
+    {
+      "area": "YO",
+      "county": "North Yorkshire",
+      "region": "Yorkshire and The Humber"
+    },
+    {
+      "area": "ZE",
+      "county": "Shetland",
+      "region": "Scotland"
+    }
+  ]
+}

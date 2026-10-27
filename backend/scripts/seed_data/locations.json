@@ -1,0 +1,10 @@
+[
+  {"code": "PK-PB", "country": "PK", "level": "province", "name": "Punjab", "parent": null, "sort_order": 1},
+  {"code": "PK-PB-MUL", "country": "PK", "level": "district", "name": "Multan", "parent": "PK-PB", "sort_order": 1},
+  {"code": "PK-PB-BWP", "country": "PK", "level": "district", "name": "Bahawalpur", "parent": "PK-PB", "sort_order": 2},
+  {"code": "PK-PB-LOD", "country": "PK", "level": "district", "name": "Lodhran", "parent": "PK-PB", "sort_order": 3},
+  {"code": "GB-EOE", "country": "GB", "level": "province", "name": "East of England", "parent": null, "sort_order": 1},
+  {"code": "GB-EMD", "country": "GB", "level": "province", "name": "East Midlands", "parent": null, "sort_order": 2},
+  {"code": "GB-EOE-CAM", "country": "GB", "level": "district", "name": "Cambridgeshire", "parent": "GB-EOE", "sort_order": 1},
+  {"code": "GB-EMD-LIN", "country": "GB", "level": "district", "name": "Lincolnshire", "parent": "GB-EMD", "sort_order": 1}
+]

@@ -1,0 +1,42 @@
+# Python
+backend/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Runtime data (keep the folders)
+backend/data/*
+!backend/data/.gitkeep
+backend/storage/*
+!backend/storage/.gitkeep
+backend/.setup_in_progress
+*.db
+*.db-wal
+*.db-shm
+
+# Environment files (examples are committed)
+.env
+!.env.example
+backend/.env
+frontend/.env
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+
+# Playwright (end-to-end smoke test)
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+frontend/.playwright/
+*.tsbuildinfo
+npm-debug.log*
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

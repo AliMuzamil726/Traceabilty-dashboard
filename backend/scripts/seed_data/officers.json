@@ -1,0 +1,14 @@
+[
+  {"code": "PK-MUL-01", "full_name": "Muhammad Imran Khan", "email": "imran.khan@sawie.example", "role": "officer", "country": "PK", "office": "PK-MUL"},
+  {"code": "PK-MUL-02", "full_name": "Sana Batool", "email": "sana.batool@sawie.example", "role": "officer", "country": "PK", "office": "PK-MUL"},
+  {"code": "PK-BWP-01", "full_name": "Ali Raza Bhatti", "email": "ali.bhatti@sawie.example", "role": "officer", "country": "PK", "office": "PK-BWP"},
+  {"code": "PK-BWP-02", "full_name": "Farah Naz", "email": "farah.naz@sawie.example", "role": "officer", "country": "PK", "office": "PK-BWP"},
+  {"code": "PK-LOD-01", "full_name": "Usman Ghani", "email": "usman.ghani@sawie.example", "role": "officer", "country": "PK", "office": "PK-LOD"},
+  {"code": "PK-LOD-02", "full_name": "Rabia Kanwal", "email": "rabia.kanwal@sawie.example", "role": "officer", "country": "PK", "office": "PK-LOD"},
+  {"code": "GB-EOE-01", "full_name": "Oliver Bennett", "email": "oliver.bennett@sawie.example", "role": "officer", "country": "GB", "office": "GB-EOE"},
+  {"code": "GB-EOE-02", "full_name": "Charlotte Hughes", "email": "charlotte.hughes@sawie.example", "role": "officer", "country": "GB", "office": "GB-EOE"},
+  {"code": "GB-EMD-01", "full_name": "James Whitfield", "email": "james.whitfield@sawie.example", "role": "officer", "country": "GB", "office": "GB-EMD"},
+  {"code": "GB-EMD-02", "full_name": "Emily Thornton", "email": "emily.thornton@sawie.example", "role": "officer", "country": "GB", "office": "GB-EMD"},
+  {"code": "STAFF-01", "full_name": "Ayesha Siddiqui", "email": "staff@sawie.example", "role": "staff", "country": "PK", "office": null},
+  {"code": "ADMIN-01", "full_name": "Aiman Aziz", "email": "admin@sawie.example", "role": "admin", "country": "PK", "office": null}
+]

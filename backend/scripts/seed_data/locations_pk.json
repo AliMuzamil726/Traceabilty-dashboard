@@ -1,0 +1,7030 @@
+{
+ "_meta": {
+  "status": "SEED DATA - TO BE VERIFIED",
+  "purpose": "Pakistan administrative hierarchy (province, district, tehsil) for the cotton programme's location cascade.",
+  "note": "All provinces, districts, and tehsils are included. Sources: PBS (Pakistan Bureau of Statistics), Wikipedia lists of tehsils by province (2024). District boundaries change, so verify against the latest PBS / provincial notifications before production use.",
+  "counts": {
+   "province": 7,
+   "district": 171,
+   "tehsil": 699
+  }
+ },
+ "items": [
+  {
+   "code": "PK-PB",
+   "country": "PK",
+   "level": "province",
+   "name": "Punjab",
+   "parent": null,
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD",
+   "country": "PK",
+   "level": "province",
+   "name": "Sindh",
+   "parent": null,
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP",
+   "country": "PK",
+   "level": "province",
+   "name": "Khyber Pakhtunkhwa",
+   "parent": null,
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA",
+   "country": "PK",
+   "level": "province",
+   "name": "Balochistan",
+   "parent": null,
+   "sort_order": 4
+  },
+  {
+   "code": "PK-GB",
+   "country": "PK",
+   "level": "province",
+   "name": "Gilgit-Baltistan",
+   "parent": null,
+   "sort_order": 5
+  },
+  {
+   "code": "PK-AJK",
+   "country": "PK",
+   "level": "province",
+   "name": "Azad Jammu and Kashmir",
+   "parent": null,
+   "sort_order": 6
+  },
+  {
+   "code": "PK-ICT",
+   "country": "PK",
+   "level": "province",
+   "name": "Islamabad Capital Territory",
+   "parent": null,
+   "sort_order": 7
+  },
+  {
+   "code": "PK-PB-ATT",
+   "country": "PK",
+   "level": "district",
+   "name": "Attock",
+   "parent": "PK-PB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-BAH",
+   "country": "PK",
+   "level": "district",
+   "name": "Bahawalnagar",
+   "parent": "PK-PB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-BWP",
+   "country": "PK",
+   "level": "district",
+   "name": "Bahawalpur",
+   "parent": "PK-PB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-BHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Bhakkar",
+   "parent": "PK-PB",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-CHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Chakwal",
+   "parent": "PK-PB",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-CHI",
+   "country": "PK",
+   "level": "district",
+   "name": "Chiniot",
+   "parent": "PK-PB",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-PB-DGK",
+   "country": "PK",
+   "level": "district",
+   "name": "Dera Ghazi Khan",
+   "parent": "PK-PB",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-PB-FAI",
+   "country": "PK",
+   "level": "district",
+   "name": "Faisalabad",
+   "parent": "PK-PB",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-PB-GUJ",
+   "country": "PK",
+   "level": "district",
+   "name": "Gujranwala",
+   "parent": "PK-PB",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-PB-GUJ2",
+   "country": "PK",
+   "level": "district",
+   "name": "Gujrat",
+   "parent": "PK-PB",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-PB-HAF",
+   "country": "PK",
+   "level": "district",
+   "name": "Hafizabad",
+   "parent": "PK-PB",
+   "sort_order": 11
+  },
+  {
+   "code": "PK-PB-JHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Jhang",
+   "parent": "PK-PB",
+   "sort_order": 12
+  },
+  {
+   "code": "PK-PB-JHE",
+   "country": "PK",
+   "level": "district",
+   "name": "Jhelum",
+   "parent": "PK-PB",
+   "sort_order": 13
+  },
+  {
+   "code": "PK-PB-KAS",
+   "country": "PK",
+   "level": "district",
+   "name": "Kasur",
+   "parent": "PK-PB",
+   "sort_order": 14
+  },
+  {
+   "code": "PK-PB-KHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Khanewal",
+   "parent": "PK-PB",
+   "sort_order": 15
+  },
+  {
+   "code": "PK-PB-KHU",
+   "country": "PK",
+   "level": "district",
+   "name": "Khushab",
+   "parent": "PK-PB",
+   "sort_order": 16
+  },
+  {
+   "code": "PK-PB-LAH",
+   "country": "PK",
+   "level": "district",
+   "name": "Lahore",
+   "parent": "PK-PB",
+   "sort_order": 17
+  },
+  {
+   "code": "PK-PB-LAY",
+   "country": "PK",
+   "level": "district",
+   "name": "Layyah",
+   "parent": "PK-PB",
+   "sort_order": 18
+  },
+  {
+   "code": "PK-PB-LOD",
+   "country": "PK",
+   "level": "district",
+   "name": "Lodhran",
+   "parent": "PK-PB",
+   "sort_order": 19
+  },
+  {
+   "code": "PK-PB-MB",
+   "country": "PK",
+   "level": "district",
+   "name": "Mandi Bahauddin",
+   "parent": "PK-PB",
+   "sort_order": 20
+  },
+  {
+   "code": "PK-PB-MIA",
+   "country": "PK",
+   "level": "district",
+   "name": "Mianwali",
+   "parent": "PK-PB",
+   "sort_order": 21
+  },
+  {
+   "code": "PK-PB-MUL",
+   "country": "PK",
+   "level": "district",
+   "name": "Multan",
+   "parent": "PK-PB",
+   "sort_order": 22
+  },
+  {
+   "code": "PK-PB-MUZ",
+   "country": "PK",
+   "level": "district",
+   "name": "Muzaffargarh",
+   "parent": "PK-PB",
+   "sort_order": 23
+  },
+  {
+   "code": "PK-PB-NS",
+   "country": "PK",
+   "level": "district",
+   "name": "Nankana Sahib",
+   "parent": "PK-PB",
+   "sort_order": 24
+  },
+  {
+   "code": "PK-PB-NAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Narowal",
+   "parent": "PK-PB",
+   "sort_order": 25
+  },
+  {
+   "code": "PK-PB-OKA",
+   "country": "PK",
+   "level": "district",
+   "name": "Okara",
+   "parent": "PK-PB",
+   "sort_order": 26
+  },
+  {
+   "code": "PK-PB-PAK",
+   "country": "PK",
+   "level": "district",
+   "name": "Pakpattan",
+   "parent": "PK-PB",
+   "sort_order": 27
+  },
+  {
+   "code": "PK-PB-RYK",
+   "country": "PK",
+   "level": "district",
+   "name": "Rahim Yar Khan",
+   "parent": "PK-PB",
+   "sort_order": 28
+  },
+  {
+   "code": "PK-PB-RAJ",
+   "country": "PK",
+   "level": "district",
+   "name": "Rajanpur",
+   "parent": "PK-PB",
+   "sort_order": 29
+  },
+  {
+   "code": "PK-PB-RAW",
+   "country": "PK",
+   "level": "district",
+   "name": "Rawalpindi",
+   "parent": "PK-PB",
+   "sort_order": 30
+  },
+  {
+   "code": "PK-PB-SAH",
+   "country": "PK",
+   "level": "district",
+   "name": "Sahiwal",
+   "parent": "PK-PB",
+   "sort_order": 31
+  },
+  {
+   "code": "PK-PB-SAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Sargodha",
+   "parent": "PK-PB",
+   "sort_order": 32
+  },
+  {
+   "code": "PK-PB-SHE",
+   "country": "PK",
+   "level": "district",
+   "name": "Sheikhupura",
+   "parent": "PK-PB",
+   "sort_order": 33
+  },
+  {
+   "code": "PK-PB-SIA",
+   "country": "PK",
+   "level": "district",
+   "name": "Sialkot",
+   "parent": "PK-PB",
+   "sort_order": 34
+  },
+  {
+   "code": "PK-PB-TTS",
+   "country": "PK",
+   "level": "district",
+   "name": "Toba Tek Singh",
+   "parent": "PK-PB",
+   "sort_order": 35
+  },
+  {
+   "code": "PK-PB-VEH",
+   "country": "PK",
+   "level": "district",
+   "name": "Vehari",
+   "parent": "PK-PB",
+   "sort_order": 36
+  },
+  {
+   "code": "PK-SD-BAD",
+   "country": "PK",
+   "level": "district",
+   "name": "Badin",
+   "parent": "PK-SD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-DAD",
+   "country": "PK",
+   "level": "district",
+   "name": "Dadu",
+   "parent": "PK-SD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-GHO",
+   "country": "PK",
+   "level": "district",
+   "name": "Ghotki",
+   "parent": "PK-SD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-HYD",
+   "country": "PK",
+   "level": "district",
+   "name": "Hyderabad",
+   "parent": "PK-SD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-JAC",
+   "country": "PK",
+   "level": "district",
+   "name": "Jacobabad",
+   "parent": "PK-SD",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-JAM",
+   "country": "PK",
+   "level": "district",
+   "name": "Jamshoro",
+   "parent": "PK-SD",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-SD-KC",
+   "country": "PK",
+   "level": "district",
+   "name": "Karachi Central",
+   "parent": "PK-SD",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-SD-KE",
+   "country": "PK",
+   "level": "district",
+   "name": "Karachi East",
+   "parent": "PK-SD",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-SD-KS",
+   "country": "PK",
+   "level": "district",
+   "name": "Karachi South",
+   "parent": "PK-SD",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-SD-KW",
+   "country": "PK",
+   "level": "district",
+   "name": "Karachi West",
+   "parent": "PK-SD",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-SD-KAS",
+   "country": "PK",
+   "level": "district",
+   "name": "Kashmore",
+   "parent": "PK-SD",
+   "sort_order": 11
+  },
+  {
+   "code": "PK-SD-KEA",
+   "country": "PK",
+   "level": "district",
+   "name": "Keamari",
+   "parent": "PK-SD",
+   "sort_order": 12
+  },
+  {
+   "code": "PK-SD-KHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Khairpur",
+   "parent": "PK-SD",
+   "sort_order": 13
+  },
+  {
+   "code": "PK-SD-KOR",
+   "country": "PK",
+   "level": "district",
+   "name": "Korangi",
+   "parent": "PK-SD",
+   "sort_order": 14
+  },
+  {
+   "code": "PK-SD-LAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Larkana",
+   "parent": "PK-SD",
+   "sort_order": 15
+  },
+  {
+   "code": "PK-SD-MAL",
+   "country": "PK",
+   "level": "district",
+   "name": "Malir",
+   "parent": "PK-SD",
+   "sort_order": 16
+  },
+  {
+   "code": "PK-SD-MAT",
+   "country": "PK",
+   "level": "district",
+   "name": "Matiari",
+   "parent": "PK-SD",
+   "sort_order": 17
+  },
+  {
+   "code": "PK-SD-MIR",
+   "country": "PK",
+   "level": "district",
+   "name": "Mirpurkhas",
+   "parent": "PK-SD",
+   "sort_order": 18
+  },
+  {
+   "code": "PK-SD-NF",
+   "country": "PK",
+   "level": "district",
+   "name": "Naushahro Feroze",
+   "parent": "PK-SD",
+   "sort_order": 19
+  },
+  {
+   "code": "PK-SD-QS",
+   "country": "PK",
+   "level": "district",
+   "name": "Qambar Shahdadkot",
+   "parent": "PK-SD",
+   "sort_order": 20
+  },
+  {
+   "code": "PK-SD-SAN",
+   "country": "PK",
+   "level": "district",
+   "name": "Sanghar",
+   "parent": "PK-SD",
+   "sort_order": 21
+  },
+  {
+   "code": "PK-SD-SB",
+   "country": "PK",
+   "level": "district",
+   "name": "Shaheed Benazirabad",
+   "parent": "PK-SD",
+   "sort_order": 22
+  },
+  {
+   "code": "PK-SD-SHI",
+   "country": "PK",
+   "level": "district",
+   "name": "Shikarpur",
+   "parent": "PK-SD",
+   "sort_order": 23
+  },
+  {
+   "code": "PK-SD-SUJ",
+   "country": "PK",
+   "level": "district",
+   "name": "Sujawal",
+   "parent": "PK-SD",
+   "sort_order": 24
+  },
+  {
+   "code": "PK-SD-SUK",
+   "country": "PK",
+   "level": "district",
+   "name": "Sukkur",
+   "parent": "PK-SD",
+   "sort_order": 25
+  },
+  {
+   "code": "PK-SD-TA",
+   "country": "PK",
+   "level": "district",
+   "name": "Tando Allahyar",
+   "parent": "PK-SD",
+   "sort_order": 26
+  },
+  {
+   "code": "PK-SD-TMK",
+   "country": "PK",
+   "level": "district",
+   "name": "Tando Muhammad Khan",
+   "parent": "PK-SD",
+   "sort_order": 27
+  },
+  {
+   "code": "PK-SD-THA",
+   "country": "PK",
+   "level": "district",
+   "name": "Tharparkar",
+   "parent": "PK-SD",
+   "sort_order": 28
+  },
+  {
+   "code": "PK-SD-THA2",
+   "country": "PK",
+   "level": "district",
+   "name": "Thatta",
+   "parent": "PK-SD",
+   "sort_order": 29
+  },
+  {
+   "code": "PK-SD-UME",
+   "country": "PK",
+   "level": "district",
+   "name": "Umerkot",
+   "parent": "PK-SD",
+   "sort_order": 30
+  },
+  {
+   "code": "PK-KP-ABB",
+   "country": "PK",
+   "level": "district",
+   "name": "Abbottabad",
+   "parent": "PK-KP",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-BAJ",
+   "country": "PK",
+   "level": "district",
+   "name": "Bajaur",
+   "parent": "PK-KP",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-BAN",
+   "country": "PK",
+   "level": "district",
+   "name": "Bannu",
+   "parent": "PK-KP",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-BAT",
+   "country": "PK",
+   "level": "district",
+   "name": "Battagram",
+   "parent": "PK-KP",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-BUN",
+   "country": "PK",
+   "level": "district",
+   "name": "Buner",
+   "parent": "PK-KP",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-CHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Charsadda",
+   "parent": "PK-KP",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-DIK",
+   "country": "PK",
+   "level": "district",
+   "name": "Dera Ismail Khan",
+   "parent": "PK-KP",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-HAN",
+   "country": "PK",
+   "level": "district",
+   "name": "Hangu",
+   "parent": "PK-KP",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-KP-HAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Haripur",
+   "parent": "PK-KP",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-KP-KAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Karak",
+   "parent": "PK-KP",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-KP-KHY",
+   "country": "PK",
+   "level": "district",
+   "name": "Khyber",
+   "parent": "PK-KP",
+   "sort_order": 11
+  },
+  {
+   "code": "PK-KP-KOH",
+   "country": "PK",
+   "level": "district",
+   "name": "Kohat",
+   "parent": "PK-KP",
+   "sort_order": 12
+  },
+  {
+   "code": "PK-KP-KOL",
+   "country": "PK",
+   "level": "district",
+   "name": "Kolai-Palas",
+   "parent": "PK-KP",
+   "sort_order": 13
+  },
+  {
+   "code": "PK-KP-KUR",
+   "country": "PK",
+   "level": "district",
+   "name": "Kurram",
+   "parent": "PK-KP",
+   "sort_order": 14
+  },
+  {
+   "code": "PK-KP-LM",
+   "country": "PK",
+   "level": "district",
+   "name": "Lakki Marwat",
+   "parent": "PK-KP",
+   "sort_order": 15
+  },
+  {
+   "code": "PK-KP-LC",
+   "country": "PK",
+   "level": "district",
+   "name": "Lower Chitral",
+   "parent": "PK-KP",
+   "sort_order": 16
+  },
+  {
+   "code": "PK-KP-LD",
+   "country": "PK",
+   "level": "district",
+   "name": "Lower Dir",
+   "parent": "PK-KP",
+   "sort_order": 17
+  },
+  {
+   "code": "PK-KP-LK",
+   "country": "PK",
+   "level": "district",
+   "name": "Lower Kohistan",
+   "parent": "PK-KP",
+   "sort_order": 18
+  },
+  {
+   "code": "PK-KP-MAL",
+   "country": "PK",
+   "level": "district",
+   "name": "Malakand",
+   "parent": "PK-KP",
+   "sort_order": 19
+  },
+  {
+   "code": "PK-KP-MAN",
+   "country": "PK",
+   "level": "district",
+   "name": "Mansehra",
+   "parent": "PK-KP",
+   "sort_order": 20
+  },
+  {
+   "code": "PK-KP-MAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Mardan",
+   "parent": "PK-KP",
+   "sort_order": 21
+  },
+  {
+   "code": "PK-KP-MOH",
+   "country": "PK",
+   "level": "district",
+   "name": "Mohmand",
+   "parent": "PK-KP",
+   "sort_order": 22
+  },
+  {
+   "code": "PK-KP-NW",
+   "country": "PK",
+   "level": "district",
+   "name": "North Waziristan",
+   "parent": "PK-KP",
+   "sort_order": 23
+  },
+  {
+   "code": "PK-KP-NOW",
+   "country": "PK",
+   "level": "district",
+   "name": "Nowshera",
+   "parent": "PK-KP",
+   "sort_order": 24
+  },
+  {
+   "code": "PK-KP-ORA",
+   "country": "PK",
+   "level": "district",
+   "name": "Orakzai",
+   "parent": "PK-KP",
+   "sort_order": 25
+  },
+  {
+   "code": "PK-KP-PES",
+   "country": "PK",
+   "level": "district",
+   "name": "Peshawar",
+   "parent": "PK-KP",
+   "sort_order": 26
+  },
+  {
+   "code": "PK-KP-SHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Shangla",
+   "parent": "PK-KP",
+   "sort_order": 27
+  },
+  {
+   "code": "PK-KP-SW",
+   "country": "PK",
+   "level": "district",
+   "name": "South Waziristan",
+   "parent": "PK-KP",
+   "sort_order": 28
+  },
+  {
+   "code": "PK-KP-SWA",
+   "country": "PK",
+   "level": "district",
+   "name": "Swabi",
+   "parent": "PK-KP",
+   "sort_order": 29
+  },
+  {
+   "code": "PK-KP-SWA2",
+   "country": "PK",
+   "level": "district",
+   "name": "Swat",
+   "parent": "PK-KP",
+   "sort_order": 30
+  },
+  {
+   "code": "PK-KP-TAN",
+   "country": "PK",
+   "level": "district",
+   "name": "Tank",
+   "parent": "PK-KP",
+   "sort_order": 31
+  },
+  {
+   "code": "PK-KP-TOR",
+   "country": "PK",
+   "level": "district",
+   "name": "Torghar",
+   "parent": "PK-KP",
+   "sort_order": 32
+  },
+  {
+   "code": "PK-KP-UC",
+   "country": "PK",
+   "level": "district",
+   "name": "Upper Chitral",
+   "parent": "PK-KP",
+   "sort_order": 33
+  },
+  {
+   "code": "PK-KP-UD",
+   "country": "PK",
+   "level": "district",
+   "name": "Upper Dir",
+   "parent": "PK-KP",
+   "sort_order": 34
+  },
+  {
+   "code": "PK-KP-UK",
+   "country": "PK",
+   "level": "district",
+   "name": "Upper Kohistan",
+   "parent": "PK-KP",
+   "sort_order": 35
+  },
+  {
+   "code": "PK-BA-AWA",
+   "country": "PK",
+   "level": "district",
+   "name": "Awaran",
+   "parent": "PK-BA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-BAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Barkhan",
+   "parent": "PK-BA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-CHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Chagai",
+   "parent": "PK-BA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-CHA2",
+   "country": "PK",
+   "level": "district",
+   "name": "Chaman",
+   "parent": "PK-BA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-DB",
+   "country": "PK",
+   "level": "district",
+   "name": "Dera Bugti",
+   "parent": "PK-BA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-DUK",
+   "country": "PK",
+   "level": "district",
+   "name": "Duki",
+   "parent": "PK-BA",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-GWA",
+   "country": "PK",
+   "level": "district",
+   "name": "Gwadar",
+   "parent": "PK-BA",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-BA-HAR",
+   "country": "PK",
+   "level": "district",
+   "name": "Harnai",
+   "parent": "PK-BA",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-BA-HUB",
+   "country": "PK",
+   "level": "district",
+   "name": "Hub",
+   "parent": "PK-BA",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-BA-JAF",
+   "country": "PK",
+   "level": "district",
+   "name": "Jafarabad",
+   "parent": "PK-BA",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-BA-JM",
+   "country": "PK",
+   "level": "district",
+   "name": "Jhal Magsi",
+   "parent": "PK-BA",
+   "sort_order": 11
+  },
+  {
+   "code": "PK-BA-KAC",
+   "country": "PK",
+   "level": "district",
+   "name": "Kachhi",
+   "parent": "PK-BA",
+   "sort_order": 12
+  },
+  {
+   "code": "PK-BA-KAL",
+   "country": "PK",
+   "level": "district",
+   "name": "Kalat",
+   "parent": "PK-BA",
+   "sort_order": 13
+  },
+  {
+   "code": "PK-BA-KEC",
+   "country": "PK",
+   "level": "district",
+   "name": "Kech",
+   "parent": "PK-BA",
+   "sort_order": 14
+  },
+  {
+   "code": "PK-BA-KHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Kharan",
+   "parent": "PK-BA",
+   "sort_order": 15
+  },
+  {
+   "code": "PK-BA-KHU",
+   "country": "PK",
+   "level": "district",
+   "name": "Khuzdar",
+   "parent": "PK-BA",
+   "sort_order": 16
+  },
+  {
+   "code": "PK-BA-KA",
+   "country": "PK",
+   "level": "district",
+   "name": "Killa Abdullah",
+   "parent": "PK-BA",
+   "sort_order": 17
+  },
+  {
+   "code": "PK-BA-KS",
+   "country": "PK",
+   "level": "district",
+   "name": "Killa Saifullah",
+   "parent": "PK-BA",
+   "sort_order": 18
+  },
+  {
+   "code": "PK-BA-KOH",
+   "country": "PK",
+   "level": "district",
+   "name": "Kohlu",
+   "parent": "PK-BA",
+   "sort_order": 19
+  },
+  {
+   "code": "PK-BA-LAS",
+   "country": "PK",
+   "level": "district",
+   "name": "Lasbela",
+   "parent": "PK-BA",
+   "sort_order": 20
+  },
+  {
+   "code": "PK-BA-LEH",
+   "country": "PK",
+   "level": "district",
+   "name": "Lehri",
+   "parent": "PK-BA",
+   "sort_order": 21
+  },
+  {
+   "code": "PK-BA-LOR",
+   "country": "PK",
+   "level": "district",
+   "name": "Loralai",
+   "parent": "PK-BA",
+   "sort_order": 22
+  },
+  {
+   "code": "PK-BA-MAS",
+   "country": "PK",
+   "level": "district",
+   "name": "Mastung",
+   "parent": "PK-BA",
+   "sort_order": 23
+  },
+  {
+   "code": "PK-BA-MUS",
+   "country": "PK",
+   "level": "district",
+   "name": "Musakhel",
+   "parent": "PK-BA",
+   "sort_order": 24
+  },
+  {
+   "code": "PK-BA-NAS",
+   "country": "PK",
+   "level": "district",
+   "name": "Nasirabad",
+   "parent": "PK-BA",
+   "sort_order": 25
+  },
+  {
+   "code": "PK-BA-NUS",
+   "country": "PK",
+   "level": "district",
+   "name": "Nushki",
+   "parent": "PK-BA",
+   "sort_order": 26
+  },
+  {
+   "code": "PK-BA-PAN",
+   "country": "PK",
+   "level": "district",
+   "name": "Panjgur",
+   "parent": "PK-BA",
+   "sort_order": 27
+  },
+  {
+   "code": "PK-BA-PIS",
+   "country": "PK",
+   "level": "district",
+   "name": "Pishin",
+   "parent": "PK-BA",
+   "sort_order": 28
+  },
+  {
+   "code": "PK-BA-QUE",
+   "country": "PK",
+   "level": "district",
+   "name": "Quetta",
+   "parent": "PK-BA",
+   "sort_order": 29
+  },
+  {
+   "code": "PK-BA-SHE",
+   "country": "PK",
+   "level": "district",
+   "name": "Sherani",
+   "parent": "PK-BA",
+   "sort_order": 30
+  },
+  {
+   "code": "PK-BA-SIB",
+   "country": "PK",
+   "level": "district",
+   "name": "Sibi",
+   "parent": "PK-BA",
+   "sort_order": 31
+  },
+  {
+   "code": "PK-BA-SOH",
+   "country": "PK",
+   "level": "district",
+   "name": "Sohbatpur",
+   "parent": "PK-BA",
+   "sort_order": 32
+  },
+  {
+   "code": "PK-BA-SUR",
+   "country": "PK",
+   "level": "district",
+   "name": "Surab",
+   "parent": "PK-BA",
+   "sort_order": 33
+  },
+  {
+   "code": "PK-BA-WAS",
+   "country": "PK",
+   "level": "district",
+   "name": "Washuk",
+   "parent": "PK-BA",
+   "sort_order": 34
+  },
+  {
+   "code": "PK-BA-ZHO",
+   "country": "PK",
+   "level": "district",
+   "name": "Zhob",
+   "parent": "PK-BA",
+   "sort_order": 35
+  },
+  {
+   "code": "PK-BA-ZIA",
+   "country": "PK",
+   "level": "district",
+   "name": "Ziarat",
+   "parent": "PK-BA",
+   "sort_order": 36
+  },
+  {
+   "code": "PK-GB-AST",
+   "country": "PK",
+   "level": "district",
+   "name": "Astore",
+   "parent": "PK-GB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-DIA",
+   "country": "PK",
+   "level": "district",
+   "name": "Diamer",
+   "parent": "PK-GB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-GHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Ghanche",
+   "parent": "PK-GB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-GHI",
+   "country": "PK",
+   "level": "district",
+   "name": "Ghizer",
+   "parent": "PK-GB",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-GB-GIL",
+   "country": "PK",
+   "level": "district",
+   "name": "Gilgit",
+   "parent": "PK-GB",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-GB-HUN",
+   "country": "PK",
+   "level": "district",
+   "name": "Hunza",
+   "parent": "PK-GB",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-GB-KHA",
+   "country": "PK",
+   "level": "district",
+   "name": "Kharmang",
+   "parent": "PK-GB",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-GB-NAG",
+   "country": "PK",
+   "level": "district",
+   "name": "Nagar",
+   "parent": "PK-GB",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-GB-SHI",
+   "country": "PK",
+   "level": "district",
+   "name": "Shigar",
+   "parent": "PK-GB",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-GB-SKA",
+   "country": "PK",
+   "level": "district",
+   "name": "Skardu",
+   "parent": "PK-GB",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-AJK-BAG",
+   "country": "PK",
+   "level": "district",
+   "name": "Bagh",
+   "parent": "PK-AJK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-BHI",
+   "country": "PK",
+   "level": "district",
+   "name": "Bhimber",
+   "parent": "PK-AJK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-HB",
+   "country": "PK",
+   "level": "district",
+   "name": "Hattian Bala",
+   "parent": "PK-AJK",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-HAV",
+   "country": "PK",
+   "level": "district",
+   "name": "Haveli",
+   "parent": "PK-AJK",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-AJK-KOT",
+   "country": "PK",
+   "level": "district",
+   "name": "Kotli",
+   "parent": "PK-AJK",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-AJK-MIR",
+   "country": "PK",
+   "level": "district",
+   "name": "Mirpur",
+   "parent": "PK-AJK",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-AJK-MUZ",
+   "country": "PK",
+   "level": "district",
+   "name": "Muzaffarabad",
+   "parent": "PK-AJK",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-AJK-NEE",
+   "country": "PK",
+   "level": "district",
+   "name": "Neelum",
+   "parent": "PK-AJK",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-AJK-POO",
+   "country": "PK",
+   "level": "district",
+   "name": "Poonch",
+   "parent": "PK-AJK",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-AJK-SUD",
+   "country": "PK",
+   "level": "district",
+   "name": "Sudhanoti",
+   "parent": "PK-AJK",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-ICT-ISL",
+   "country": "PK",
+   "level": "district",
+   "name": "Islamabad",
+   "parent": "PK-ICT",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-ALL",
+   "country": "PK",
+   "level": "district",
+   "name": "Allai",
+   "parent": "PK-KP",
+   "sort_order": 36
+  },
+  {
+   "code": "PK-KP-CD",
+   "country": "PK",
+   "level": "district",
+   "name": "Central Dir",
+   "parent": "PK-KP",
+   "sort_order": 37
+  },
+  {
+   "code": "PK-KP-USW",
+   "country": "PK",
+   "level": "district",
+   "name": "Upper Swat",
+   "parent": "PK-KP",
+   "sort_order": 38
+  },
+  {
+   "code": "PK-KP-LSW",
+   "country": "PK",
+   "level": "district",
+   "name": "Lower South Waziristan",
+   "parent": "PK-KP",
+   "sort_order": 39
+  },
+  {
+   "code": "PK-KP-USW2",
+   "country": "PK",
+   "level": "district",
+   "name": "Upper South Waziristan",
+   "parent": "PK-KP",
+   "sort_order": 40
+  },
+  {
+   "code": "PK-BA-KAR2",
+   "country": "PK",
+   "level": "district",
+   "name": "Karezat",
+   "parent": "PK-BA",
+   "sort_order": 37
+  },
+  {
+   "code": "PK-BA-UM",
+   "country": "PK",
+   "level": "district",
+   "name": "Usta Muhammad",
+   "parent": "PK-BA",
+   "sort_order": 38
+  },
+  {
+   "code": "PK-PB-JAM",
+   "country": "PK",
+   "level": "district",
+   "name": "Jampur",
+   "parent": "PK-PB",
+   "sort_order": 37
+  },
+  {
+   "code": "PK-PB-KOA",
+   "country": "PK",
+   "level": "district",
+   "name": "Kot Addu",
+   "parent": "PK-PB",
+   "sort_order": 38
+  },
+  {
+   "code": "PK-PB-TON",
+   "country": "PK",
+   "level": "district",
+   "name": "Tonsa",
+   "parent": "PK-PB",
+   "sort_order": 39
+  },
+  {
+   "code": "PK-PB-WAZ",
+   "country": "PK",
+   "level": "district",
+   "name": "Wazirabad",
+   "parent": "PK-PB",
+   "sort_order": 40
+  },
+  {
+   "code": "PK-PB-MUR",
+   "country": "PK",
+   "level": "district",
+   "name": "Murree",
+   "parent": "PK-PB",
+   "sort_order": 41
+  },
+  {
+   "code": "PK-PB-TAL",
+   "country": "PK",
+   "level": "district",
+   "name": "Talagang",
+   "parent": "PK-PB",
+   "sort_order": 42
+  },
+  {
+   "code": "PK-KP-ABB-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Abbottabad",
+   "parent": "PK-KP-ABB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-ABB-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Havelian",
+   "parent": "PK-KP-ABB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-ABB-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lora",
+   "parent": "PK-KP-ABB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-ABB-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lower Tanawal",
+   "parent": "PK-KP-ABB",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-ALL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Allai",
+   "parent": "PK-KP-ALL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-BAJ-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bar Chamarkand",
+   "parent": "PK-KP-BAJ",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-BAJ-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Barang",
+   "parent": "PK-KP-BAJ",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-BAJ-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khar",
+   "parent": "PK-KP-BAJ",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-BAJ-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mamund",
+   "parent": "PK-KP-BAJ",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-BAJ-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nawagai",
+   "parent": "PK-KP-BAJ",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-BAJ-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Salarzai",
+   "parent": "PK-KP-BAJ",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-BAJ-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Utman Khel",
+   "parent": "PK-KP-BAJ",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-BAN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Baka Khel",
+   "parent": "PK-KP-BAN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-BAN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bannu",
+   "parent": "PK-KP-BAN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-BAN-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Domel",
+   "parent": "PK-KP-BAN",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-BAN-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kakki",
+   "parent": "PK-KP-BAN",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-BAN-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Miryan",
+   "parent": "PK-KP-BAN",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-BAN-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Wazir",
+   "parent": "PK-KP-BAN",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-BAT-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Battagram",
+   "parent": "PK-KP-BAT",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-BUN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chagharzai",
+   "parent": "PK-KP-BUN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-BUN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daggar",
+   "parent": "PK-KP-BUN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-BUN-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gadezai",
+   "parent": "PK-KP-BUN",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-BUN-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gagra",
+   "parent": "PK-KP-BUN",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-BUN-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khudu Khel",
+   "parent": "PK-KP-BUN",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-BUN-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mandanr",
+   "parent": "PK-KP-BUN",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-CD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lar Jam",
+   "parent": "PK-KP-CD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-CD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Wari",
+   "parent": "PK-KP-CD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-CD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Akhagram Karo",
+   "parent": "PK-KP-CD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-CD-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nehag Dara",
+   "parent": "PK-KP-CD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-CD-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sahib Abad",
+   "parent": "PK-KP-CD",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-CHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Charsadda",
+   "parent": "PK-KP-CHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-CHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shabqadar",
+   "parent": "PK-KP-CHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-CHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tangi",
+   "parent": "PK-KP-CHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-DIK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daraban",
+   "parent": "PK-KP-DIK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-DIK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Drazanda",
+   "parent": "PK-KP-DIK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-DIK-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dera Ismail Khan",
+   "parent": "PK-KP-DIK",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-DIK-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kulachi",
+   "parent": "PK-KP-DIK",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-DIK-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Paharpur",
+   "parent": "PK-KP-DIK",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-DIK-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Paniala",
+   "parent": "PK-KP-DIK",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-DIK-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Paroa",
+   "parent": "PK-KP-DIK",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-HAN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Doaba",
+   "parent": "PK-KP-HAN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-HAN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hangu",
+   "parent": "PK-KP-HAN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-HAN-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tall",
+   "parent": "PK-KP-HAN",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-HAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ghazi",
+   "parent": "PK-KP-HAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-HAR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Haripur",
+   "parent": "PK-KP-HAR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-HAR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khanpur",
+   "parent": "PK-KP-HAR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-KAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Banda Daud Shah",
+   "parent": "PK-KP-KAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-KAR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Karak",
+   "parent": "PK-KP-KAR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-KAR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Takht-e-Nasrati",
+   "parent": "PK-KP-KAR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-KHY-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bagh Maidan",
+   "parent": "PK-KP-KHY",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-KHY-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bara",
+   "parent": "PK-KP-KHY",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-KHY-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bazar Zakha Khel",
+   "parent": "PK-KP-KHY",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-KHY-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Fort Salop",
+   "parent": "PK-KP-KHY",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-KHY-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jamrud",
+   "parent": "PK-KP-KHY",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-KHY-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Landi Kotal",
+   "parent": "PK-KP-KHY",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-KHY-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mula Gori",
+   "parent": "PK-KP-KHY",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-KHY-T08",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Painda Cheena",
+   "parent": "PK-KP-KHY",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-KP-KOH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dara Adam Khel",
+   "parent": "PK-KP-KOH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-KOH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gumbat",
+   "parent": "PK-KP-KOH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-KOH-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kohat",
+   "parent": "PK-KP-KOH",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-KOH-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lachi",
+   "parent": "PK-KP-KOH",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-KOL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kolai",
+   "parent": "PK-KP-KOL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-KOL-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Palas",
+   "parent": "PK-KP-KOL",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-KUR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Central Kurram",
+   "parent": "PK-KP-KUR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-KUR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lower Kurram",
+   "parent": "PK-KP-KUR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-KUR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Upper Kurram",
+   "parent": "PK-KP-KUR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-LM-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bettani",
+   "parent": "PK-KP-LM",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-LM-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ghazni Khel",
+   "parent": "PK-KP-LM",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-LM-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lakki Marwat",
+   "parent": "PK-KP-LM",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-LM-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sari Naurang",
+   "parent": "PK-KP-LM",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-LC-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chitral",
+   "parent": "PK-KP-LC",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-LC-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Drosh",
+   "parent": "PK-KP-LC",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-LD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Adenzai",
+   "parent": "PK-KP-LD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-LD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Balambat",
+   "parent": "PK-KP-LD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-LD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khal",
+   "parent": "PK-KP-LD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-LD-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lal Qilla",
+   "parent": "PK-KP-LD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-LD-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Munda",
+   "parent": "PK-KP-LD",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-LD-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Samar Bagh",
+   "parent": "PK-KP-LD",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-LD-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Timergara",
+   "parent": "PK-KP-LD",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-LK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bankad",
+   "parent": "PK-KP-LK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-LK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pattan",
+   "parent": "PK-KP-LK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-LSW-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Birmil",
+   "parent": "PK-KP-LSW",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-LSW-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shakai",
+   "parent": "PK-KP-LSW",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-LSW-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Toi Khulla",
+   "parent": "PK-KP-LSW",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-LSW-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Wana",
+   "parent": "PK-KP-LSW",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-MAL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sam Ranizai",
+   "parent": "PK-KP-MAL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-MAL-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Swat Ranizai",
+   "parent": "PK-KP-MAL",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-MAL-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Thana Baizai",
+   "parent": "PK-KP-MAL",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-MAL-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Utman Khel",
+   "parent": "PK-KP-MAL",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-MAN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Baffa Pakhal",
+   "parent": "PK-KP-MAN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-MAN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Balakot",
+   "parent": "PK-KP-MAN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-MAN-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Darband",
+   "parent": "PK-KP-MAN",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-MAN-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mansehra",
+   "parent": "PK-KP-MAN",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-MAN-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Oghi",
+   "parent": "PK-KP-MAN",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-MAN-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tanawal",
+   "parent": "PK-KP-MAN",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-MAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Garhi Kapura",
+   "parent": "PK-KP-MAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-MAR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Katlang",
+   "parent": "PK-KP-MAR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-MAR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mardan",
+   "parent": "PK-KP-MAR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-MAR-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rustam",
+   "parent": "PK-KP-MAR",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-MAR-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Takht Bhai",
+   "parent": "PK-KP-MAR",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-MOH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ambar Utman Khel",
+   "parent": "PK-KP-MOH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-MOH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Halim Zai",
+   "parent": "PK-KP-MOH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-MOH-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pindiali",
+   "parent": "PK-KP-MOH",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-MOH-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pran Ghar",
+   "parent": "PK-KP-MOH",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-MOH-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Safi",
+   "parent": "PK-KP-MOH",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-MOH-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Upper Mohmand",
+   "parent": "PK-KP-MOH",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-MOH-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Yake Ghund",
+   "parent": "PK-KP-MOH",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-NW-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Datta Khel",
+   "parent": "PK-KP-NW",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-NW-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dossali",
+   "parent": "PK-KP-NW",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-NW-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gharyum",
+   "parent": "PK-KP-NW",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-NW-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ghulam Khan",
+   "parent": "PK-KP-NW",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-NW-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mir Ali",
+   "parent": "PK-KP-NW",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-NW-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Miran Shah",
+   "parent": "PK-KP-NW",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-NW-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Razmak",
+   "parent": "PK-KP-NW",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-NW-T08",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shewa",
+   "parent": "PK-KP-NW",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-KP-NW-T09",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Spinwam",
+   "parent": "PK-KP-NW",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-KP-NOW-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jehangira",
+   "parent": "PK-KP-NOW",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-NOW-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nowshera",
+   "parent": "PK-KP-NOW",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-NOW-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pabbi",
+   "parent": "PK-KP-NOW",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-ORA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Central Orakzai",
+   "parent": "PK-KP-ORA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-ORA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ismail Zai",
+   "parent": "PK-KP-ORA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-ORA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lower Orakzai",
+   "parent": "PK-KP-ORA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-ORA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Upper Orakzai",
+   "parent": "PK-KP-ORA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-PES-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Badhber",
+   "parent": "PK-KP-PES",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-PES-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chamkani",
+   "parent": "PK-KP-PES",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-PES-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hassan Khel",
+   "parent": "PK-KP-PES",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-PES-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mathra",
+   "parent": "PK-KP-PES",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-PES-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Peshawar City",
+   "parent": "PK-KP-PES",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-PES-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Peshtakhara",
+   "parent": "PK-KP-PES",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-PES-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shah Alam",
+   "parent": "PK-KP-PES",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-SHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Alpuri",
+   "parent": "PK-KP-SHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-SHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bisham",
+   "parent": "PK-KP-SHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-SHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chakesar",
+   "parent": "PK-KP-SHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-SHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Martung",
+   "parent": "PK-KP-SHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-SHA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Puran",
+   "parent": "PK-KP-SHA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-SWA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lahor",
+   "parent": "PK-KP-SWA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-SWA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Razar",
+   "parent": "PK-KP-SWA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-SWA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Swabi",
+   "parent": "PK-KP-SWA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-SWA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Topi",
+   "parent": "PK-KP-SWA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-SWA2-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Babuzai",
+   "parent": "PK-KP-SWA2",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-SWA2-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Barikot",
+   "parent": "PK-KP-SWA2",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-SWA2-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Charbagh",
+   "parent": "PK-KP-SWA2",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-SWA2-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kabal",
+   "parent": "PK-KP-SWA2",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-TAN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jandola",
+   "parent": "PK-KP-TAN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-TAN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tank",
+   "parent": "PK-KP-TAN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-TOR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daur Maira",
+   "parent": "PK-KP-TOR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-TOR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Judba",
+   "parent": "PK-KP-TOR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-TOR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khander Hassanzai",
+   "parent": "PK-KP-TOR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-UC-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Buni",
+   "parent": "PK-KP-UC",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-UC-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mulkoh",
+   "parent": "PK-KP-UC",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-UC-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Torkoh",
+   "parent": "PK-KP-UC",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-UC-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mastuj",
+   "parent": "PK-KP-UC",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-UD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Barawal",
+   "parent": "PK-KP-UD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-UD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dir",
+   "parent": "PK-KP-UD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-UD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kalkot",
+   "parent": "PK-KP-UD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-UD-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sharingal",
+   "parent": "PK-KP-UD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-UK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dassu",
+   "parent": "PK-KP-UK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-UK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Harban Basha",
+   "parent": "PK-KP-UK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-UK-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kandia",
+   "parent": "PK-KP-UK",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-UK-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Seo",
+   "parent": "PK-KP-UK",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-USW2-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ladha",
+   "parent": "PK-KP-USW2",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-USW2-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Makin",
+   "parent": "PK-KP-USW2",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-USW2-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sararogha",
+   "parent": "PK-KP-USW2",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-KP-USW2-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sarwakai",
+   "parent": "PK-KP-USW2",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-KP-USW2-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shaktoi",
+   "parent": "PK-KP-USW2",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-KP-USW2-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shawal",
+   "parent": "PK-KP-USW2",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-KP-USW2-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tiarza",
+   "parent": "PK-KP-USW2",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-KP-USW-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Behrain",
+   "parent": "PK-KP-USW",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-KP-USW-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khwaza Khela",
+   "parent": "PK-KP-USW",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-KP-USW-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Matta",
+   "parent": "PK-KP-USW",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-AWA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Awaran",
+   "parent": "PK-BA-AWA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-AWA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gishkaur",
+   "parent": "PK-BA-AWA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-AWA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jhal Jhao",
+   "parent": "PK-BA-AWA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-AWA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Korak Jhao",
+   "parent": "PK-BA-AWA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-AWA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mashkay",
+   "parent": "PK-BA-AWA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-BAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Barkhan",
+   "parent": "PK-BA-BAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-CHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dalbandin",
+   "parent": "PK-BA-CHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-CHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nok Kundi",
+   "parent": "PK-BA-CHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-CHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Taftan",
+   "parent": "PK-BA-CHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-CHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chagai",
+   "parent": "PK-BA-CHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-CHA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Amuri",
+   "parent": "PK-BA-CHA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-CHA-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chilgazi",
+   "parent": "PK-BA-CHA",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-CHA-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Yakmach",
+   "parent": "PK-BA-CHA",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-BA-CHA2-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chaman",
+   "parent": "PK-BA-CHA2",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-CHA2-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chaman Saddar",
+   "parent": "PK-BA-CHA2",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-DB-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dera Bugti",
+   "parent": "PK-BA-DB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-DB-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Phelawagh",
+   "parent": "PK-BA-DB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-DB-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sui",
+   "parent": "PK-BA-DB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-DB-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Baiker",
+   "parent": "PK-BA-DB",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-DUK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Duki",
+   "parent": "PK-BA-DUK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-DUK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Luni",
+   "parent": "PK-BA-DUK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-DUK-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Talao",
+   "parent": "PK-BA-DUK",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-DUK-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Thal Chutyali",
+   "parent": "PK-BA-DUK",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-GWA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gwadar",
+   "parent": "PK-BA-GWA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-GWA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jiwani",
+   "parent": "PK-BA-GWA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-GWA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ormara",
+   "parent": "PK-BA-GWA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-GWA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pasni",
+   "parent": "PK-BA-GWA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-GWA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Suntsar",
+   "parent": "PK-BA-GWA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-HAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Harnai",
+   "parent": "PK-BA-HAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-HAR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shahrig",
+   "parent": "PK-BA-HAR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-HAR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khost",
+   "parent": "PK-BA-HAR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-HUB-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gadani",
+   "parent": "PK-BA-HUB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-HUB-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sonmiani",
+   "parent": "PK-BA-HUB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-HUB-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hub",
+   "parent": "PK-BA-HUB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-HUB-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sakran",
+   "parent": "PK-BA-HUB",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-HUB-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dureji",
+   "parent": "PK-BA-HUB",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-JAF-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jaffarabad",
+   "parent": "PK-BA-JAF",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-JAF-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jhatpat",
+   "parent": "PK-BA-JAF",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-JM-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gandavah",
+   "parent": "PK-BA-JM",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-JM-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jhal Magsi",
+   "parent": "PK-BA-JM",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-JM-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mirpur",
+   "parent": "PK-BA-JM",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KAC-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khattan",
+   "parent": "PK-BA-KAC",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KAC-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dhadar",
+   "parent": "PK-BA-KAC",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KAC-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Balanari",
+   "parent": "PK-BA-KAC",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KAC-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bhag",
+   "parent": "PK-BA-KAC",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-KAC-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Machh",
+   "parent": "PK-BA-KAC",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-KAC-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sani",
+   "parent": "PK-BA-KAC",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-KAL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kalat",
+   "parent": "PK-BA-KAL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KAL-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mangocher",
+   "parent": "PK-BA-KAL",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KAL-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gazg",
+   "parent": "PK-BA-KAL",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KAL-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Johan",
+   "parent": "PK-BA-KAL",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-KAR2-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Karezat",
+   "parent": "PK-BA-KAR2",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KAR2-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khanozai",
+   "parent": "PK-BA-KAR2",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KEC-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mand",
+   "parent": "PK-BA-KEC",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KEC-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tump",
+   "parent": "PK-BA-KEC",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KEC-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Turbat",
+   "parent": "PK-BA-KEC",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KEC-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Balnigor",
+   "parent": "PK-BA-KEC",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-KEC-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Buleda",
+   "parent": "PK-BA-KEC",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-KEC-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dasht",
+   "parent": "PK-BA-KEC",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-KEC-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hoshab",
+   "parent": "PK-BA-KEC",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-BA-KEC-T08",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Zamuran",
+   "parent": "PK-BA-KEC",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-BA-KEC-T09",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gayab",
+   "parent": "PK-BA-KEC",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-BA-KEC-T10",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Solband",
+   "parent": "PK-BA-KEC",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-BA-KHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kharan",
+   "parent": "PK-BA-KHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sar-Kharan",
+   "parent": "PK-BA-KHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tohumulk",
+   "parent": "PK-BA-KHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Patkain",
+   "parent": "PK-BA-KHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-KHU-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khuzdar",
+   "parent": "PK-BA-KHU",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KHU-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nal",
+   "parent": "PK-BA-KHU",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KHU-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Wadh",
+   "parent": "PK-BA-KHU",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KHU-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Zehri",
+   "parent": "PK-BA-KHU",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-KHU-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Baghbana",
+   "parent": "PK-BA-KHU",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-KHU-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Aranji",
+   "parent": "PK-BA-KHU",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-KHU-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gresha",
+   "parent": "PK-BA-KHU",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-BA-KHU-T08",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Karkh",
+   "parent": "PK-BA-KHU",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-BA-KHU-T09",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Moola",
+   "parent": "PK-BA-KHU",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-BA-KHU-T10",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ornach",
+   "parent": "PK-BA-KHU",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-BA-KHU-T11",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Saroona",
+   "parent": "PK-BA-KHU",
+   "sort_order": 11
+  },
+  {
+   "code": "PK-BA-KA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gulistan",
+   "parent": "PK-BA-KA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Killa Abdullah",
+   "parent": "PK-BA-KA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dobandi",
+   "parent": "PK-BA-KA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Killa Saifullah",
+   "parent": "PK-BA-KS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Loiband",
+   "parent": "PK-BA-KS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Muslim Bagh",
+   "parent": "PK-BA-KS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Badini",
+   "parent": "PK-BA-KS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-KS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kan Mehtarzai",
+   "parent": "PK-BA-KS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-KS-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shinki",
+   "parent": "PK-BA-KS",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-KS-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Qamar Din Karez",
+   "parent": "PK-BA-KS",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-BA-KOH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kahan",
+   "parent": "PK-BA-KOH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-KOH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kohlu",
+   "parent": "PK-BA-KOH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-KOH-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Maiwand",
+   "parent": "PK-BA-KOH",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-KOH-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tamboo",
+   "parent": "PK-BA-KOH",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-KOH-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shaheed Jahangir Abad",
+   "parent": "PK-BA-KOH",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-KOH-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Grisani",
+   "parent": "PK-BA-KOH",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-LAS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Uthal",
+   "parent": "PK-BA-LAS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-LAS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lakhra",
+   "parent": "PK-BA-LAS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-LAS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bela",
+   "parent": "PK-BA-LAS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-LAS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kanraj",
+   "parent": "PK-BA-LAS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-LAS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Liari",
+   "parent": "PK-BA-LAS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-LEH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lehri",
+   "parent": "PK-BA-LEH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-LOR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bori",
+   "parent": "PK-BA-LOR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-LOR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mekhtar",
+   "parent": "PK-BA-LOR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-MAS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dasht",
+   "parent": "PK-BA-MAS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-MAS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mastung",
+   "parent": "PK-BA-MAS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-MAS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khad Koocha",
+   "parent": "PK-BA-MAS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-MAS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kardigap",
+   "parent": "PK-BA-MAS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-MUS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Darug",
+   "parent": "PK-BA-MUS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-MUS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kingri",
+   "parent": "PK-BA-MUS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-MUS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Musakhel",
+   "parent": "PK-BA-MUS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-MUS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tiyar Essot",
+   "parent": "PK-BA-MUS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-MUS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Toisar",
+   "parent": "PK-BA-MUS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-MUS-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Zimri Plaseen",
+   "parent": "PK-BA-MUS",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-NAS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Baba Kot",
+   "parent": "PK-BA-NAS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-NAS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dera Murad Jamali",
+   "parent": "PK-BA-NAS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-NAS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Landhi",
+   "parent": "PK-BA-NAS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-NAS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chattar",
+   "parent": "PK-BA-NAS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-NAS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Meer Hassan",
+   "parent": "PK-BA-NAS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-NAS-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tamboo",
+   "parent": "PK-BA-NAS",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-NUS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nushki",
+   "parent": "PK-BA-NUS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-NUS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dak",
+   "parent": "PK-BA-NUS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-PAN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gowargo",
+   "parent": "PK-BA-PAN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-PAN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Panjgur",
+   "parent": "PK-BA-PAN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-PAN-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Paroom",
+   "parent": "PK-BA-PAN",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-PAN-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gichk",
+   "parent": "PK-BA-PAN",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-PAN-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kallag",
+   "parent": "PK-BA-PAN",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-PIS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Barshore",
+   "parent": "PK-BA-PIS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-PIS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hurramzai",
+   "parent": "PK-BA-PIS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-PIS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pishin",
+   "parent": "PK-BA-PIS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-PIS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Saranan",
+   "parent": "PK-BA-PIS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-PIS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bostan",
+   "parent": "PK-BA-PIS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-QUE-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chiltan",
+   "parent": "PK-BA-QUE",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-QUE-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Zarghoon",
+   "parent": "PK-BA-QUE",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-QUE-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Panjpai",
+   "parent": "PK-BA-QUE",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-QUE-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Quetta Sadar",
+   "parent": "PK-BA-QUE",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-QUE-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kuchlak",
+   "parent": "PK-BA-QUE",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-QUE-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sariab",
+   "parent": "PK-BA-QUE",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-SHE-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sherani",
+   "parent": "PK-BA-SHE",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-SIB-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sibi",
+   "parent": "PK-BA-SIB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-SIB-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kutmandai",
+   "parent": "PK-BA-SIB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-SIB-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sangan",
+   "parent": "PK-BA-SIB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-SIB-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lehri",
+   "parent": "PK-BA-SIB",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-SOH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Faridabad",
+   "parent": "PK-BA-SOH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-SOH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hayrvi",
+   "parent": "PK-BA-SOH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-SOH-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Manjipur",
+   "parent": "PK-BA-SOH",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-SOH-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Saeed Muhammad Kanrani",
+   "parent": "PK-BA-SOH",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-SOH-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Panhwar",
+   "parent": "PK-BA-SOH",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-SOH-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sohbatpur",
+   "parent": "PK-BA-SOH",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-BA-SUR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dasht e Goran",
+   "parent": "PK-BA-SUR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-SUR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gidder",
+   "parent": "PK-BA-SUR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-SUR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shaheed Meharabad Zehri",
+   "parent": "PK-BA-SUR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-SUR-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Surab",
+   "parent": "PK-BA-SUR",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-UM-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Usta Muhammad",
+   "parent": "PK-BA-UM",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-UM-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gandakha",
+   "parent": "PK-BA-UM",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-WAS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Besima",
+   "parent": "PK-BA-WAS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-WAS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mashkel",
+   "parent": "PK-BA-WAS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-WAS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Washuk",
+   "parent": "PK-BA-WAS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-WAS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nag",
+   "parent": "PK-BA-WAS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-WAS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shahgori",
+   "parent": "PK-BA-WAS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-BA-ZHO-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Zhob",
+   "parent": "PK-BA-ZHO",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-ZHO-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ashwat",
+   "parent": "PK-BA-ZHO",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-BA-ZHO-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kashatu",
+   "parent": "PK-BA-ZHO",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-BA-ZHO-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sambaza",
+   "parent": "PK-BA-ZHO",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-BA-ZIA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ziarat",
+   "parent": "PK-BA-ZIA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-BA-ZIA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sinjawi",
+   "parent": "PK-BA-ZIA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-AST-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Astore",
+   "parent": "PK-GB-AST",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-AST-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shounter",
+   "parent": "PK-GB-AST",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-DIA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Babusar",
+   "parent": "PK-GB-DIA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-DIA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Darel",
+   "parent": "PK-GB-DIA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-DIA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tangir",
+   "parent": "PK-GB-DIA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-DIA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chilas",
+   "parent": "PK-GB-DIA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-GB-DIA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Goharabad",
+   "parent": "PK-GB-DIA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-GB-GHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daghoni",
+   "parent": "PK-GB-GHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-GHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khaplu",
+   "parent": "PK-GB-GHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-GHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mashabrum",
+   "parent": "PK-GB-GHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-GHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chorbat",
+   "parent": "PK-GB-GHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-GB-GHA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Keris",
+   "parent": "PK-GB-GHA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-GB-GHA-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Haldi",
+   "parent": "PK-GB-GHA",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-GB-GHI-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Punial",
+   "parent": "PK-GB-GHI",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-GHI-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gupis",
+   "parent": "PK-GB-GHI",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-GHI-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Yasin",
+   "parent": "PK-GB-GHI",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-GHI-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Phander",
+   "parent": "PK-GB-GHI",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-GB-GHI-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ishkoman",
+   "parent": "PK-GB-GHI",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-GB-GIL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Danyor",
+   "parent": "PK-GB-GIL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-GIL-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gilgit",
+   "parent": "PK-GB-GIL",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-GIL-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jaglot",
+   "parent": "PK-GB-GIL",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-HUN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Aliabad",
+   "parent": "PK-GB-HUN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-HUN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gojal",
+   "parent": "PK-GB-HUN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-HUN-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shinaki",
+   "parent": "PK-GB-HUN",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-KHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kharmang",
+   "parent": "PK-GB-KHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-NAG-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nagar-I",
+   "parent": "PK-GB-NAG",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-NAG-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sikandarabad Nagar-II",
+   "parent": "PK-GB-NAG",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-NAG-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chalt",
+   "parent": "PK-GB-NAG",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-SHI-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shigar",
+   "parent": "PK-GB-SHI",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-SHI-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gulabpur",
+   "parent": "PK-GB-SHI",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-SKA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gultari",
+   "parent": "PK-GB-SKA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-GB-SKA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Roundu",
+   "parent": "PK-GB-SKA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-GB-SKA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Skardu",
+   "parent": "PK-GB-SKA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-GB-SKA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gamba",
+   "parent": "PK-GB-SKA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-AJK-BAG-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bagh",
+   "parent": "PK-AJK-BAG",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-BAG-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dhirkot",
+   "parent": "PK-AJK-BAG",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-BAG-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hari Ghel",
+   "parent": "PK-AJK-BAG",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-BAG-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rera",
+   "parent": "PK-AJK-BAG",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-AJK-BAG-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Birpani",
+   "parent": "PK-AJK-BAG",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-AJK-BHI-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bhimber",
+   "parent": "PK-AJK-BHI",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-BHI-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Barnala",
+   "parent": "PK-AJK-BHI",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-BHI-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Samahni",
+   "parent": "PK-AJK-BHI",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-HB-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hattian Bala",
+   "parent": "PK-AJK-HB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-HB-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chikkar",
+   "parent": "PK-AJK-HB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-HB-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Leepa",
+   "parent": "PK-AJK-HB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-HAV-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Haveli",
+   "parent": "PK-AJK-HAV",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-HAV-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khurshidabad",
+   "parent": "PK-AJK-HAV",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-HAV-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mumtazabad",
+   "parent": "PK-AJK-HAV",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-KOT-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kotli",
+   "parent": "PK-AJK-KOT",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-KOT-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khuiratta",
+   "parent": "PK-AJK-KOT",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-KOT-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Fatehpur Thakiala",
+   "parent": "PK-AJK-KOT",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-KOT-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sehnsa",
+   "parent": "PK-AJK-KOT",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-AJK-KOT-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Charhoi",
+   "parent": "PK-AJK-KOT",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-AJK-KOT-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Duliah Jattan",
+   "parent": "PK-AJK-KOT",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-AJK-MIR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dadyal",
+   "parent": "PK-AJK-MIR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-MIR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mirpur",
+   "parent": "PK-AJK-MIR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-MIR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Islamgarh",
+   "parent": "PK-AJK-MIR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-MUZ-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Muzaffarabad",
+   "parent": "PK-AJK-MUZ",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-MUZ-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nasirbad",
+   "parent": "PK-AJK-MUZ",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-NEE-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Athmuqam",
+   "parent": "PK-AJK-NEE",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-NEE-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sharda",
+   "parent": "PK-AJK-NEE",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-POO-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Abbaspur",
+   "parent": "PK-AJK-POO",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-POO-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hajira",
+   "parent": "PK-AJK-POO",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-POO-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rawalakot",
+   "parent": "PK-AJK-POO",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-POO-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Thorar",
+   "parent": "PK-AJK-POO",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-AJK-SUD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Balouch",
+   "parent": "PK-AJK-SUD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-AJK-SUD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mang",
+   "parent": "PK-AJK-SUD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-AJK-SUD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pallandri",
+   "parent": "PK-AJK-SUD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-AJK-SUD-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tarar Khel",
+   "parent": "PK-AJK-SUD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-ICT-ISL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Islamabad",
+   "parent": "PK-ICT-ISL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-ATT-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Attock",
+   "parent": "PK-PB-ATT",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-ATT-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Fateh Jang",
+   "parent": "PK-PB-ATT",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-ATT-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hassan Abdal",
+   "parent": "PK-PB-ATT",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-ATT-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hazro",
+   "parent": "PK-PB-ATT",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-ATT-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jand",
+   "parent": "PK-PB-ATT",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-ATT-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pindi Gheb",
+   "parent": "PK-PB-ATT",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-PB-BAH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bahawalnagar",
+   "parent": "PK-PB-BAH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-BAH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chishtian",
+   "parent": "PK-PB-BAH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-BAH-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Haroonabad",
+   "parent": "PK-PB-BAH",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-BAH-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Minchinabad",
+   "parent": "PK-PB-BAH",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-BAH-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Fort Abbas",
+   "parent": "PK-PB-BAH",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-BWP-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ahmadpur East",
+   "parent": "PK-PB-BWP",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-BWP-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bahawalpur City",
+   "parent": "PK-PB-BWP",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-BWP-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Yazman",
+   "parent": "PK-PB-BWP",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-BWP-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bahawalpur Saddar",
+   "parent": "PK-PB-BWP",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-BWP-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hasilpur",
+   "parent": "PK-PB-BWP",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-BWP-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khairpur Tamewali",
+   "parent": "PK-PB-BWP",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-PB-BHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bhakkar",
+   "parent": "PK-PB-BHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-BHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Darya Khan",
+   "parent": "PK-PB-BHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-BHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kaloorkot",
+   "parent": "PK-PB-BHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-BHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mankera",
+   "parent": "PK-PB-BHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-CHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chakwal",
+   "parent": "PK-PB-CHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-CHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Choa Saidan Shah",
+   "parent": "PK-PB-CHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-CHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kallar Kahar",
+   "parent": "PK-PB-CHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-CHI-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bhowana",
+   "parent": "PK-PB-CHI",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-CHI-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chiniot",
+   "parent": "PK-PB-CHI",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-CHI-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lalian",
+   "parent": "PK-PB-CHI",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-DGK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dera Ghazi Khan",
+   "parent": "PK-PB-DGK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-DGK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kot Chutta",
+   "parent": "PK-PB-DGK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-FAI-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chak Jhumra",
+   "parent": "PK-PB-FAI",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-FAI-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Faisalabad City",
+   "parent": "PK-PB-FAI",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-FAI-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Faisalabad Sadar",
+   "parent": "PK-PB-FAI",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-FAI-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jaranwala",
+   "parent": "PK-PB-FAI",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-FAI-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Samundri",
+   "parent": "PK-PB-FAI",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-FAI-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tandlianwala",
+   "parent": "PK-PB-FAI",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-PB-GUJ-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gujranwala City",
+   "parent": "PK-PB-GUJ",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-GUJ-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gujranwala Saddar",
+   "parent": "PK-PB-GUJ",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-GUJ-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kamoke",
+   "parent": "PK-PB-GUJ",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-GUJ-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nowshera Virkan",
+   "parent": "PK-PB-GUJ",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-GUJ2-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gujrat",
+   "parent": "PK-PB-GUJ2",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-GUJ2-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kharian",
+   "parent": "PK-PB-GUJ2",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-GUJ2-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sarai Alamgir",
+   "parent": "PK-PB-GUJ2",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-GUJ2-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jalalpur Jattan",
+   "parent": "PK-PB-GUJ2",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-GUJ2-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kunjah",
+   "parent": "PK-PB-GUJ2",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-HAF-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pindi Bhattian",
+   "parent": "PK-PB-HAF",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-HAF-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hafizabad",
+   "parent": "PK-PB-HAF",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-JAM-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Muhammadpur",
+   "parent": "PK-PB-JAM",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-JAM-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jampur",
+   "parent": "PK-PB-JAM",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-JAM-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dajal",
+   "parent": "PK-PB-JAM",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-JHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shorkot",
+   "parent": "PK-PB-JHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-JHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jhang",
+   "parent": "PK-PB-JHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-JHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ahmadpur Sial",
+   "parent": "PK-PB-JHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-JHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Athara Hazari",
+   "parent": "PK-PB-JHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-JHA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mandi Shah Jeewna",
+   "parent": "PK-PB-JHA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-JHE-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dina",
+   "parent": "PK-PB-JHE",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-JHE-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jhelum",
+   "parent": "PK-PB-JHE",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-JHE-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pind Dadan Khan",
+   "parent": "PK-PB-JHE",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-JHE-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sohawa",
+   "parent": "PK-PB-JHE",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-KAS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chunian",
+   "parent": "PK-PB-KAS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-KAS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kasur",
+   "parent": "PK-PB-KAS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-KAS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kot Radha Kishan",
+   "parent": "PK-PB-KAS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-KAS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pattoki",
+   "parent": "PK-PB-KAS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-KHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jahanian",
+   "parent": "PK-PB-KHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-KHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kabirwala",
+   "parent": "PK-PB-KHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-KHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khanewal",
+   "parent": "PK-PB-KHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-KHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mian Channu",
+   "parent": "PK-PB-KHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-KHU-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khushab",
+   "parent": "PK-PB-KHU",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-KHU-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Noorpur Thal",
+   "parent": "PK-PB-KHU",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-KHU-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Quaidabad",
+   "parent": "PK-PB-KHU",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-KHU-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Naushera",
+   "parent": "PK-PB-KHU",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-KOA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chowk Sarwar Shaheed",
+   "parent": "PK-PB-KOA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-KOA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kot Addu",
+   "parent": "PK-PB-KOA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-LAH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lahore Cantonment",
+   "parent": "PK-PB-LAH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-LAH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lahore City",
+   "parent": "PK-PB-LAH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-LAH-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Model Town",
+   "parent": "PK-PB-LAH",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-LAH-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Raiwind",
+   "parent": "PK-PB-LAH",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-LAH-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shalimar",
+   "parent": "PK-PB-LAH",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-LAH-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nishtar",
+   "parent": "PK-PB-LAH",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-PB-LAH-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Wagah",
+   "parent": "PK-PB-LAH",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-PB-LAH-T08",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Iqbal Town",
+   "parent": "PK-PB-LAH",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-PB-LAH-T09",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ravi",
+   "parent": "PK-PB-LAH",
+   "sort_order": 9
+  },
+  {
+   "code": "PK-PB-LAH-T10",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Saddar",
+   "parent": "PK-PB-LAH",
+   "sort_order": 10
+  },
+  {
+   "code": "PK-PB-LAY-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Karor Lal Esan",
+   "parent": "PK-PB-LAY",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-LAY-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chaubara",
+   "parent": "PK-PB-LAY",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-LAY-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Layyah",
+   "parent": "PK-PB-LAY",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-LOD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dunyapur",
+   "parent": "PK-PB-LOD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-LOD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kahror Pacca",
+   "parent": "PK-PB-LOD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-LOD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lodhran",
+   "parent": "PK-PB-LOD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-MB-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mandi Bahauddin",
+   "parent": "PK-PB-MB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-MB-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Malakwal",
+   "parent": "PK-PB-MB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-MB-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Phalia",
+   "parent": "PK-PB-MB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-MIA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Isakhel",
+   "parent": "PK-PB-MIA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-MIA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mianwali",
+   "parent": "PK-PB-MIA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-MIA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Piplan",
+   "parent": "PK-PB-MIA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-MUL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jalalpur Pirwala",
+   "parent": "PK-PB-MUL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-MUL-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Multan City",
+   "parent": "PK-PB-MUL",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-MUL-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Multan Saddar",
+   "parent": "PK-PB-MUL",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-MUL-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shujabad",
+   "parent": "PK-PB-MUL",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-MUR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kotli Sattian",
+   "parent": "PK-PB-MUR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-MUR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Murree",
+   "parent": "PK-PB-MUR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-MUZ-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jatoi",
+   "parent": "PK-PB-MUZ",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-MUZ-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Alipur",
+   "parent": "PK-PB-MUZ",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-MUZ-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Muzaffargarh",
+   "parent": "PK-PB-MUZ",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-NS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sangla Hill",
+   "parent": "PK-PB-NS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-NS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nankana Sahib",
+   "parent": "PK-PB-NS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-NS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shah Kot",
+   "parent": "PK-PB-NS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-NAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shakargarh",
+   "parent": "PK-PB-NAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-NAR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Narowal",
+   "parent": "PK-PB-NAR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-NAR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Zafarwal",
+   "parent": "PK-PB-NAR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-OKA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Depalpur",
+   "parent": "PK-PB-OKA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-OKA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Okara",
+   "parent": "PK-PB-OKA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-OKA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Renala Khurd",
+   "parent": "PK-PB-OKA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-PAK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Arifwala",
+   "parent": "PK-PB-PAK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-PAK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pakpattan",
+   "parent": "PK-PB-PAK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-RYK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rahim Yar Khan",
+   "parent": "PK-PB-RYK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-RYK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sadiqabad",
+   "parent": "PK-PB-RYK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-RYK-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Liaqatpur",
+   "parent": "PK-PB-RYK",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-RYK-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khanpur Katora",
+   "parent": "PK-PB-RYK",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-RAJ-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rojhan",
+   "parent": "PK-PB-RAJ",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-RAJ-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rajanpur",
+   "parent": "PK-PB-RAJ",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-RAW-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rawalpindi",
+   "parent": "PK-PB-RAW",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-RAW-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gujar Khan",
+   "parent": "PK-PB-RAW",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-RAW-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kahuta",
+   "parent": "PK-PB-RAW",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-RAW-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kallar Syedan",
+   "parent": "PK-PB-RAW",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-RAW-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Taxila",
+   "parent": "PK-PB-RAW",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-RAW-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daultala",
+   "parent": "PK-PB-RAW",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-PB-SAH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chichawatni",
+   "parent": "PK-PB-SAH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-SAH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sahiwal",
+   "parent": "PK-PB-SAH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-SAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bhalwal",
+   "parent": "PK-PB-SAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-SAR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bhera",
+   "parent": "PK-PB-SAR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-SAR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kot Momin",
+   "parent": "PK-PB-SAR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-SAR-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sahiwal",
+   "parent": "PK-PB-SAR",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-SAR-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sargodha",
+   "parent": "PK-PB-SAR",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-SAR-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shahpur",
+   "parent": "PK-PB-SAR",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-PB-SAR-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sillanwali",
+   "parent": "PK-PB-SAR",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-PB-SHE-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Muridke",
+   "parent": "PK-PB-SHE",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-SHE-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ferozewala",
+   "parent": "PK-PB-SHE",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-SHE-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Safdarabad",
+   "parent": "PK-PB-SHE",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-SHE-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sheikhupura",
+   "parent": "PK-PB-SHE",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-SHE-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sharak Pur",
+   "parent": "PK-PB-SHE",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-PB-SIA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pasrur",
+   "parent": "PK-PB-SIA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-SIA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daska",
+   "parent": "PK-PB-SIA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-SIA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sambrial",
+   "parent": "PK-PB-SIA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-SIA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sialkot",
+   "parent": "PK-PB-SIA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-TAL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Talagang",
+   "parent": "PK-PB-TAL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-TAL-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lawa",
+   "parent": "PK-PB-TAL",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-TTS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kamalia",
+   "parent": "PK-PB-TTS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-TTS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gojra",
+   "parent": "PK-PB-TTS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-TTS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pirmahal",
+   "parent": "PK-PB-TTS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-TTS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Toba Tek Singh",
+   "parent": "PK-PB-TTS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-PB-TON-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tonsa",
+   "parent": "PK-PB-TON",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-TON-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Wahova",
+   "parent": "PK-PB-TON",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-VEH-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Burewala",
+   "parent": "PK-PB-VEH",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-VEH-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mailsi",
+   "parent": "PK-PB-VEH",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-PB-VEH-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Vehari",
+   "parent": "PK-PB-VEH",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-PB-WAZ-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Wazirabad",
+   "parent": "PK-PB-WAZ",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-PB-WAZ-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ali Pur Chatta",
+   "parent": "PK-PB-WAZ",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-BAD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Badin",
+   "parent": "PK-SD-BAD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-BAD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Matli",
+   "parent": "PK-SD-BAD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-BAD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shaheed Fazil Rahu",
+   "parent": "PK-SD-BAD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-BAD-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Talhar",
+   "parent": "PK-SD-BAD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-BAD-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tando Bago",
+   "parent": "PK-SD-BAD",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-DAD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dadu",
+   "parent": "PK-SD-DAD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-DAD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Johi",
+   "parent": "PK-SD-DAD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-DAD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khairpur Nathan Shah",
+   "parent": "PK-SD-DAD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-DAD-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mehar",
+   "parent": "PK-SD-DAD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-GHO-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daharki",
+   "parent": "PK-SD-GHO",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-GHO-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ghotki",
+   "parent": "PK-SD-GHO",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-GHO-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khangarh",
+   "parent": "PK-SD-GHO",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-GHO-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mirpur Mathelo",
+   "parent": "PK-SD-GHO",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-GHO-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ubauro",
+   "parent": "PK-SD-GHO",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-HYD-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hyderabad City",
+   "parent": "PK-SD-HYD",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-HYD-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hyderabad",
+   "parent": "PK-SD-HYD",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-HYD-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Latifabad",
+   "parent": "PK-SD-HYD",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-HYD-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Qasimabad",
+   "parent": "PK-SD-HYD",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-JAC-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Garhi Khairo",
+   "parent": "PK-SD-JAC",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-JAC-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jacobabad",
+   "parent": "PK-SD-JAC",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-JAC-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Thul",
+   "parent": "PK-SD-JAC",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-JAM-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kotri",
+   "parent": "PK-SD-JAM",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-JAM-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sehwan",
+   "parent": "PK-SD-JAM",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-JAM-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Manjhand",
+   "parent": "PK-SD-JAM",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-JAM-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Thana Bulla Khan",
+   "parent": "PK-SD-JAM",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-KC-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gulberg Town",
+   "parent": "PK-SD-KC",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KC-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Liaquatabad Town",
+   "parent": "PK-SD-KC",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KC-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "New Karachi Town",
+   "parent": "PK-SD-KC",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KC-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "North Nazimabad Town",
+   "parent": "PK-SD-KC",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-KC-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nazimabad",
+   "parent": "PK-SD-KC",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-KE-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jamshed Town",
+   "parent": "PK-SD-KE",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KE-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ferozabad",
+   "parent": "PK-SD-KE",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KE-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gulshan-e-Iqbal",
+   "parent": "PK-SD-KE",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KE-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gulzar-e-Hijri",
+   "parent": "PK-SD-KE",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-KS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lyari Town",
+   "parent": "PK-SD-KS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Saddar Town",
+   "parent": "PK-SD-KS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Aram Bagh",
+   "parent": "PK-SD-KS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Civil Line",
+   "parent": "PK-SD-KS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-KS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Garden",
+   "parent": "PK-SD-KS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-KW-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Orangi Town",
+   "parent": "PK-SD-KW",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KW-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Manghopir",
+   "parent": "PK-SD-KW",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KW-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mominabad",
+   "parent": "PK-SD-KW",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KAS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kandhkot",
+   "parent": "PK-SD-KAS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KAS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kashmore",
+   "parent": "PK-SD-KAS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KAS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tangwani",
+   "parent": "PK-SD-KAS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KEA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Keamari Town",
+   "parent": "PK-SD-KEA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KEA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Baldia Town",
+   "parent": "PK-SD-KEA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KEA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "S.I.T.E. Town",
+   "parent": "PK-SD-KEA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KEA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Maripur",
+   "parent": "PK-SD-KEA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-KHA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Faiz Ganj",
+   "parent": "PK-SD-KHA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KHA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gambat",
+   "parent": "PK-SD-KHA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KHA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khairpur",
+   "parent": "PK-SD-KHA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KHA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kingri",
+   "parent": "PK-SD-KHA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-KHA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kot Diji",
+   "parent": "PK-SD-KHA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-KHA-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nara",
+   "parent": "PK-SD-KHA",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-SD-KHA-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sobho Dero",
+   "parent": "PK-SD-KHA",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-SD-KHA-T08",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Thari Mirwah",
+   "parent": "PK-SD-KHA",
+   "sort_order": 8
+  },
+  {
+   "code": "PK-SD-KOR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Korangi Town",
+   "parent": "PK-SD-KOR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-KOR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Landhi Town",
+   "parent": "PK-SD-KOR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-KOR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shah Faisal Town",
+   "parent": "PK-SD-KOR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-KOR-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Model Colony",
+   "parent": "PK-SD-KOR",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-LAR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bakrani",
+   "parent": "PK-SD-LAR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-LAR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dokri",
+   "parent": "PK-SD-LAR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-LAR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Larkana",
+   "parent": "PK-SD-LAR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-LAR-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ratodero",
+   "parent": "PK-SD-LAR",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-MAL-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bin Qasim",
+   "parent": "PK-SD-MAL",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-MAL-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Gadap Town",
+   "parent": "PK-SD-MAL",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-MAL-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Airport",
+   "parent": "PK-SD-MAL",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-MAL-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ibrahim Hyderi",
+   "parent": "PK-SD-MAL",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-MAL-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Murad Memon Goth",
+   "parent": "PK-SD-MAL",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-MAL-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shah Mureed",
+   "parent": "PK-SD-MAL",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-SD-MAT-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hala",
+   "parent": "PK-SD-MAT",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-MAT-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Matiari",
+   "parent": "PK-SD-MAT",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-MAT-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Saeedabad",
+   "parent": "PK-SD-MAT",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-MIR-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Digri",
+   "parent": "PK-SD-MIR",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-MIR-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Hussain Bux Mari",
+   "parent": "PK-SD-MIR",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-MIR-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jhuddo",
+   "parent": "PK-SD-MIR",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-MIR-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kot Ghulam Muhammad",
+   "parent": "PK-SD-MIR",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-MIR-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mirpur Khas",
+   "parent": "PK-SD-MIR",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-MIR-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shujabad",
+   "parent": "PK-SD-MIR",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-SD-MIR-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sindhri",
+   "parent": "PK-SD-MIR",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-SD-NF-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bhiria",
+   "parent": "PK-SD-NF",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-NF-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kandiaro",
+   "parent": "PK-SD-NF",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-NF-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mehrabpur",
+   "parent": "PK-SD-NF",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-NF-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Moro",
+   "parent": "PK-SD-NF",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-NF-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Naushahro Feroze",
+   "parent": "PK-SD-NF",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-QS-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mirokhan",
+   "parent": "PK-SD-QS",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-QS-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nasirabad",
+   "parent": "PK-SD-QS",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-QS-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Qambar",
+   "parent": "PK-SD-QS",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-QS-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Qubo Saeed Khan",
+   "parent": "PK-SD-QS",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-QS-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shahdadkot",
+   "parent": "PK-SD-QS",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-QS-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sijawal Junejo",
+   "parent": "PK-SD-QS",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-SD-QS-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Warah",
+   "parent": "PK-SD-QS",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-SD-SAN-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jam Nawaz Ali",
+   "parent": "PK-SD-SAN",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-SAN-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khipro",
+   "parent": "PK-SD-SAN",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-SAN-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sanghar",
+   "parent": "PK-SD-SAN",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-SAN-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shahdadpur",
+   "parent": "PK-SD-SAN",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-SAN-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sinjhoro",
+   "parent": "PK-SD-SAN",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-SAN-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tando Adam Khan",
+   "parent": "PK-SD-SAN",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-SD-SB-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kazi Ahmed",
+   "parent": "PK-SD-SB",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-SB-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Daur",
+   "parent": "PK-SD-SB",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-SB-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nawabshah",
+   "parent": "PK-SD-SB",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-SB-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sakrand",
+   "parent": "PK-SD-SB",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-SHI-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Garhi Yasin",
+   "parent": "PK-SD-SHI",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-SHI-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Khanpur",
+   "parent": "PK-SD-SHI",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-SHI-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Lakhi",
+   "parent": "PK-SD-SHI",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-SHI-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shikarpur",
+   "parent": "PK-SD-SHI",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-SUJ-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jati",
+   "parent": "PK-SD-SUJ",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-SUJ-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kharo Chan",
+   "parent": "PK-SD-SUJ",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-SUJ-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mirpur Bathoro",
+   "parent": "PK-SD-SUJ",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-SUJ-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Shah Bandar",
+   "parent": "PK-SD-SUJ",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-SUJ-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sujawal",
+   "parent": "PK-SD-SUJ",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-SUK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "New Sukkur",
+   "parent": "PK-SD-SUK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-SUK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pano Akil",
+   "parent": "PK-SD-SUK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-SUK-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Rohri",
+   "parent": "PK-SD-SUK",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-SUK-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Salehpat",
+   "parent": "PK-SD-SUK",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-SUK-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Sukkur",
+   "parent": "PK-SD-SUK",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-TA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chamber",
+   "parent": "PK-SD-TA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-TA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Jhando Mari",
+   "parent": "PK-SD-TA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-TA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tando Allahyar",
+   "parent": "PK-SD-TA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-TMK-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Bulri Shah Karim",
+   "parent": "PK-SD-TMK",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-TMK-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tando Ghulam Hyder",
+   "parent": "PK-SD-TMK",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-TMK-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Tando Muhammad Khan",
+   "parent": "PK-SD-TMK",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-THA-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Chachro",
+   "parent": "PK-SD-THA",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-THA-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Dahli",
+   "parent": "PK-SD-THA",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-THA-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Diplo",
+   "parent": "PK-SD-THA",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-THA-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kaloi",
+   "parent": "PK-SD-THA",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-THA-T05",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Islamkot",
+   "parent": "PK-SD-THA",
+   "sort_order": 5
+  },
+  {
+   "code": "PK-SD-THA-T06",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mithi",
+   "parent": "PK-SD-THA",
+   "sort_order": 6
+  },
+  {
+   "code": "PK-SD-THA-T07",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Nagarparkar",
+   "parent": "PK-SD-THA",
+   "sort_order": 7
+  },
+  {
+   "code": "PK-SD-THA2-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Ghorabari",
+   "parent": "PK-SD-THA2",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-THA2-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Keti Bunder",
+   "parent": "PK-SD-THA2",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-THA2-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Mirpur Sakro",
+   "parent": "PK-SD-THA2",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-THA2-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Thatta",
+   "parent": "PK-SD-THA2",
+   "sort_order": 4
+  },
+  {
+   "code": "PK-SD-UME-T01",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Kunri",
+   "parent": "PK-SD-UME",
+   "sort_order": 1
+  },
+  {
+   "code": "PK-SD-UME-T02",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Pithoro",
+   "parent": "PK-SD-UME",
+   "sort_order": 2
+  },
+  {
+   "code": "PK-SD-UME-T03",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Samaro",
+   "parent": "PK-SD-UME",
+   "sort_order": 3
+  },
+  {
+   "code": "PK-SD-UME-T04",
+   "country": "PK",
+   "level": "tehsil",
+   "name": "Umerkot",
+   "parent": "PK-SD-UME",
+   "sort_order": 4
+  }
+ ]
+}

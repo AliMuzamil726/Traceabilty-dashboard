@@ -1,0 +1,14 @@
+{
+  "_meta": {
+    "status": "SEED DATA - TO BE VERIFIED",
+    "note": "Dummy delivery sites for development. Replace with the real ginners and processors before production use."
+  },
+  "items": [
+    {"code": "BWP-G1", "name": "Bahawalpur Ginner 1 (dummy)", "type": "ginner", "crop": "cotton", "country": "PK", "address": "Industrial Estate, Bahawalpur", "region": "Bahawalpur"},
+    {"code": "BWP-G2", "name": "Bahawalpur Ginner 2 (dummy)", "type": "ginner", "crop": "cotton", "country": "PK", "address": "Hasilpur Road, Bahawalpur", "region": "Bahawalpur"},
+    {"code": "BWP-G3", "name": "Bahawalpur Ginner 3 (dummy)", "type": "ginner", "crop": "cotton", "country": "PK", "address": "Ahmedpur East Road, Bahawalpur", "region": "Bahawalpur"},
+    {"code": "MUX-G1", "name": "Multan Ginner 1 (dummy)", "type": "ginner", "crop": "cotton", "country": "PK", "address": "Vehari Road, Multan", "region": "Multan"},
+    {"code": "UK-P1", "name": "Norfolk Processor (dummy)", "type": "processor", "crop": "hemp", "country": "GB", "address": "Norfolk", "region": "East of England"},
+    {"code": "UK-P2", "name": "Lincolnshire Processor (dummy)", "type": "processor", "crop": "hemp", "country": "GB", "address": "Lincolnshire", "region": "East Midlands"}
+  ]
+}
