@@ -54,7 +54,7 @@ STAGE_TITLES: dict[str, str] = {
     STAGE_FIELDS: "Fields mapped",
     STAGE_FIELDBOOKS: "Fieldbooks",
     STAGE_HARVEST: "Harvest ready or done",
-    STAGE_DELIVERIES: "In Transit / delivered",
+    STAGE_DELIVERIES: "Deliveries",
     STAGE_BALES: "Heaps and bales produced",
     STAGE_SCANS: "QR codes scanned",
 }

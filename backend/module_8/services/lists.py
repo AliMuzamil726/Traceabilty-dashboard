@@ -163,7 +163,7 @@ class ListService:
             audit.compute_diff(None, {"list_key": list_key, "value": value, "label": label}),
             session=self.session,
         )
-        self._publish(list_key)
+        self._publish(list_key, "created")
         self.session.commit()
         return self._as_dict(row)
 
@@ -207,7 +207,7 @@ class ListService:
             audit.record(
                 "master_list", row.id, audit.ACTION_UPDATE, officer.id, diff, session=self.session
             )
-            self._publish(row.list_key)
+            self._publish(row.list_key, "updated")
         self.session.commit()
         return self._as_dict(row)
 
@@ -236,7 +236,7 @@ class ListService:
         )
         list_key = row.list_key
         self.session.delete(row)
-        self._publish(list_key)
+        self._publish(list_key, "deleted")
         self.session.commit()
 
     def reorder(
@@ -260,7 +260,7 @@ class ListService:
             {"order": {"from": "previous", "to": [rows[i].value for i in value_ids]}},
             session=self.session,
         )
-        self._publish(list_key)
+        self._publish(list_key, "reordered")
         self.session.commit()
         return self.values_for(list_key)
 
@@ -349,8 +349,8 @@ class ListService:
             raise ValidationAppError("A value key may be at most 64 characters.")
         return key
 
-    def _publish(self, list_key: str) -> None:
-        bus.publish(LIST_CHANGED, {"list_key": list_key}, session=self.session)
+    def _publish(self, list_key: str, action: str) -> None:
+        bus.publish(LIST_CHANGED, {"list_key": list_key, "action": action}, session=self.session)
 
 
 __all__ = ["GROUP_COTTON", "GROUP_HEMP", "GROUP_SHARED", "REQUIRED_BY", "ListService", "group_for"]

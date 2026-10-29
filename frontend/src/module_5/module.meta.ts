@@ -1,10 +1,10 @@
 import { Truck } from 'lucide-react';
 import type { ModuleMeta } from '@/shared/types';
 
-/** Module 5: In Transit (Schedule → Dispatch → Delivered). Mirrors backend/module_5/meta.py. */
+/** Module 5: Deliveries (Schedule → Dispatch → Delivered). Mirrors backend/module_5/meta.py. */
 export const meta: ModuleMeta = {
   number: 5,
-  name: 'In Transit',
+  name: 'Deliveries',
   folder: 'module_5',
   path: '/deliveries',
   apiPrefix: '/api/v1/deliveries',

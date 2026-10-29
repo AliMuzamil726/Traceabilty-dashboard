@@ -132,7 +132,7 @@ def test_every_module_folder_exists_with_required_files() -> None:
         "public_api.py",
         "events.py",
     }
-    for number in range(1, 9):
+    for number in range(1, 10):
         folder = BACKEND / f"module_{number}"
         assert folder.is_dir(), folder
         present = {p.name for p in folder.iterdir()}

@@ -17,6 +17,8 @@ import { GlobalSearch } from './GlobalSearch';
 
 function UserMenu() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const signOut = useOfficerStore((s) => s.signOut);
   const { data, isLoading, isError } = useCurrentOfficer();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -38,9 +40,6 @@ function UserMenu() {
     );
   }
   if (isError || !data) return <Badge tone="danger">Not signed in</Badge>;
-
-  const queryClient = useQueryClient();
-  const signOut = useOfficerStore((s) => s.signOut);
 
   const detail = data.field_office_name ? `${roleLabel(data.role)}, ${data.field_office_name}` : roleLabel(data.role);
   const item = 'flex w-full items-center gap-2.5 px-3 py-2 text-left text-sm text-ink hover:bg-forest-50';

@@ -4,7 +4,7 @@ from fastapi.testclient import TestClient
 from app.main import create_app
 from core.config import Settings
 from core.deps import CurrentOfficer, require_admin
-from scripts.seed import stable_id
+from scripts.seed import run_seed, stable_id
 
 DEFAULT_ID = stable_id("officer", "PK-MUL-01")
 ADMIN_ID = stable_id("officer", "ADMIN-01")
@@ -36,8 +36,18 @@ def test_unknown_officer_header_is_rejected(client: TestClient) -> None:
 
 
 def test_production_requires_header(settings: Settings) -> None:
-    prod = settings.model_copy(update={"app_env": "production"})
-    with TestClient(create_app(prod)) as client:
+    prod = settings.model_copy(
+        update={
+            "app_env": "production",
+            "qr_ip_salt": "test-only-production-salt",
+            "seed_on_start": False,
+        }
+    )
+    app = create_app(prod)
+    with TestClient(app) as client:
+        # Production never runs the demo seed, so these tests insert it explicitly.
+        with app.state.db.session_scope() as session:  # type: ignore[attr-defined]
+            run_seed(session)
         response = client.get("/api/v1/officers/me")
         assert response.status_code == 401
         assert response.json()["error"]["code"] == "officer_required"

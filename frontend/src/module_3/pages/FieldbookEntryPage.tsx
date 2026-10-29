@@ -144,7 +144,7 @@ export default function FieldbookEntryPage() {
                 </FormField>
               )}
 
-              <div className="w-28 max-w-full">
+              <div className="min-w-0 max-w-[7rem]">
               <FormField label="Season year">
                 <NumberInput
                   value={season}
@@ -152,7 +152,6 @@ export default function FieldbookEntryPage() {
                   decimals={0}
                   min={2000}
                   max={2100}
-                  className="!text-left"
                 />
               </FormField>
               </div>

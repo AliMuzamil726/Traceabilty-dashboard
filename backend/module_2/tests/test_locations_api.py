@@ -2,12 +2,27 @@
 
 from __future__ import annotations
 
+import json
 from collections.abc import Callable
+from pathlib import Path
 from typing import Any
 
 from fastapi.testclient import TestClient
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from shared.models.location import LEVEL_DISTRICT, Location
 
 REGISTER = "/api/v1/register"
+
+SEED = Path(__file__).resolve().parents[2] / "scripts" / "seed_data" / "locations_pk.json"
+
+
+def seeded_names(level: str, parent: str) -> list[str]:
+    """The seed is the source of truth for administrative names and their order."""
+    items = json.loads(SEED.read_text(encoding="utf-8"))["items"]
+    rows = [i for i in items if i["level"] == level and i.get("parent") == parent]
+    return [i["name"] for i in sorted(rows, key=lambda i: i["sort_order"])]
 
 
 class TestCascade:
@@ -26,7 +41,7 @@ class TestCascade:
         assert "Islamabad Capital Territory" in labels
         assert all(i["level"] == "province" for i in body["items"])
 
-    def test_punjab_has_thirty_six_districts(
+    def test_punjab_serves_every_seeded_district(
         self, client: TestClient, as_officer: Callable[[str], dict[str, str]]
     ) -> None:
         body = client.get(
@@ -34,8 +49,9 @@ class TestCascade:
             params={"province": "PK-PB"},
             headers=as_officer("PK-MUL-01"),
         ).json()
-        assert len(body["items"]) == 36
         labels = [i["label"] for i in body["items"]]
+        assert set(labels) == set(seeded_names("district", "PK-PB"))
+        assert len(labels) == len(set(labels))
         for district in ("Multan", "Khanewal", "Lodhran", "Vehari", "Bahawalpur", "Rajanpur"):
             assert district in labels
         assert all(i["parent_code"] == "PK-PB" for i in body["items"])
@@ -69,15 +85,28 @@ class TestCascade:
         assert body["allow_manual"] is True
 
     def test_a_district_without_tehsils_still_allows_manual_entry(
-        self, client: TestClient, as_officer: Callable[[str], dict[str, str]]
+        self,
+        client: TestClient,
+        session: Session,
+        as_officer: Callable[[str], dict[str, str]],
     ) -> None:
-        headers = as_officer("PK-MUL-01")
-        districts = client.get(
-            f"{REGISTER}/locations/districts", params={"province": "PK-PB"}, headers=headers
-        ).json()["items"]
-        lahore = next(d for d in districts if d["label"] == "Lahore")
+        province = session.execute(select(Location).where(Location.code == "PK-PB")).scalar_one()
+        session.add(
+            Location(
+                country="PK",
+                level=LEVEL_DISTRICT,
+                code="PK-PB-ZZZ",
+                name="Test District",
+                parent_id=province.id,
+                sort_order=999,
+            )
+        )
+        session.commit()
+
         body = client.get(
-            f"{REGISTER}/locations/tehsils", params={"district": lahore["value"]}, headers=headers
+            f"{REGISTER}/locations/tehsils",
+            params={"district": "PK-PB-ZZZ"},
+            headers=as_officer("PK-MUL-01"),
         ).json()
         assert body["items"] == []
         assert body["allow_manual"] is True

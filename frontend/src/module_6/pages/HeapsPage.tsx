@@ -44,7 +44,10 @@ export default function HeapsPage() {
   const status = (['open', 'closed', 'all'].includes(params.get('status') ?? '') ? params.get('status') : 'open') as StatusFilter;
   const selected = params.get('heap');
   const sites = useSites(crop);
-  const siteId = params.get('site') ?? sites.data?.[0]?.id ?? '';
+  const requestedSite = params.get('site');
+  const siteId = requestedSite && (sites.data ?? []).some((s) => s.id === requestedSite)
+    ? requestedSite
+    : sites.data?.[0]?.id ?? '';
   const w = words(crop);
   const [opening, setOpening] = useState(false);
   const [receiving, setReceiving] = useState(false);
@@ -74,7 +77,7 @@ export default function HeapsPage() {
       <section aria-label="Filters" className="flex flex-wrap items-center gap-3 rounded-card border border-line bg-surface p-3">
         <SegmentedControl aria-label="Crop" value={crop} onChange={(c) => set({ crop: c, site: null, heap: null })}
           options={[{ value: 'cotton', label: 'Cotton' }, { value: 'hemp', label: 'Hemp' }]} />
-        <div className="min-w-[240px]">
+        <div className="min-w-0 min-w-[200px] flex-1 sm:flex-none sm:w-60">
           <Select aria-label={w.site} value={siteId} options={(sites.data ?? []).map((s) => ({ value: s.id, label: `${s.name} (${s.code})` }))}
             onChange={(e) => set({ site: e.target.value, heap: null })} />
         </div>

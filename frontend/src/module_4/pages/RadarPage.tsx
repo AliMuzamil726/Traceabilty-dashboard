@@ -1,7 +1,9 @@
 import { useQueryClient } from '@tanstack/react-query';
+import { Truck } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toApiError } from '@/core/api/errors';
-import { Button, EmptyState, PageHeader, Select, Tabs, toast } from '@/design-system/components';
+import { Button, EmptyState, PageHeader, Select, Tabs, buttonClasses, toast } from '@/design-system/components';
 import { radarApi, radarKeys } from '../api/client';
 import type { RadarRow } from '../api/types';
 import { BucketBar } from '../components/BucketBar';
@@ -117,9 +119,13 @@ export default function RadarPage() {
         actions={
           <div className="flex flex-wrap items-center gap-3">
             <CropSegment value={f.crop} onChange={(crop) => update({ crop })} />
-            <div className="w-28">
+            <div className="w-28 min-w-[6rem]">
               <Select aria-label="Season" value={String(f.season)} options={seasonOptions()} onChange={(e) => update({ season: e.target.value })} />
             </div>
+            <Link to={`/deliveries?crop=${f.crop}`} className={buttonClasses('secondary', 'sm')}>
+              <Truck className="h-4 w-4" aria-hidden />
+              Deliveries
+            </Link>
           </div>
         }
       />

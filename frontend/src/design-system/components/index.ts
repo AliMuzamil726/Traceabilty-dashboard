@@ -10,6 +10,7 @@ export * from './DiffView';
 export * from './DatePicker';
 export * from './Dialog';
 export * from './EmptyState';
+export * from './ErrorState';
 export * from './FileDropzone';
 export * from './FormField';
 export * from './formFieldContext';

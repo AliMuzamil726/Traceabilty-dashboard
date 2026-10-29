@@ -1,7 +1,8 @@
 # Next steps
 
-1. **Login and roles.** Replace the header identity with real sessions, hash and rotate
-   credentials, keep `get_current_officer` as the single seam so no module changes.
+1. **Real sessions.** The sign-in screen checks passwords already; replace the
+   `X-Officer-Id` header with a signed session (cookie or token), add rotation and lockout,
+   and keep `get_current_officer` as the single seam so no module changes.
    Settings already holds the officer records and the role matrix this needs (D-121).
 2. **Supabase or PostgreSQL migration.** The models avoid SQLite-only features. Steps:
    point `DATABASE_URL` at Postgres, run the migrations, replace the `BEGIN IMMEDIATE`

@@ -779,3 +779,51 @@ Printed QR codes default to this computer's address on the local network rather 
 column added after a database was created) but had never been wired in; its inspection
 also had to move outside the transaction, because on SQLite an inspector reading from a
 second connection while an `ALTER` holds the write lock waits on itself.
+
+## D-124 Gate Reception settles the delivery through Module 5, in one transaction
+The gate screen (Module 9) has to decide what happens to a delivery it does not own.
+Duplicating the receive rules there would let the two screens drift on variance, audit
+and events, and publishing an event after committing the entry would leave a window
+where the gate says accepted and the delivery is not. Module 5 therefore exposes
+`receive_at_gate` and `cancel_at_gate` on its public API: they apply its own rules but
+only `flush`, and Module 9 sets its entry and commits. Both screens then feed the same
+state machine, and a delivery has one history, one audit trail and one set of events
+whatever the officer used. The reverse direction is an event: when a load is received or
+cancelled in Deliveries, Module 9's handler closes a still-pending entry, so a load at
+the gate never leaves two open records. Accepting at the gate marks the entry first and
+then calls `receive_at_gate`, so the `delivery.delivered` handler that follows finds
+nothing pending and cannot react to its own change.
+
+## D-125 A delivery closes its pickup request, and a correction reaches the gate
+Receiving a load in Deliveries only moved the delivery; the Radar request it came from
+stayed `scheduled`, so the field could never be requested again and the radar kept
+showing a pickup in progress. Receipt now calls `mark_pickup_fulfilled` in the same
+transaction, which is also what the gate path gets for free, because accepting there
+goes through `receive_at_gate`.
+
+An administrator's correction after delivery (`POST /{id}/correct`) changed the weight
+of a load the gate had already accepted, leaving two different figures for one delivery.
+Module 5 now publishes `delivery.corrected`, and Module 9 copies the corrected weight and
+moisture onto the accepted entry and appends a note naming the reason; the gate audit
+records the change, so the gate record and Deliveries agree again. The entries list also
+accepts `status=decided` (accepted or rejected), because the history panel has no useful
+answer for "every decided entry" otherwise.
+
+## D-126 Production refuses the demo seed and a placeholder salt, and contracts check payloads
+`SEED_ON_START` defaulted to true, so a production boot created the demo offices and
+officers, every one of them on the shared default password; the default `QR_IP_SALT` was
+the development placeholder, so visitor hashes were reversible from the source. Both
+defaults are now false/placeholder for development only, and `Settings.check_production`
+refuses to build a production configuration with `SEED_ON_START` on or a salt that is a
+known placeholder or shorter than 16 characters. It runs in the model validator, so a
+`model_copy` that flips `app_env` is caught, and again in the lifespan because `model_copy`
+skips validators. Tests that need production behaviour now pass an explicit salt and seed
+the data they assert on instead of relying on the boot seed.
+
+`test_contracts.py` also compared only event and route names, so a payload key could be
+added, renamed or dropped without a failure, and Module 8 was excluded from the scan. The
+test now parses every `bus.publish` call in Modules 1 to 9, resolves helper-built payload
+dictionaries, and asserts the documented keys are present at each publish site. Turning it
+on found five real drifts, all fixed: `delivery.*` payloads lacked `scheduled_date`, Module
+8's `config.changed` for the crop clock did not name `crops`, and the serialization events
+and `/me/preferences` route were documented one way and published another.

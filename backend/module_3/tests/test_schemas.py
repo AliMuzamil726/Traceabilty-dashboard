@@ -18,10 +18,10 @@ COTTON_STEPS = [
     "irrigation",
     "weed_management",
     "pest_disease",
-    "harvest",
     "energy",
-    "transport",
     "labour_social",
+    "harvest",
+    "transport",
 ]
 HEMP_STEPS = [
     "field_info",
@@ -115,8 +115,9 @@ def test_the_schema_endpoint_serves_the_file_unchanged(client: TestClient) -> No
     assert client.get("/api/v1/fieldbook/schemas/wheat").status_code == 404
 
 
-def test_the_last_steps_are_labour_and_baling() -> None:
-    assert fs.load_definition("cotton")["steps"][-1]["key"] == "labour_social"
+def test_the_last_steps_follow_the_season() -> None:
+    cotton = fs.load_definition("cotton")["steps"]
+    assert [s["key"] for s in cotton[-3:]] == ["labour_social", "harvest", "transport"]
     assert fs.load_definition("hemp")["steps"][-1]["key"] == "baling"
 
 

@@ -4758,7 +4758,7 @@
    "code": "PK-PB-BWP-T01",
    "country": "PK",
    "level": "tehsil",
-   "name": "Ahmadpur East",
+   "name": "Bahawalpur City",
    "parent": "PK-PB-BWP",
    "sort_order": 1
   },
@@ -4766,7 +4766,7 @@
    "code": "PK-PB-BWP-T02",
    "country": "PK",
    "level": "tehsil",
-   "name": "Bahawalpur City",
+   "name": "Bahawalpur Saddar",
    "parent": "PK-PB-BWP",
    "sort_order": 2
   },
@@ -4774,7 +4774,7 @@
    "code": "PK-PB-BWP-T03",
    "country": "PK",
    "level": "tehsil",
-   "name": "Yazman",
+   "name": "Ahmadpur East",
    "parent": "PK-PB-BWP",
    "sort_order": 3
   },
@@ -4782,7 +4782,7 @@
    "code": "PK-PB-BWP-T04",
    "country": "PK",
    "level": "tehsil",
-   "name": "Bahawalpur Saddar",
+   "name": "Yazman",
    "parent": "PK-PB-BWP",
    "sort_order": 4
   },
@@ -5422,7 +5422,7 @@
    "code": "PK-PB-MUL-T01",
    "country": "PK",
    "level": "tehsil",
-   "name": "Jalalpur Pirwala",
+   "name": "Multan City",
    "parent": "PK-PB-MUL",
    "sort_order": 1
   },
@@ -5430,7 +5430,7 @@
    "code": "PK-PB-MUL-T02",
    "country": "PK",
    "level": "tehsil",
-   "name": "Multan City",
+   "name": "Multan Saddar",
    "parent": "PK-PB-MUL",
    "sort_order": 2
   },
@@ -5438,7 +5438,7 @@
    "code": "PK-PB-MUL-T03",
    "country": "PK",
    "level": "tehsil",
-   "name": "Multan Saddar",
+   "name": "Shujabad",
    "parent": "PK-PB-MUL",
    "sort_order": 3
   },
@@ -5446,7 +5446,7 @@
    "code": "PK-PB-MUL-T04",
    "country": "PK",
    "level": "tehsil",
-   "name": "Shujabad",
+   "name": "Jalalpur Pirwala",
    "parent": "PK-PB-MUL",
    "sort_order": 4
   },

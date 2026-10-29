@@ -386,6 +386,15 @@ class TestActivity:
         make_farm("cotton", sown=140)
         assert len(dashboard("activity", as_officer("ADMIN-01"), limit=2)["items"]) == 2
 
+    def test_gate_reception_is_a_filterable_module(
+        self,
+        dashboard: Callable[..., dict[str, Any]],
+        as_officer: Callable[[str], dict[str, str]],
+    ) -> None:
+        body = dashboard("activity", as_officer("ADMIN-01"), module=9)
+        assert {"number": 9, "name": "Gate Reception"} in body["modules"]
+        assert body["items"] == []
+
 
 class TestOfficerOverview:
     def test_rows_count_each_officers_work(

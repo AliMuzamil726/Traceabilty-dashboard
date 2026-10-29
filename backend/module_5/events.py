@@ -16,6 +16,7 @@ PUBLISHES: tuple[str, ...] = (
     events.DELIVERY_DISPATCHED,
     events.DELIVERY_DELIVERED,
     events.DELIVERY_CANCELLED,
+    events.DELIVERY_CORRECTED,
 )
 """Event names this module publishes (payloads documented in docs/CONTRACTS.md)."""
 

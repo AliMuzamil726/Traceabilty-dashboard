@@ -311,10 +311,6 @@ export default function FieldMapPage() {
               }
             />
             <Measure
-              label="Area"
-              value={result?.area_ha != null ? `${formatDecimal(result.area_ha, 2)} ha` : '-'}
-            />
-            <Measure
               label="Corners"
               value={result?.vertex_count != null ? formatNumber(result.vertex_count) : '-'}
             />
@@ -370,19 +366,16 @@ export default function FieldMapPage() {
           ) : (
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-wrap items-center gap-2">
-                <Button variant="secondary" leftIcon={<UserPlus className="h-4 w-4" />} onClick={() => navigate('/register/new')}>
-                  Register another farmer
+              {items.length > 0 && (
+                <Button
+                  variant="secondary"
+                  leftIcon={<NotebookPen className="h-4 w-4" />}
+                  onClick={() => navigate(`/fieldbook?farmerId=${farmerId}`)}
+                >
+                  Open fieldbook
                 </Button>
-                {items.length > 0 && (
-                  <Button
-                    variant="secondary"
-                    leftIcon={<NotebookPen className="h-4 w-4" />}
-                    onClick={() => navigate(`/fieldbook?farmerId=${farmerId}`)}
-                  >
-                    Open fieldbook
-                  </Button>
-                )}
-              </div>
+              )}
+            </div>
               <div className="flex flex-wrap items-center gap-2">
                 <Button variant="secondary" onClick={() => navigate(`/register/farmers/${farmerId}`)}>
                   View farmer profile

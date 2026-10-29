@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Final, Literal
 
 NUMBER: Final = 5
-NAME: Final = "In Transit"
+NAME: Final = "Deliveries"
 FOLDER: Final = "module_5"
 ROUTE_PREFIX: Final = "/deliveries"
 API_PREFIX: Final = "/api/v1/deliveries"

@@ -5,6 +5,7 @@ import { MotionConfig } from 'framer-motion';
 import { MemoryRouter, useLocation } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from 'vitest';
 import { PipelineTracker } from '../components/PipelineTracker';
+import { AttentionPanel } from '../components/AttentionPanel';
 import DashboardPage from '../pages/DashboardPage';
 import * as fx from './fixtures';
 
@@ -79,7 +80,7 @@ function renderPage(search = '') {
 }
 
 describe('DashboardPage', () => {
-  it('shows the title, the pipeline, KPIs and alerts', async () => {
+  it('shows the title, the pipeline and KPIs', async () => {
     renderPage();
     expect(await screen.findByRole('heading', { level: 1, name: 'Home' })).toBeInTheDocument();
     expect(await screen.findByRole('link', { name: /Harvest ready or done/ })).toHaveAttribute(
@@ -87,7 +88,6 @@ describe('DashboardPage', () => {
       '/radar?crop=cotton&status=ready&season=2026',
     );
     expect(await screen.findByText('Ready for pickup now')).toBeInTheDocument();
-    expect(await screen.findByText('Ready with no pickup request')).toBeInTheDocument();
   });
 
   it('keeps every filter in the address and sends it to every section', async () => {
@@ -109,18 +109,20 @@ describe('DashboardPage', () => {
   });
 
   it('shows a retry inside a failing section and keeps the rest of the page', async () => {
-    failing = new Set(['alerts']);
+    failing = new Set(['pipeline']);
     renderPage();
 
-    const attention = (await screen.findByRole('heading', { name: 'Needs attention' })).closest('section')!;
-    expect(await within(attention).findByRole('alert')).toHaveTextContent('could not be loaded');
+    const stages = (await screen.findByRole('heading', { name: 'Traceability Stages' })).closest(
+      'section',
+    )!;
+    expect(await within(stages).findByRole('alert')).toHaveTextContent('could not be loaded');
     // Everything else still rendered.
     expect(await screen.findByText('Ready for pickup now')).toBeInTheDocument();
-    expect(await screen.findByRole('link', { name: /Fields mapped/ })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: 'Fields on the map' })).toBeInTheDocument();
 
     failing = new Set();
-    await userEvent.setup().click(within(attention).getByRole('button', { name: 'Try again' }));
-    expect(await within(attention).findByText('Ready with no pickup request')).toBeInTheDocument();
+    await userEvent.setup().click(within(stages).getByRole('button', { name: 'Try again' }));
+    expect(await within(stages).findByRole('link', { name: /Farmers registered/ })).toBeInTheDocument();
   });
 
   it('never shows the guided checklist, even on an empty database', async () => {
@@ -175,14 +177,48 @@ describe('DashboardPage', () => {
     expect(calls().some((u) => u.pathname.endsWith('/dashboard/officers'))).toBe(false);
   });
 
-  it('lists only the rules that found something, critical first', async () => {
+  it('still shows the programme dashboard for staff', async () => {
+    answers.me = { ...(answers.me as Record<string, unknown>), role: 'staff', is_admin: false, sees_all: false };
     renderPage();
-    const panel = (await screen.findByRole('heading', { name: 'Needs attention' })).closest('section')!;
-    await within(panel).findByText('Overdue fields');
+    expect(await screen.findByRole('heading', { name: 'Traceability Stages' })).toBeInTheDocument();
+  });
+});
+
+describe('AttentionPanel', () => {
+  function renderPanel() {
+    render(
+      <MotionConfig reducedMotion="always">
+        <MemoryRouter>
+          <AttentionPanel data={fx.alerts()} loading={false} error={undefined} onRetry={vi.fn()} />
+        </MemoryRouter>
+      </MotionConfig>,
+    );
+  }
+
+  it('lists only the rules that found something, critical first', () => {
+    renderPanel();
+    const panel = screen.getByRole('heading', { name: 'Needs attention' }).closest('section')!;
     const titles = within(panel).getAllByRole('listitem').map((li) => li.textContent ?? '');
-    const order = titles.filter((t) => /Overdue fields|Ready with no pickup/.test(t));
-    expect(order[0]).toMatch(/Overdue fields/);
+    expect(titles[0]).toMatch(/Overdue fields/);
     expect(within(panel).queryByText('Idle heaps and batches')).toBeNull();
+  });
+
+  it('shows a retry when the rules cannot be read', async () => {
+    const onRetry = vi.fn();
+    render(
+      <MotionConfig reducedMotion="always">
+        <AttentionPanel
+          data={undefined}
+          loading={false}
+          error={new Error('Something broke.')}
+          onRetry={onRetry}
+        />
+      </MotionConfig>,
+    );
+    const panel = screen.getByRole('heading', { name: 'Needs attention' }).closest('section')!;
+    expect(within(panel).getByRole('alert')).toHaveTextContent('could not be loaded');
+    await userEvent.setup().click(within(panel).getByRole('button', { name: 'Try again' }));
+    expect(onRetry).toHaveBeenCalledOnce();
   });
 });
 

@@ -1,6 +1,7 @@
+import { toApiError } from '@/core/api/errors';
 import { cn } from '@/core/utils/cn';
 import { formatDate } from '@/core/utils/format';
-import { Button, EmptyState, Skeleton } from '@/design-system/components';
+import { Button, EmptyState, ErrorState, Skeleton } from '@/design-system/components';
 import type { Delivery, DeliveryStatus } from '../api/types';
 import { STATUS_CLASSES, STATUS_LABEL } from '../lib/status';
 
@@ -12,6 +13,8 @@ export interface DeliveryListProps {
   selectedId: string | null;
   onSelect: (id: string) => void;
   loading: boolean;
+  error?: unknown;
+  onRetry?: () => void;
   page: number;
   total: number;
   pageSize: number;
@@ -22,7 +25,7 @@ export function StatusPill({ status }: { status: DeliveryStatus }) {
   return <span className={cn('inline-flex whitespace-nowrap rounded-full border px-2 py-0.5 text-xs font-medium', STATUS_CLASSES[status])}>{STATUS_LABEL[status]}</span>;
 }
 
-export function DeliveryList({ items, counts, status, onStatus, selectedId, onSelect, loading, page, total, pageSize, onPage }: DeliveryListProps) {
+export function DeliveryList({ items, counts, status, onStatus, selectedId, onSelect, loading, error, onRetry, page, total, pageSize, onPage }: DeliveryListProps) {
   const pages = Math.max(1, Math.ceil(total / pageSize));
   return (
     <div className="flex flex-col gap-3">
@@ -40,6 +43,13 @@ export function DeliveryList({ items, counts, status, onStatus, selectedId, onSe
       </div>
       {loading && !items.length ? (
         <Skeleton className="h-64 w-full" shape="block" />
+      ) : error && !items.length ? (
+        <ErrorState
+          compact
+          title="Deliveries could not be loaded"
+          description={toApiError(error).message}
+          onRetry={onRetry}
+        />
       ) : items.length === 0 ? (
         <EmptyState compact title="No deliveries" description="Schedule requests from the inbox, or change the filters." />
       ) : (

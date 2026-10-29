@@ -8,7 +8,7 @@ export function LotOverview({ lot }: { lot: Overview }) {
   return (
     <Card as="section" aria-label={`${lot.kind} ${lot.heap_id}`} padding="lg" className="flex flex-col gap-5">
       <SectionHeader title={<span className="mono-id">{lot.heap_id}</span>}
-        description={`${lot.kind} at ${lot.site_name ?? 'unknown site'}`}
+        description={`${lot.kind === 'Heap' ? 'Cotton heap' : 'Hemp processing batch'} at ${lot.site_name ?? 'unknown site'}`}
         actions={<Badge tone={lot.status === 'open' ? 'info' : 'success'}>{lot.status === 'open' ? 'Open' : 'Closed'}</Badge>} />
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[auto_minmax(0,1fr)]">
         {lot.token && lot.trace_url

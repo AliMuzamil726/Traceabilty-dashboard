@@ -21,6 +21,7 @@ REGISTER = "/register"
 FIELDBOOK = "/fieldbook"
 RADAR = "/radar"
 DELIVERIES = "/deliveries"
+GATE = "/gate"
 HEAPS = "/heaps"
 QR = "/qr"
 
@@ -108,6 +109,11 @@ def delivery(delivery_id: str, f: DashboardFilters) -> Link:
     return Link(DELIVERIES, _clean({"tab": "deliveries", "id": delivery_id, "scope": f.scope}))
 
 
+def gate(f: DashboardFilters, *, crop: str | None = None) -> Link:
+    """The gate screen of one crop's first site; the page picks that site itself."""
+    return Link(GATE, _clean({"crop": crop or f.primary_crop}))
+
+
 def heaps(f: DashboardFilters, *, crop: str | None = None, status: str | None = None) -> Link:
     """Heaps and batches. The page shows one crop at a time."""
     return Link(HEAPS, _clean({"crop": crop or f.primary_crop, "status": status}))
@@ -124,6 +130,7 @@ def qr(f: DashboardFilters, *, crop: str | None = None) -> Link:
 __all__ = [
     "DELIVERIES",
     "FIELDBOOK",
+    "GATE",
     "HEAPS",
     "QR",
     "RADAR",
@@ -134,6 +141,7 @@ __all__ = [
     "farmer",
     "fieldbook",
     "fieldbook_list",
+    "gate",
     "heap",
     "heaps",
     "qr",

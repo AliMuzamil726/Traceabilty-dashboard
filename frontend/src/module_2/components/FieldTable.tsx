@@ -65,13 +65,6 @@ export function FieldTable({
       cell: (field) => formatDecimal(field.area_acre, 2),
     },
     {
-      key: 'area_ha',
-      header: 'Area (hectares)',
-      numeric: true,
-      sortable: true,
-      cell: (field) => formatDecimal(field.area_ha, 2),
-    },
-    {
       key: 'vertex_count',
       header: 'Corners',
       numeric: true,

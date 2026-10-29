@@ -102,6 +102,9 @@ export const farmerFormSchema = farmerFormShape.superRefine((values, ctx) => {
     if (values.phone.trim() && !isPkMobile(values.phone)) {
       required(ctx, 'phone', 'Enter a Pakistani mobile number, for example 0300-1234567.');
     }
+    if (!values.phone.trim()) {
+      required(ctx, 'phone', 'Phone number is required.');
+    }
 
     if (!values.province_code.trim()) required(ctx, 'province_code', 'Choose a province.');
     if (!values.district_code.trim()) required(ctx, 'district_code', 'Choose a district.');

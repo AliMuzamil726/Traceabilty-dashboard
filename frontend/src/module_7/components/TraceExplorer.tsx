@@ -32,7 +32,7 @@ export function TraceExplorer({ target }: { target: TraceTarget }) {
   ];
   const items = [
     ...(t.bale ? [{ value: 'bale' as const, label: 'Bale' }] : []),
-    { value: 'heap' as const, label: t.heap.kind },
+    { value: 'heap' as const, label: `${t.heap.kind} details` },
     { value: 'deliveries' as const, label: 'Deliveries', count: t.deliveries.length },
     { value: 'farmers' as const, label: 'Farmers', count: t.farmers.length },
     { value: 'map' as const, label: 'Field map', count: t.fields.length },

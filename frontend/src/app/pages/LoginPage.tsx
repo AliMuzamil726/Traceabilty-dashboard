@@ -80,7 +80,7 @@ export default function LoginPage() {
 
       <form
         onSubmit={onSubmit}
-        className="relative z-10 w-full max-w-sm rounded-card border border-white/10 bg-white/95 p-6 shadow-[0_8px_40px_rgba(0,0,0,0.3)] backdrop-blur-sm sm:p-8"
+        className="relative z-10 w-full max-w-sm rounded-card border border-white/10 bg-white/95 p-6 shadow-[0_8px_40px_rgba(21,34,27,0.3)] backdrop-blur-sm sm:p-8"
       >
         <BrandLogo className="mx-auto mb-6 h-auto w-full max-w-[280px]" />
 

@@ -50,8 +50,14 @@ class TestCaching:
         cotton = dashboard("overview", admin, scope="all", crop="cotton")
         hemp = dashboard("overview", admin, scope="all", crop="hemp")
 
-        assert cotton["generated_at"] != hemp["generated_at"]
+        # Each crop is answered and cached on its own key: reading cotton again is the
+        # cached cotton answer, not the hemp one. (Two fresh reads can land in the same
+        # microsecond, so comparing their timestamps is not a reliable signal.)
         assert cache.size() >= 2
+        again = dashboard("overview", admin, scope="all", crop="cotton")
+        assert again["generated_at"] == cotton["generated_at"]
+        assert again["kpis"]["farmers"]["total"] == 1
+        assert hemp["kpis"]["farmers"]["total"] == 0
 
     def test_two_officers_never_share_an_answer(
         self,

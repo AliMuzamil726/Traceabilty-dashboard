@@ -312,6 +312,21 @@ class TestReceive:
         assert ok["warnings"] == ["The weight differs by -4% from the field weight."]
         assert ok["delivery"]["weighbridge_maunds"] is None  # maunds are for cotton only
 
+    def test_receiving_closes_the_request_and_frees_the_field(
+        self,
+        client: TestClient,
+        make_request: Callable[..., Farm],
+        deliver: Callable[..., Any],
+    ) -> None:
+        farm = make_request()
+        deliver(farm, weighbridge=1900)
+        h = farm["headers"]
+        req = client.get(f"{RADAR}/pickup-requests", headers=h).json()["items"][0]
+        assert req["status"] == "fulfilled"
+        assert req["delivery_id"]
+        row = radar_row(client, farm)
+        assert (row["pickup_state"], row["can_request"]) == ("delivered", True)
+
 
 class TestScopingAndCorrection:
     def test_officers_act_only_for_their_farmers(

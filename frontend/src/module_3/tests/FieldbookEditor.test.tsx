@@ -66,7 +66,9 @@ describe('FormStepper', () => {
     expect(within(nav).getAllByRole('button', { name: /Harvest,? complete/ }).length).toBeGreaterThan(0);
     expect(within(nav).getAllByRole('button', { name: /Pest and disease.*nothing to record/i }).length).toBeGreaterThan(0);
     expect(within(nav).getAllByRole('button', { name: /Irrigation,? not started/ }).length).toBeGreaterThan(0);
-    expect(within(nav).getByRole('progressbar')).toHaveAttribute('aria-valuenow', '3');
+    const bars = within(nav).getAllByRole('progressbar');
+    expect(bars.length).toBeGreaterThan(0);
+    for (const bar of bars) expect(bar).toHaveAttribute('aria-valuenow', '3');
   });
 
   it('lets the officer jump to any step', async () => {
@@ -87,7 +89,7 @@ describe('editor buttons', () => {
   });
 
   it('offers Save and Submit only on the last step', async () => {
-    renderEditor('labour_social');
+    renderEditor('transport');
     expect(await screen.findByText(/Step 11 of 11/)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Save and Submit' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Save and Next' })).toBeNull();

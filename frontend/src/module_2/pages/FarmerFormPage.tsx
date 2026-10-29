@@ -397,7 +397,7 @@ export default function FarmerFormPage() {
         <Card padding="lg">
           <SectionHeader title="Contact" />
           <div className="mt-4 grid gap-5 md:grid-cols-2">
-            <FormField label="Phone" error={errors.phone?.message} hint="Optional">
+            <FormField label="Phone" required={isCotton} error={errors.phone?.message} hint={isCotton ? '11-digit Pakistani mobile, e.g. 0300-1234567' : 'Optional — UK mobile'}>
               <PhoneInput
                 crop={crop}
                 value={values.phone}

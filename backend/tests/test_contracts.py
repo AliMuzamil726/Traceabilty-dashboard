@@ -4,12 +4,14 @@ The contracts document is what other modules (and the next developer) build agai
 so it must not drift from reality. This test reads the document itself and compares:
 
 * the events table with ``core.events.KNOWN_EVENTS`` and each module's ``PUBLISHES``;
+* every payload a module publishes with the keys the table promises;
 * each module's declared public API functions with its ``public_api.__all__``;
 * each module's endpoint table with the routes its router actually serves.
 """
 
 from __future__ import annotations
 
+import ast
 import importlib
 import re
 from pathlib import Path
@@ -17,11 +19,13 @@ from pathlib import Path
 import pytest
 from fastapi.routing import APIRoute
 
+from core import events as event_names
 from core.events import KNOWN_EVENTS
 
 CONTRACTS = Path(__file__).resolve().parents[2] / "docs" / "CONTRACTS.md"
 TEXT = CONTRACTS.read_text(encoding="utf-8")
-BUILT = [1, 2, 3, 4, 5, 6, 7]
+BACKEND = Path(__file__).resolve().parents[1]
+BUILT = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
 def _section(start: str, *, stop: str = r"\n#{2,3} ") -> str:
@@ -49,6 +53,155 @@ def test_each_module_publishes_what_the_table_says(number: int) -> None:
     declared = {name for name, owner in _event_table().items() if owner == number}
     published = set(importlib.import_module(f"module_{number}.events").PUBLISHES)
     assert published == declared
+
+
+# ---------------------------------------------------------------------- payloads
+
+#: Events whose payload is written as "the same" plus a few keys, so their documented
+#: keys are the base event's keys union the extra braces.
+_BASED_ON = {
+    "pickup.cancelled": "pickup.requested",
+    "delivery.dispatched": "delivery.scheduled",
+    "delivery.delivered": "delivery.scheduled",
+    "delivery.cancelled": "delivery.scheduled",
+    "delivery.corrected": "delivery.scheduled",
+    "gate.entry_accepted": "gate.entry_created",
+    "gate.entry_rejected": "gate.entry_created",
+}
+
+
+def _documented_payloads() -> dict[str, set[str]]:
+    """The payload keys the table promises for each event."""
+    events = _section("## 2. Events", stop=r"\n## ")
+    cells = dict(
+        re.findall(r"^\| `([a-z_]+\.[a-z_]+)` \| \d+ \| (.*?) \|$", events, re.M)
+    )
+    resolved: dict[str, set[str]] = {}
+    for name, cell in cells.items():
+        keys: set[str] = set()
+        for block in re.findall(r"\{([^}]*)\}", cell):
+            for part in block.split(","):
+                token = part.strip().strip("`").split(":")[0].strip()
+                if re.fullmatch(r"[a-z_]+", token):
+                    keys.add(token)
+        base = _BASED_ON.get(name)
+        if base:
+            keys |= resolved.get(base, set())
+        resolved[name] = keys
+    return resolved
+
+
+def _literal_keys(node: ast.Dict) -> set[str] | None:
+    keys: set[str] = set()
+    for key in node.keys:
+        if isinstance(key, ast.Constant) and isinstance(key.value, str):
+            keys.add(key.value)
+        else:
+            return None
+    return keys
+
+
+def _helper_keys(tree: ast.Module, node: ast.expr) -> set[str] | None:
+    """Keys of the dict a local helper such as ``self._payload(entry)`` returns."""
+    if not isinstance(node, ast.Call):
+        return None
+    func = node.func
+    name = func.attr if isinstance(func, ast.Attribute) else getattr(func, "id", None)
+    if not name:
+        return None
+    for candidate in ast.walk(tree):
+        if not isinstance(candidate, (ast.FunctionDef, ast.AsyncFunctionDef)):
+            continue
+        if candidate.name != name:
+            continue
+        for body in ast.walk(candidate):
+            if isinstance(body, ast.Return) and isinstance(body.value, ast.Dict):
+                return _literal_keys(body.value)
+            if (
+                isinstance(body, ast.Assign)
+                and isinstance(body.value, ast.Dict)
+                and any(
+                    isinstance(target, ast.Name) and target.id in {"payload", "data", "body"}
+                    for target in body.targets
+                )
+            ):
+                return _literal_keys(body.value)
+    return None
+
+
+def _payload_keys(node: ast.expr, tree: ast.Module) -> set[str] | None:
+    if isinstance(node, ast.Dict):
+        keys: set[str] = set()
+        for key, value in zip(node.keys, node.values):
+            if key is None:
+                unpacked = _helper_keys(tree, value)
+                if unpacked is None:
+                    return None
+                keys |= unpacked
+            elif isinstance(key, ast.Constant) and isinstance(key.value, str):
+                keys.add(key.value)
+            else:
+                return None
+        return keys
+    return _helper_keys(tree, node)
+
+
+def _published_names(node: ast.expr, constants: dict[str, str]) -> list[str]:
+    if isinstance(node, ast.IfExp):
+        return _published_names(node.body, constants) + _published_names(node.orelse, constants)
+    if isinstance(node, ast.Name):
+        return [constants.get(node.id, node.id)]
+    if isinstance(node, ast.Attribute):
+        return [constants.get(node.attr, node.attr)]
+    return [ast.unparse(node)]
+
+
+def _published_payloads() -> list[tuple[int, str, int, str, set[str] | None]]:
+    """Every ``bus.publish(...)`` in module code, with its event and payload keys."""
+    constants = {
+        name: value
+        for name, value in vars(event_names).items()
+        if name.isupper() and isinstance(value, str)
+    }
+    found: list[tuple[int, str, int, str, set[str] | None]] = []
+    for path in sorted(BACKEND.glob("module_*/**/*.py")):
+        relative = path.relative_to(BACKEND)
+        if "tests" in relative.parts:
+            continue
+        match = re.fullmatch(r"module_(\d+)", relative.parts[0])
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        for node in ast.walk(tree):
+            if not (
+                isinstance(node, ast.Call)
+                and isinstance(node.func, ast.Attribute)
+                and node.func.attr == "publish"
+                and len(node.args) >= 2
+            ):
+                continue
+            number = int(match.group(1)) if match else 0
+            keys = _payload_keys(node.args[1], tree)
+            for name in _published_names(node.args[0], constants):
+                found.append((number, str(relative), node.lineno, name, keys))
+    return found
+
+
+@pytest.mark.parametrize("number", BUILT)
+def test_every_published_payload_has_the_documented_keys(number: int) -> None:
+    """A payload that drops a promised key is a silent cross-module break."""
+    documented = _documented_payloads()
+    publishes = [row for row in _published_payloads() if row[0] == number]
+    problems: list[str] = []
+    for _, where, line, name, keys in publishes:
+        if name not in documented:
+            problems.append(f"{where}:{line} publishes {name}, which the table does not list")
+            continue
+        if keys is None:
+            problems.append(f"{where}:{line} {name} payload cannot be read as a dict literal")
+            continue
+        missing = documented[name] - keys
+        if missing:
+            problems.append(f"{where}:{line} {name} is missing {sorted(missing)}")
+    assert not problems, "\n".join(problems)
 
 
 # ------------------------------------------------------------------ public APIs
@@ -88,7 +241,7 @@ def _exported_functions(number: int) -> set[str]:
     }
 
 
-@pytest.mark.parametrize("number", [2, 3, 4, 5, 6, 7, 8])
+@pytest.mark.parametrize("number", [2, 3, 4, 5, 6, 7, 8, 9])
 def test_public_api_matches_the_contract(number: int) -> None:
     declared = _declared_functions(number)
     exported = _exported_functions(number)

@@ -13,7 +13,7 @@ from core.deps import CurrentOfficer, get_current_officer, get_db, get_settings_
 from core.errors import ForbiddenError, NotFoundError, UnauthorizedError, ValidationAppError
 from core.pagination import Page, PageParams, page_params
 from shared import avatars
-from shared.models.officer import ROLE_OFFICER, Officer
+from shared.models.officer import Officer
 from shared.repositories.officers import OfficerRepository
 from shared.schemas import CurrentOfficerOut, OfficerOut
 

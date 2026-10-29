@@ -58,6 +58,7 @@ describe('cotton form', () => {
       'field_office_id',
       'id_number',
       'name',
+      'phone',
       'province_code',
       'tehsil_code',
       'tenure',
@@ -75,9 +76,9 @@ describe('cotton form', () => {
     expect(errorPaths({ ...COTTON, id_number: '3520212345671' })).toEqual([]);
   });
 
-  it('rejects a phone that is not a Pakistani mobile, and allows a blank one', () => {
+  it('rejects a phone that is not a Pakistani mobile, and requires one', () => {
     expect(errorPaths({ ...COTTON, phone: '0400-1234567' })).toEqual(['phone']);
-    expect(errorPaths({ ...COTTON, phone: '' })).toEqual([]);
+    expect(errorPaths({ ...COTTON, phone: '' })).toEqual(['phone']);
   });
 
   it('rejects names with digits or symbols', () => {

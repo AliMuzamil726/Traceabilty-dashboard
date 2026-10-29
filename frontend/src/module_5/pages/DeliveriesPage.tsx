@@ -1,9 +1,9 @@
-import { Download } from 'lucide-react';
+import { Download, Scale } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { toApiError } from '@/core/api/errors';
 import { useCurrentOfficer } from '@/core/hooks/useSharedData';
-import { Button, PageHeader, Tabs, toast } from '@/design-system/components';
+import { Button, PageHeader, Tabs, buttonClasses, toast } from '@/design-system/components';
 import { deliveriesApi } from '../api/client';
 import { DeliveryDetail } from '../components/DeliveryDetail';
 import { DeliveryFilters } from '../components/DeliveryFilters';
@@ -47,29 +47,41 @@ export default function DeliveriesPage() {
   return (
     <div className="flex flex-col gap-5">
       <PageHeader
-        title="In Transit"
+        title="Deliveries"
         subtitle="Schedule → In transit → Delivered. From farm to ginner or processor gate."
         actions={
-          <Button variant="secondary" size="sm" leftIcon={<Download className="h-4 w-4" />}
-            onClick={() => deliveriesApi.download('/export.csv', apiParams).catch((e: unknown) => toast.error('The export failed', toApiError(e).message))}>
-            Export CSV
-          </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link to={`/gate?crop=${apiParams.crop === 'hemp' ? 'hemp' : 'cotton'}`} className={buttonClasses('secondary', 'sm')}>
+              <Scale className="h-4 w-4" aria-hidden />
+              Gate Reception
+            </Link>
+            <Button variant="secondary" size="sm" leftIcon={<Download className="h-4 w-4" />}
+              onClick={() => deliveriesApi.download('/export.csv', apiParams).catch((e: unknown) => toast.error('The export failed', toApiError(e).message))}>
+              <span className="hidden sm:inline">Export CSV</span>
+              <span className="sm:hidden">Export</span>
+            </Button>
+          </div>
         }
       />
       <DeliveryKpis stats={stats.data} loading={stats.isLoading} showMaunds={filters.crop !== 'hemp'} />
       <Tabs
-        aria-label="In Transit views"
+        aria-label="Deliveries views"
         value={view}
         onChange={(tab) => go({ tab: tab === 'inbox' ? null : tab })}
         items={[
           { value: 'inbox', label: 'Requests inbox', count: inbox.data?.length },
-          { value: 'deliveries', label: 'In Transit & delivered', count: list.data?.total },
+          { value: 'deliveries', label: 'In transit & delivered', count: list.data?.total },
         ]}
       >
         {(tab) => (
           <div className="mt-4">
             {tab === 'inbox' ? (
-              <RequestsInbox items={inbox.data ?? []} loading={inbox.isLoading} />
+              <RequestsInbox
+                items={inbox.data ?? []}
+                loading={inbox.isLoading}
+                error={inbox.error}
+                onRetry={() => void inbox.refetch()}
+              />
             ) : (
               <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(280px,360px)_minmax(0,1fr)]">
                 <div className="flex flex-col gap-4">
@@ -82,6 +94,8 @@ export default function DeliveriesPage() {
                     selectedId={selectedId}
                     onSelect={(id) => go({ id })}
                     loading={list.isLoading}
+                    error={list.error}
+                    onRetry={() => void list.refetch()}
                     page={page}
                     total={list.data?.total ?? 0}
                     pageSize={PAGE_SIZE}

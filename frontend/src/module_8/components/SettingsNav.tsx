@@ -44,7 +44,7 @@ export function SettingsNav() {
                       to={`/settings/${item.to}`}
                       className={({ isActive }) =>
                         cn(
-                          'flex items-center gap-2.5 rounded-control px-3 py-2 text-base transition-colors duration-base ease-brand',
+                          'flex items-center gap-2.5 rounded-control px-3 py-2 text-sm transition-colors duration-base ease-brand',
                           isActive
                             ? 'bg-forest-50 font-medium text-forest-800'
                             : 'text-ink hover:bg-canvas',

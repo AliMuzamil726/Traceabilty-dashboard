@@ -155,7 +155,16 @@ class OfficerService:
             ),
             session=self.session,
         )
-        bus.publish(OFFICER_CREATED, {"officer_id": row.id, "code": row.code}, session=self.session)
+        bus.publish(
+            OFFICER_CREATED,
+            {
+                "officer_id": row.id,
+                "code": row.code,
+                "full_name": row.full_name,
+                "role": row.role,
+            },
+            session=self.session,
+        )
         self.session.commit()
         return self.get(row.id)
 
@@ -197,7 +206,9 @@ class OfficerService:
                 "officer", row.id, audit.ACTION_UPDATE, officer.id, diff, session=self.session
             )
             bus.publish(
-                OFFICER_UPDATED, {"officer_id": row.id, "code": row.code}, session=self.session
+                OFFICER_UPDATED,
+                {"officer_id": row.id, "code": row.code, "changed": sorted(diff)},
+                session=self.session,
             )
         self.session.commit()
         return self.get(row.id)
@@ -221,8 +232,8 @@ class OfficerService:
             session=self.session,
         )
         bus.publish(
-            OFFICER_DEACTIVATED if not active else OFFICER_UPDATED,
-            {"officer_id": row.id, "code": row.code},
+            OFFICER_DEACTIVATED,
+            {"officer_id": row.id, "code": row.code, "active": active},
             session=self.session,
         )
         self.session.commit()

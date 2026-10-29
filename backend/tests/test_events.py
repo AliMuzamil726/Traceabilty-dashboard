@@ -27,11 +27,16 @@ EXPECTED_EVENTS = {
     "delivery.dispatched",
     "delivery.delivered",
     "delivery.cancelled",
+    "delivery.corrected",
     "heap.opened",
     "heap.closed",
     "bale.created",
     "bale.voided",
     "qr.scanned",
+    # Module 9 (Gate Reception)
+    "gate.entry_created",
+    "gate.entry_accepted",
+    "gate.entry_rejected",
     # Module 8 (Settings)
     "config.changed",
     "officer.created",

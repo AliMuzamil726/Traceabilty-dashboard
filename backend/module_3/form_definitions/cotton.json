@@ -117,6 +117,7 @@
         {
           "key": "passes",
           "label": "Number of passes",
+          "help": "How many times the machine crossed the field (e.g. 2 = ploughed twice).",
           "type": "number",
           "integer": true,
           "min": 1,
@@ -223,10 +224,11 @@
         {
           "key": "seed_rate",
           "label": "Seed rate",
+          "help": "Typical: 8–12 kg/acre broadcast, 5–8 kg/acre drill. Up to 100 kg accepted.",
           "type": "number",
           "unit": "kg per acre",
           "min": 0,
-          "max": 50,
+          "max": 100,
           "required": true
         },
         {

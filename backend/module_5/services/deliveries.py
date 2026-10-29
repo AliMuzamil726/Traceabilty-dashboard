@@ -161,6 +161,7 @@ class DeliveryService:
             "site_id": d.site_id,
             "crop": d.crop,
             "season_year": d.season_year,
+            "scheduled_date": d.scheduled_date.isoformat(),
         }
 
     # ------------------------------------------------------------------ schedule
@@ -282,7 +283,7 @@ class DeliveryService:
             )
             bus.publish(
                 events.DELIVERY_SCHEDULED,
-                {**self._payload(d), "scheduled_date": scheduled_date.isoformat()},
+                self._payload(d),
                 officer_id=officer.id,
                 session=self.session,
             )
@@ -459,21 +460,82 @@ class DeliveryService:
         note: str | None = None,
     ) -> tuple[Delivery, list[str]]:
         d = self.get_for(delivery_id, officer, lock=True)
+        warnings = self._receive_locked(
+            d,
+            officer.id,
+            weighbridge_kg=weighbridge_weight_kg,
+            moisture_pct=moisture_pct,
+            note=note,
+        )
+        self.session.commit()
+        return d, warnings
+
+    def receive_at_gate(
+        self,
+        delivery_id: str,
+        officer_id: str | None,
+        *,
+        gross_weight_kg: float,
+        tare_weight_kg: float,
+        moisture_pct: float,
+        note: str | None = None,
+    ) -> tuple[Delivery, list[str]]:
+        """Gate receipt inside the caller's transaction (Module 9 commits).
+
+        A gate officer is not the officer who registered the farmer, so the farmer
+        scoping of :meth:`receive` does not apply. The net weighbridge weight is what
+        the delivery records, so variance, heaps and the dashboard see one figure.
+        """
+        net = round(gross_weight_kg - tare_weight_kg, 2)
+        if tare_weight_kg < 0 or gross_weight_kg <= 0 or net <= 0:
+            raise ValidationAppError(
+                "The gross weight must be more than the tare weight.",
+                code="delivery_weight_invalid",
+                details={
+                    "fields": [
+                        {
+                            "field": "gross_weight_kg",
+                            "location": "body",
+                            "message": "Enter a gross weight above the tare weight.",
+                            "type": "value",
+                        }
+                    ]
+                },
+            )
+        d = self.repo.get_for_update(delivery_id)
+        if d is None:
+            raise NotFoundError("That delivery does not exist.", code="delivery_not_found")
+        warnings = self._receive_locked(
+            d, officer_id, weighbridge_kg=net, moisture_pct=moisture_pct, note=note
+        )
+        self.session.flush()
+        return d, warnings
+
+    def _receive_locked(
+        self,
+        d: Delivery,
+        officer_id: str | None,
+        *,
+        weighbridge_kg: float,
+        moisture_pct: float,
+        note: str | None,
+    ) -> list[str]:
         if d.status != IN_TRANSIT:
-            self._move(d, DELIVERED, officer.id)  # raises invalid_transition
+            self._move(d, DELIVERED, officer_id)  # raises invalid_transition
         note = _note(note)
         warnings = self._apply_weights(
-            d, weighbridge_kg=weighbridge_weight_kg, moisture_pct=moisture_pct, note=note
+            d, weighbridge_kg=weighbridge_kg, moisture_pct=moisture_pct, note=note
         )
         if note:
             d.note = f"{d.note}\n{note}" if d.note else note
-        self._move(d, DELIVERED, officer.id, note)
+        self._move(d, DELIVERED, officer_id, note)
         d.delivered_at = utcnow()
+        self._fulfil_request(d)
         audit.record(
             "delivery",
             d.id,
             "receive",
-            officer.id,
+            officer_id,
             {
                 "status": {"from": IN_TRANSIT, "to": DELIVERED},
                 "weighbridge_weight_kg": d.weighbridge_weight_kg,
@@ -492,11 +554,18 @@ class DeliveryService:
                 "variance_level": d.variance_level,
                 "delivered_at": d.delivered_at.isoformat(),
             },
-            officer_id=officer.id,
+            officer_id=officer_id,
             session=self.session,
         )
-        self.session.commit()
-        return d, warnings
+        return warnings
+
+    def _fulfil_request(self, d: Delivery) -> None:
+        """A received load closes its Radar request, so the field can be requested again."""
+        if not d.pickup_request_id:
+            return
+        request = radar.get_pickup_request(self.session, d.pickup_request_id)
+        if request is not None and request.status in ("requested", "scheduled"):
+            radar.mark_pickup_fulfilled(self.session, request.id)
 
     def cancel(self, delivery_id: str, officer: CurrentOfficer, reason: str | None) -> Delivery:
         reason = (reason or "").strip()
@@ -515,6 +584,24 @@ class DeliveryService:
             )
         self.cancel_delivery(d, reason, officer_id=officer.id, release_request=True)
         self.session.commit()
+        return d
+
+    def cancel_at_gate(self, delivery_id: str, officer_id: str | None, reason: str) -> Delivery:
+        """Gate rejection inside the caller's transaction (Module 9 commits).
+
+        Only a load still in transit can be refused; like :meth:`cancel` this releases
+        the Radar request, so the field can be requested again.
+        """
+        d = self.repo.get_for_update(delivery_id)
+        if d is None:
+            raise NotFoundError("That delivery does not exist.", code="delivery_not_found")
+        if d.status != IN_TRANSIT:
+            raise InvalidTransitionError(
+                f"A {d.status.replace('_', ' ')} delivery cannot be rejected at the gate.",
+                details={"from": d.status, "allowed": list(TRANSITIONS[d.status])},
+            )
+        self.cancel_delivery(d, reason, officer_id=officer_id, release_request=True)
+        self.session.flush()
         return d
 
     def cancel_delivery(
@@ -621,6 +708,17 @@ class DeliveryService:
                 "reason": reason,
                 **{k: {"from": before[k], "to": after[k]} for k in before if before[k] != after[k]},
             },
+            session=self.session,
+        )
+        bus.publish(
+            events.DELIVERY_CORRECTED,
+            {
+                **self._payload(d),
+                "weighbridge_weight_kg": d.weighbridge_weight_kg,
+                "moisture_pct": d.moisture_pct,
+                "reason": reason,
+            },
+            officer_id=officer.id,
             session=self.session,
         )
         self.session.commit()

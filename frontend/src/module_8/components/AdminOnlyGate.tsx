@@ -29,8 +29,8 @@ export function AdminOnlyGate({ children }: AdminOnlyGateProps) {
         title="Administrator access required"
         description={
           'This part of Settings changes things every officer depends on, so only an ' +
-          'administrator can open it. Use the officer switcher at the top of the screen to ' +
-          'act as an administrator, or ask one to make the change. Your own preferences are ' +
+          'administrator can open it. Sign in as an administrator (in development the Dev ' +
+          'switcher does the same), or ask one to make the change. Your own preferences are ' +
           'on the My preferences screen and need no special access.'
         }
       />

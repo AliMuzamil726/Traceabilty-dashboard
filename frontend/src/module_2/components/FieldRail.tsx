@@ -51,7 +51,7 @@ export function FieldRail({
         </Button>
       </div>
 
-      <ul className="grid max-h-[260px] min-h-0 flex-1 grid-cols-1 content-start gap-1.5 overflow-y-auto sm:grid-cols-2 xl:grid-cols-3">
+      <ul className="grid min-h-0 flex-1 grid-cols-1 content-start gap-1.5 overflow-y-auto rounded-card sm:grid-cols-2 xl:grid-cols-3" style={{ maxHeight: '260px' }}>
         {fields.map((field) => {
           const selected = field.id === selectedFieldId;
           const editing = field.id === editingFieldId;
@@ -74,7 +74,7 @@ export function FieldRail({
                     className="min-w-0 flex-1 truncate tabular text-xs text-muted"
                     title={`${field.vertex_count} corners`}
                   >
-                    {formatDecimal(field.area_acre, 2)} ac · {formatDecimal(field.area_ha, 2)} ha
+                    {formatDecimal(field.area_acre, 2)} ac
                   </span>
                   {editing ? (
                     <Badge size="sm" tone="accent">

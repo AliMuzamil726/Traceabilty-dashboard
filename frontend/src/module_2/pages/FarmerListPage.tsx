@@ -3,12 +3,14 @@ import { MapPinPlus, Search, UserPlus, Users } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { PageContainer } from '@/app/layout/PageContainer';
+import { toApiError } from '@/core/api/errors';
 import { useMasterList } from '@/core/hooks/useSharedData';
 import { formatDate } from '@/core/utils/format';
 import { Badge, StatusPill } from '@/design-system/components/Badge';
 import { Button } from '@/design-system/components/Button';
 import { DataTable, type Column } from '@/design-system/components/DataTable';
 import { EmptyState } from '@/design-system/components/EmptyState';
+import { ErrorState } from '@/design-system/components/ErrorState';
 import { Input } from '@/design-system/components/Input';
 import { PageHeader } from '@/design-system/components/PageHeader';
 import { Select } from '@/design-system/components/Select';
@@ -168,7 +170,7 @@ export default function FarmerListPage() {
       />
 
       <div className="mt-6 flex flex-wrap items-end gap-3">
-        <div className="min-w-[240px] flex-1">
+        <div className="min-w-0 flex-1">
           <Input
             id="farmer-search"
             aria-label="Search by SAWIE ID, CNIC / ID number, phone, or name"
@@ -236,7 +238,13 @@ export default function FarmerListPage() {
             onPageChange: setPage,
           }}
           empty={
-            unfiltered ? (
+            farmers.isError ? (
+              <ErrorState
+                title="Farmers could not be loaded"
+                description={toApiError(farmers.error).message}
+                onRetry={() => void farmers.refetch()}
+              />
+            ) : unfiltered ? (
               <EmptyState
                 icon={<Users />}
                 title="No farmers registered yet"

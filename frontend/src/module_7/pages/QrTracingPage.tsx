@@ -17,7 +17,10 @@ export default function QrTracingPage() {
   const [params, setParams] = useSearchParams();
   const crop: Crop = params.get('crop') === 'hemp' ? 'hemp' : 'cotton';
   const sites = useSites(crop);
-  const siteId = params.get('site') ?? sites.data?.[0]?.id ?? '';
+  const requestedSite = params.get('site');
+  const siteId = requestedSite && (sites.data ?? []).some((s) => s.id === requestedSite)
+    ? requestedSite
+    : sites.data?.[0]?.id ?? '';
   const lots = useLots({ crop, site_id: siteId || undefined }, Boolean(siteId));
   const lotId = params.get('lot');
   const trace = params.get('trace');

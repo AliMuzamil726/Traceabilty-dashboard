@@ -9,8 +9,9 @@ Two crop programmes run in this phase: **Cotton** for Pakistani farmers and **He
 UK farmers. The selected crop decides the country, form fields, units and dropdown
 lists everywhere in the product.
 
-All eight modules are built. Login does not exist yet: an officer is chosen with the
-development switcher in the top bar.
+All nine modules are built. The sign-in screen checks a password, but every request
+still names the acting officer in an `X-Officer-Id` header, so this is not
+authentication yet (`docs/KNOWN_LIMITATIONS.md`).
 
 ## Modules
 
@@ -24,10 +25,12 @@ development switcher in the top bar.
 | 6 | Heap | `module_6` | `/heaps` | `/api/v1/heaps` | **built** |
 | 7 | QR Tracing | `module_7` | `/qr` (public page `/trace/:code`) | `/api/v1/qr` | **built** |
 | 8 | Settings | `module_8` | `/settings` | `/api/v1/settings` | **built** (administrator only) |
+| 9 | Gate Reception | `module_9` | `/gate` | `/api/v1/gate` | **built** |
 
-Data flows Farmer and Field (2) to Fieldbook (3) to Harvest Radar (4) to Deliveries (5)
-to Heap (6) to QR Tracing (7); the Dashboard (1) reads from all of them.
-Build order: 2, 3, 4, 5, 6, 7, then 1, then 8, then an audit.
+Data flows Farmer and Field (2) to Fieldbook (3) to Harvest Radar (4) to Deliveries (5),
+through Gate Reception (9), to Heap (6) to QR Tracing (7); the Dashboard (1) reads from
+all of them.
+Build order: 2, 3, 4, 5, 6, 7, then 1, then 8, then 9.
 
 ## Dashboard (Module 1)
 
@@ -65,7 +68,7 @@ density and default crop.
 
 | Section | What it changes |
 | --- | --- |
-| Officers | Who may use the product, their field office and role. No passwords exist yet |
+| Officers | Who may use the product, their field office and role. New accounts start on the shared default password and each officer changes it from their profile |
 | Permissions | A read-only matrix of what each role may do, generated from the rules the server enforces |
 | Field offices | The teams farmers and officers belong to |
 | Crops and season | The crop clock, with a preview of how many fields would change readiness bucket |
@@ -161,7 +164,7 @@ and note; any field that cannot be requested is listed with the reason. A field 
 only one open request per season, a request can be cancelled with a reason while it is
 still waiting, and a field with an open request cannot be removed. Officers act for the
 farmers they registered and can view everyone else's read only; administrators act for
-all. Deliveries (Module 5) will pick the requests up from here.
+all. Deliveries (Module 5) picks the requests up from here.
 
 ## Deliveries (Module 5)
 
@@ -173,14 +176,38 @@ request as scheduled.
 
 A delivery moves strictly from scheduled to in transit (Dispatch, optionally with the
 weight taken at the farm) to delivered (Receive at gate, with the weighbridge weight and
-moisture). Before confirming, the gate officer sees the difference from the field weight
+moisture). The gate can also record that decision on its own screen (Module 9, below).
+Before confirming, the gate officer sees the difference from the field weight
 or the estimate: within 3 percent is fine, from 3 percent it asks for a check, from 5
 percent it is flagged and needs a note. Moisture above 12 percent (cotton) or 16 percent
 (hemp) is warned. A delivery can be cancelled with a reason until it is delivered, which
-also closes the radar request so the field can be requested again. Once delivered it
-cannot change, except by an administrator correction with a reason, which is audited.
+also closes the radar request so the field can be requested again; receiving it closes
+the request the same way. Once delivered it cannot change, except by an administrator
+correction with a reason, which is audited and, for an accepted load, copied onto the
+gate entry.
 Each delivery has a one-page slip for the driver with a QR of its number. Cotton weights
 are also shown in maunds (40 kg).
+
+## Gate Reception (Module 9)
+
+The ginner's or processor's gate, at `/gate`, filtered by site and crop. **Due to
+arrive** lists the in-transit deliveries heading to the site that have not reached the
+gate yet; **Record arrival** opens one gate entry for that delivery, copying its vehicle
+and driver. A delivery can have only one gate entry, so arriving twice is refused.
+
+**At the gate** lists the loads standing there. Accepting a load asks for the weighbridge
+readings, gross and tare: the net weight (gross minus tare) is what the delivery records.
+The screen shows the variance against the field weight or the pickup estimate before
+confirming, using the tolerances in force for the crop, and holds a flagged load until a
+note explains the difference. Accepting marks the delivery delivered with that net
+weight, exactly as the Receive dialog in Deliveries does, including warnings, audit,
+history and the Radar release. Receiving or cancelling from Deliveries while a load
+stands at the gate settles its entry instead of leaving a second open record.
+
+Rejecting a load needs a reason (3 to 500 characters) and cancels the delivery, which
+also releases its Radar request; the reason is kept on both records. Five figures sit at
+the top: due to arrive, at the gate, accepted today, rejected today and the net weight
+received today. Every decision is audited with the officer and the weights.
 
 ## Heap (Module 6)
 
@@ -271,7 +298,11 @@ project-root/
     module_1/              built: config.py (alert thresholds), services/ package (filters,
                            sources, overview, charts, alerts, activity, mapview,
                            officers, links, cache); owns no tables
-    module_8/              __init__, meta (deferred)
+    module_8/              built: settings values and history, officers and reference
+                           data, config proxies, backup and restore, audit view
+    module_9/              built: gate_entries (models, repository, services, events);
+                           accepting or rejecting a load settles the delivery through
+                           Module 5's public API, in the same transaction
     scripts/               seed.py, seed_data/*.json, seed_perf.py (10,000-farmer measuring set)
     migrations/            Alembic scaffold (alembic.ini next to it)
     data/                  SQLite database (git-ignored)
@@ -285,7 +316,7 @@ project-root/
       core/                api/, store/, hooks/, utils/
       design-system/       tokens.css, components/, motion/
       shared/              components/ (OfficerSwitcher, ModulePlaceholder, ErrorBoundary, NotFound, ...)
-      module_1/ ... module_8/
+      module_1/ ... module_9/
     e2e/                   Playwright smoke tests for Modules 2 and 3 (not part of npm run test)
 ```
 
@@ -344,9 +375,9 @@ Reseed reference data at any time (safe to repeat): `cd backend && python -m scr
 | `APP_ENV` | `development` | `development`, `test` or `production` (production requires the `X-Officer-Id` header) |
 | `CORS_ORIGINS` | `http://localhost:5173,http://127.0.0.1:5173` | comma-separated |
 | `PUBLIC_BASE_URL` | `http://localhost:5173` | address the QR codes open (`{PUBLIC_BASE_URL}/trace/{code}`). Use the computer's network address to scan with a phone; see QR Tracing. |
-| `QR_IP_SALT` | `sawie-dev-salt-change-me` | secret mixed into the hash of a scanner's address; change it in production |
+| `QR_IP_SALT` | `sawie-dev-salt-change-me` | secret mixed into the hash of a scanner's address. Production refuses to start with a placeholder value |
 | `UPLOAD_DIR` | `./storage` | uploaded files |
-| `SEED_ON_START` | `true` | on every start, insert any missing reference rows (offices, officers, master lists, crop clock); existing rows are left alone |
+| `SEED_ON_START` | `false` | insert missing reference rows (offices, officers, master lists, crop clock) on start; existing rows are left alone. `.env.example` turns it on for development; production refuses `true` because the seed creates officers with a known password |
 | `DEFAULT_OFFICER_CODE` | `PK-MUL-01` | acting officer in development when no header is sent |
 | `LOG_LEVEL` | `INFO` | |
 
@@ -384,7 +415,9 @@ Reference data added for Module 2 is marked in the seed files themselves with a
 before production use. The fieldbook's lists and crop-clock days follow the Module 3
 specification and should be checked the same way.
 
-Use the **Dev** officer switcher in the top bar to act as any of them.
+Sign in on the login screen with an officer's code and password. Every seeded account
+starts on the shared default password and can change it from **My profile**. In
+development the **Dev** switcher in the top bar acts as any officer without signing in.
 
 ## How modules communicate
 
@@ -447,10 +480,11 @@ See `docs/TESTING.md` for everything that is covered.
 
 ## Audit
 
-See `docs/AUDIT_REPORT.md`, `docs/KNOWN_LIMITATIONS.md` and `docs/NEXT_STEPS.md`. Read the limitations before exposing the API: identity is a header, not a login.
+See `docs/AUDIT_REPORT.md`, `docs/KNOWN_LIMITATIONS.md` and `docs/NEXT_STEPS.md`. Read the limitations before exposing the API: the sign-in screen checks a password, but requests still identify the officer with a header, not a session.
 
 ## Roadmap
 
-* **Login**: replaces the Dev officer switcher and the `X-Officer-Id` fallback. Settings
-  already has the role matrix and the officer records it will need.
+* **Real sessions**: the sign-in screen already checks passwords, but requests still
+  identify the officer with the `X-Officer-Id` header. A signed cookie or token replaces
+  that header, and the Dev officer switcher with the `DEFAULT_OFFICER_CODE` fallback.
 * **Supabase (Postgres)**: change `DATABASE_URL`, then create the first Alembic revision.

@@ -43,7 +43,7 @@
       "fields": [
         { "key": "operation_date", "label": "Operation date", "type": "date", "required": true },
         { "key": "operation_type", "label": "Operation type", "type": "select", "list_key": "operation_type_hemp", "required": true },
-        { "key": "passes", "label": "Number of passes", "type": "number", "integer": true, "min": 1, "max": 12, "required": true },
+        { "key": "passes", "label": "Number of passes", "help": "How many times the machine crossed the field (e.g. 2 = cultivated twice).", "type": "number", "integer": true, "min": 1, "max": 12, "required": true },
         { "key": "seedbed_condition", "label": "Seedbed condition", "type": "select", "list_key": "seedbed_condition", "required": true },
         { "key": "soil_temperature", "label": "Soil temperature at drilling", "type": "number", "unit": "°C", "min": -5, "max": 40, "required": false }
       ],

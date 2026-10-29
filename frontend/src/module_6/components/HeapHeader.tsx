@@ -1,4 +1,7 @@
+import { QrCode } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { formatDate } from '@/core/utils/format';
+import { buttonClasses } from '@/design-system/components/buttonStyles';
 import type { HeapDetail } from '../api/types';
 import { words } from '../lib/wording';
 import { HeapStatusPill } from './HeapList';
@@ -19,7 +22,16 @@ export function HeapHeader({ heap }: { heap: HeapDetail }) {
         </p>
         {heap.close_reason && <p className="text-xs text-muted">Close reason: {heap.close_reason}</p>}
       </div>
-      <HeapStatusPill status={heap.status} />
+      <div className="flex flex-col items-end gap-2">
+        <HeapStatusPill status={heap.status} />
+        <Link
+          to={`/qr?crop=${heap.crop}&site=${heap.site.id}&lot=${encodeURIComponent(heap.heap_id)}`}
+          className={buttonClasses('ghost', 'sm')}
+        >
+          <QrCode className="h-4 w-4" aria-hidden />
+          QR codes
+        </Link>
+      </div>
     </div>
   );
 }

@@ -40,7 +40,7 @@ export function SchemaForm({
   const set = (key: string, value: unknown) => onChange(withComputed(step, { ...values, [key]: value }));
 
   return (
-    <div className="grid grid-cols-1 items-start gap-x-6 gap-y-5 sm:grid-cols-2">
+    <div className="grid grid-cols-1 items-start gap-x-4 gap-y-5 sm:grid-cols-2">
       <AnimatePresence initial={false}>
         {step.fields
           .filter((f) => isVisible(f, values))
@@ -62,7 +62,7 @@ export function SchemaForm({
                 className={cn(
                   // min-w-0 is critical: without it, grid children refuse to shrink and
                   // number+unit rows collapse the input to a few pixels.
-                  'min-w-0 rounded-control border border-line/70 bg-canvas/45 p-3.5 transition-colors focus-within:border-forest-500/60 focus-within:bg-surface',
+                  'min-w-0 rounded-control border border-line/70 bg-canvas/45 px-3.5 pb-3.5 pt-3 transition-colors focus-within:border-forest-500/60 focus-within:bg-surface',
                   wide && 'sm:col-span-2',
                 )}
                 data-field={field.key}

@@ -28,6 +28,7 @@ def prepare_storage(settings: Settings) -> None:
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     settings: Settings = app.state.settings
+    settings.check_production()
     database: Database = app.state.db
     logger.info(
         "Starting %s %s (env=%s, db=%s)",
@@ -47,7 +48,9 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     guards.clear()
     register_event_handlers(bus, guards)
 
-    if settings.seed_on_start:
+    if settings.seed_on_start and settings.is_dev:
+        # Demo offices and officers with a known password are development fixtures only;
+        # production has already refused SEED_ON_START=true (see Settings.check_production).
         # The seed only inserts rows that are missing and never overwrites edits, so it
         # runs on every start. That way a database created by an earlier build picks up
         # reference data added since (new master lists, locations) without a reset.

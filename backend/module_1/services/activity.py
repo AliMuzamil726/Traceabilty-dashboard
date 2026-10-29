@@ -40,6 +40,7 @@ ENTITIES: dict[str, tuple[int, str]] = {
     "bale": (6, "Bale"),
     "qr_token": (7, "QR code"),
     "qr_labels": (7, "QR labels"),
+    "gate_entry": (9, "Gate entry"),
 }
 
 MODULE_NAMES: dict[int, str] = {
@@ -49,6 +50,7 @@ MODULE_NAMES: dict[int, str] = {
     5: "Deliveries",
     6: "Heap",
     7: "QR Tracing",
+    9: "Gate Reception",
 }
 
 ACTIONS: dict[str, str] = {
@@ -104,6 +106,8 @@ def _link(entry: AuditLog, module: int, f: DashboardFilters) -> links.Link:
         return links.fieldbook(entry.entity_id)
     if entry.entity == "delivery":
         return links.delivery(entry.entity_id, f)
+    if entry.entity == "gate_entry":
+        return links.gate(f)
     return {
         2: links.register(f),
         3: links.fieldbook_list(),

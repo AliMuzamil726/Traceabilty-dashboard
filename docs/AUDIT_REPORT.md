@@ -1,7 +1,8 @@
 # Audit report
 
-Independent final audit and hardening of SAWIE (Modules 1 to 7). No features were added,
-and Login and Settings remain out of scope.
+Independent final audit and hardening of SAWIE. The audit was first written when Modules 1
+to 7 were built; Modules 8 (Settings) and 9 (Gate Reception) have since been completed and
+are included in the current checks and counts below. No audit finding is still open.
 
 ## Summary
 
@@ -10,10 +11,10 @@ by tests written for the audit (F-09 to F-12); two High dependency findings were
 upgrades (F-01, F-02). Every Critical and High finding is fixed and has a regression test.
 Nothing Critical was found. Two Low items are accepted with reasons.
 
-Final gate, all green: backend pytest (whole suite), ruff, pip-audit (no known
-vulnerabilities), frontend lint (zero warnings), typecheck, 238 unit tests, production
-build, colour audit. `npm audit --omit=dev` is clean; seven advisories remain in Tailwind 3
-build tooling only (F-03).
+Final gate, all green: backend pytest (whole suite, 940 tests), ruff, pip-audit (no known
+vulnerabilities), frontend lint (zero warnings), typecheck, 266 frontend unit tests,
+production build, colour audit. `npm audit --omit=dev` is clean; seven advisories remain in
+Tailwind 3 build tooling only (F-03).
 
 ## Method
 

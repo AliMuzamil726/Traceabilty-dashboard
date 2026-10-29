@@ -44,7 +44,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
   const isInvalid = invalid ?? field?.invalid ?? false;
 
   return (
-    <div className={cn('flex w-full min-w-0 items-center gap-2', className)}>
+    <div className={cn('flex w-full min-w-0 flex-wrap items-center gap-x-2 gap-y-1', className)}>
       <input
         ref={ref}
         id={id ?? field?.id}
@@ -66,7 +66,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
         aria-invalid={isInvalid || undefined}
         aria-describedby={rest['aria-describedby'] ?? field?.describedBy}
         className={cn(
-          controlClasses(isInvalid, 'h-10 min-w-[5.5rem] flex-1 px-3'),
+          controlClasses(isInvalid, 'h-10 min-w-[3.5rem] flex-1 px-3'),
           // Hide native number spinners (Chrome, Safari, Edge, Firefox)
           '[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
           'tabular-nums text-right',
@@ -75,7 +75,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(functi
       />
       {unit ? (
         <span
-          className="max-w-[9rem] shrink-0 select-none text-sm leading-snug text-muted sm:max-w-none"
+          className="shrink-0 select-none whitespace-nowrap text-sm leading-snug text-muted"
           aria-hidden
         >
           {unit}

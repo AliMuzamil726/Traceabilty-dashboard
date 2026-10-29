@@ -34,8 +34,10 @@ export function FindCodeBox({ onFound }: { onFound: (r: Resolved) => void }) {
           <Input mono value={text} onChange={(e) => setText(e.target.value)} placeholder="e.g. BWP-G1-H01-001" />
         </FormField>
       </div>
-      <Button type="submit" loading={resolve.isPending} leftIcon={<Search className="h-4 w-4" />}>Find</Button>
-      <Button type="button" variant="secondary" leftIcon={<Camera className="h-4 w-4" />} onClick={() => setScanning(true)}>Scan</Button>
+      <div className="flex gap-2 pb-[1px]">
+        <Button type="submit" loading={resolve.isPending} leftIcon={<Search className="h-4 w-4" />}>Find</Button>
+        <Button type="button" variant="secondary" leftIcon={<Camera className="h-4 w-4" />} onClick={() => setScanning(true)}>Scan</Button>
+      </div>
       <CameraScanner open={scanning} onClose={() => setScanning(false)} onResult={onScan} />
     </form>
   );

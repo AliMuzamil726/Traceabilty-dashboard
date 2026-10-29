@@ -2,9 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { findModuleByPath, MODULES, PIPELINE, ROUTABLE_MODULES, statusLabel } from './moduleRegistry';
 
 describe('moduleRegistry', () => {
-  it('has eight modules with unique numbers 1 to 8 in order', () => {
-    expect(MODULES).toHaveLength(8);
-    expect(MODULES.map((m) => m.number)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  it('has nine modules with unique numbers, in navigation order', () => {
+    expect(MODULES).toHaveLength(9);
+    // Farm-to-bale flow: Gate Reception sits between Deliveries and Heap.
+    expect(MODULES.map((m) => m.number)).toEqual([1, 2, 3, 4, 5, 9, 6, 7, 8]);
   });
 
   it('has unique paths, folders and API prefixes', () => {
@@ -21,6 +22,7 @@ describe('moduleRegistry', () => {
       ['Fieldbook', '/fieldbook'],
       ['Harvest Radar', '/radar'],
       ['Deliveries', '/deliveries'],
+      ['Gate Reception', '/gate'],
       ['Heap', '/heaps'],
       ['QR Tracing', '/qr'],
       ['Settings', '/settings'],
@@ -32,7 +34,7 @@ describe('moduleRegistry', () => {
     const settings = MODULES.find((m) => m.number === 8);
     expect(settings?.status).toBe('active');
     expect(typeof settings?.loader).toBe('function');
-    expect(ROUTABLE_MODULES.map((m) => m.number)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(ROUTABLE_MODULES.map((m) => m.number)).toEqual([1, 2, 3, 4, 5, 9, 6, 7, 8]);
     for (const m of ROUTABLE_MODULES) expect(typeof m.loader).toBe('function');
   });
 
@@ -52,6 +54,7 @@ describe('moduleRegistry', () => {
     expect(findModuleByPath('/')?.number).toBe(1);
     expect(findModuleByPath('/register/new')?.number).toBe(2);
     expect(findModuleByPath('/qr')?.number).toBe(7);
+    expect(findModuleByPath('/gate')?.number).toBe(9);
     expect(findModuleByPath('/unknown')).toBeUndefined();
   });
 });

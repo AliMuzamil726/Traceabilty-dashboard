@@ -134,7 +134,7 @@ def alerts(
 
 @router.get("/activity", response_model=ActivityOut, summary="Recent audited changes")
 def activity(
-    module: int | None = Query(None, ge=1, le=8, description="Only this module's entries"),
+    module: int | None = Query(None, ge=1, le=9, description="Only this module's entries"),
     limit: int = Query(config.ACTIVITY_LIMIT, ge=1, le=config.ACTIVITY_MAX_LIMIT),
     f: DashboardFilters = Depends(dashboard_filters),
     officer: CurrentOfficer = Depends(get_current_officer),

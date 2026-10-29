@@ -168,9 +168,9 @@ export default function OfficersPage() {
       />
 
       <p className="rounded-control bg-forest-50 px-3 py-2 text-sm text-ink">
-        There are no passwords here. Officers are identified by the switcher at the top of the
-        screen until the Login step is built, at which point sign-in details are added to this
-        screen.
+        A new officer starts on the shared default password and changes it from My profile
+        after signing in. This screen manages who exists, their field office and their role;
+        it never edits a password.
       </p>
 
       <div className="max-w-sm">

@@ -4,7 +4,7 @@ export type ModuleStatus = 'active' | 'placeholder' | 'deferred';
 
 /** Identity of one product module. Mirrors backend/module_N/meta.py. */
 export interface ModuleMeta {
-  number: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+  number: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
   name: string;
   folder: `module_${number}`;
   /** Frontend route. */

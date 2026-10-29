@@ -1,12 +1,13 @@
 import { CalendarPlus } from 'lucide-react';
 import { useState } from 'react';
+import { toApiError } from '@/core/api/errors';
 import { formatDate, formatNumber } from '@/core/utils/format';
-import { Button, DataTable, EmptyState, Tooltip, type Column } from '@/design-system/components';
+import { Button, DataTable, EmptyState, ErrorState, Tooltip, type Column } from '@/design-system/components';
 import type { InboxItem } from '../api/types';
 import { ScheduleDialog } from './ScheduleDialog';
 
 /** Radar requests waiting for transport. Select one or many and schedule them together. */
-export function RequestsInbox({ items, loading }: { items: InboxItem[]; loading: boolean }) {
+export function RequestsInbox({ items, loading, error, onRetry }: { items: InboxItem[]; loading: boolean; error?: unknown; onRetry?: () => void }) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [open, setOpen] = useState(false);
   const chosen = items.filter((i) => selected.has(i.request_id));
@@ -56,7 +57,18 @@ export function RequestsInbox({ items, loading }: { items: InboxItem[]; loading:
         selectable
         selected={selected}
         onSelectedChange={setSelected}
-        empty={<EmptyState compact title="No requests waiting" description="Requests appear here when officers ask for a pickup in Harvest Radar." />}
+        empty={
+          error && !items.length ? (
+            <ErrorState
+              compact
+              title="The requests inbox could not be loaded"
+              description={toApiError(error).message}
+              onRetry={onRetry}
+            />
+          ) : (
+            <EmptyState compact title="No requests waiting" description="Requests appear here when officers ask for a pickup in Harvest Radar." />
+          )
+        }
       />
       <ScheduleDialog
         open={open}

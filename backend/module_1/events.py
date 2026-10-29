@@ -6,7 +6,7 @@ a few seconds old, so the whole cache is dropped as soon as any module says its 
 changed, and again once the publishing transaction commits: a read between the publish
 and the commit would otherwise cache the old numbers for the full 30 seconds.
 
-Subscribing to every event is deliberate. The dashboard reads all seven modules, so
+Subscribing to every event is deliberate. The dashboard reads all nine modules, so
 there is no event whose data it does not show, and one list is easier to keep right
 than a mapping of events to sections.
 """

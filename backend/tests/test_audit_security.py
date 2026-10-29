@@ -14,6 +14,7 @@ from typing import Any
 
 import pytest
 from fastapi.testclient import TestClient
+from pydantic import ValidationError
 
 from app.main import create_app
 from core.config import Settings
@@ -230,7 +231,8 @@ def _production(tmp_path: Path) -> TestClient:
         app_env="production",
         database_url=f"sqlite:///{(tmp_path / 'prod.db').as_posix()}",
         upload_dir=str(tmp_path / "storage"),
-        seed_on_start=True,
+        qr_ip_salt="test-only-production-salt",
+        seed_on_start=False,
         _env_file=None,  # type: ignore[call-arg]
     )
     return TestClient(create_app(settings), raise_server_exceptions=False)
@@ -270,6 +272,23 @@ class TestOfficerIdentity:
 
 
 class TestProductionHardening:
+    def test_production_refuses_a_placeholder_qr_salt(self) -> None:
+        with pytest.raises(ValidationError):
+            Settings(app_env="production", seed_on_start=False, _env_file=None)  # type: ignore[call-arg]
+
+    def test_production_refuses_the_demo_seed(self) -> None:
+        with pytest.raises(ValidationError):
+            Settings(  # type: ignore[call-arg]
+                app_env="production",
+                qr_ip_salt="a-long-deployment-specific-salt",
+                seed_on_start=True,
+                _env_file=None,
+            )
+
+    def test_development_keeps_the_demo_defaults(self) -> None:
+        settings = Settings(app_env="development", seed_on_start=True, _env_file=None)  # type: ignore[call-arg]
+        assert settings.is_dev
+
     def test_an_unexpected_error_hides_the_stack_trace(self, tmp_path: Path) -> None:
         with _production(tmp_path) as client:
             app = client.app

@@ -34,6 +34,7 @@ farmers 1--* fields 1--* fieldbooks 1--* fieldbook_entries
                               |
 pickup_requests 1--* deliveries *--1 sites (ginner or processor)
                               |
+deliveries 1--1 gate_entries
 deliveries *--1 heaps   (deliveries.heap_id holds the heap's business ID)
 heaps *--1 sites
 heaps 1--* bales 1--1 qr_tokens 1--* qr_scan_log
@@ -52,6 +53,7 @@ A QR scan resolves `qr_tokens -> bales -> heaps -> deliveries -> fields -> farme
 | Module 5 Deliveries | `deliveries`, `delivery_status_history`, `delivery_config` |
 | Module 6 Heap | `heaps`, `bales`, `heap_config` |
 | Module 7 QR Tracing | `qr_tokens`, `qr_scan_log` |
+| Module 9 Gate Reception (built) | `gate_entries` |
 | Module 1 Dashboard | none (reads through other modules' `public_api`) |
 | Module 8 Settings (built) | `settings_history`, `officer_preferences`, `backups` (and `app_settings`, which lives in shared so `core.app_settings` can read it for every module, D-116) |
 
@@ -123,7 +125,7 @@ Seeded now: `country` (PK, GB) and `crop` (cotton scoped to PK, hemp scoped to G
 UK mapping of the three levels: region, county, local authority district.
 
 Seeded by Module 2 (`scripts/seed_data/locations_pk.json`, marked as seed data to be
-verified): all 7 Pakistani provinces and territories, all 158 districts (36 in Punjab),
+verified): all 7 Pakistani provinces and territories, all 171 districts (42 in Punjab),
 and tehsils for the cotton-belt districts of Punjab and Sindh. Districts with no seeded
 tehsils are expected: the form always offers "Other (type manually)". Villages are
 deliberately never seeded.
@@ -143,19 +145,19 @@ deliberately never seeded.
 ### `id_counters`
 | Column | Type | Notes |
 | --- | --- | --- |
-| key | str(64) PK | e.g. `sawie_id:PK` |
+| key | str(64) PK | e.g. `sawie_id`, `field_id:1001`, `delivery`, `heap:BWP-G1` |
 | value | bigint | last issued number |
 | updated_at | UTC | |
 
-Planned counter keys and formats:
+Issued counter keys and formats:
 
 | Key | Format | Example | Status |
 | --- | --- | --- | --- |
 | `sawie_id` | `{1000 + n}` | `1001` | built |
 | `field_id:{sawie_id}` | `{sawie_id}-{n:02}` | `1001-03` | built |
-| `delivery_id:{year}` | `DLV-{year}-{n:06}` | `DLV-2026-000042` | planned |
-| `heap_id:{country}:{year}` | cotton `HEP-PK-{year}-{n:04}`, hemp `BAT-GB-{year}-{n:04}` | `HEP-PK-2026-0003` | planned |
-| `bale_id:{heap_id}` | `{heap_id}-B{n:03}` | `HEP-PK-2026-0003-B014` | planned |
+| `delivery` | `DL-{n:04}` | `DL-0001` | built |
+| `heap:{site_code}` | cotton `{site_code}-H{nn}`, hemp `{site_code}-BT{nn}` | `BWP-G1-H01` | built |
+| bale serial (`{heap_id}`) | `{heap_id}-{n:03}` | `BWP-G1-H01-001` | built |
 
 The SAWIE ID is a plain number with no country or crop in it, counted once across both
 programmes and starting at 1001 (`core.ids` counts from 1, so `module_2.services.ids`
@@ -425,6 +427,38 @@ All weights are kilograms; cotton screens also show maunds (1 maund = 40 kg).
 | moisture_warn_pct | float | cotton 12, hemp 16 |
 
 Seeded at startup; existing rows are never overwritten.
+
+## Module 9: Gate Reception (built)
+
+One row per delivery that reached a site's gate. Accepting or rejecting settles the
+delivery through Module 5's public API in the same transaction, so the delivery records
+the net weight, history, audit and events exactly as the Receive dialog does.
+
+### `gate_entries`
+| Column | Type | Notes |
+| --- | --- | --- |
+| id | str PK | |
+| delivery_id | FK `deliveries.id`, unique | one gate entry per delivery; a second arrival is refused |
+| delivery_no | str(16) | copied for reading without a join |
+| site_id | str(36) | the site the load arrived at (from the delivery) |
+| crop | str(16) | from the delivery |
+| status | str(12) | `pending`, `accepted` or `rejected` |
+| arrived_at | UTC | when the officer recorded the arrival |
+| vehicle_no, driver_name | | copied from the delivery at arrival |
+| gross_weight_kg, tare_weight_kg | float null | weighbridge readings, filled on accept |
+| net_weight_kg | float null | gross minus tare; must be above 0 |
+| moisture_pct | float null | 0 to 100 |
+| accepted_at, rejected_at | UTC null | |
+| rejection_reason | text null | 3 to 500 characters, also the delivery's cancel reason |
+| note | text null | officers' note on acceptance |
+| created_by, updated_by, created_at, updated_at | | |
+
+The delivery stays the source of truth for its own state: a gate entry is `accepted`
+exactly when its delivery is `delivered`, and `rejected` when the delivery was cancelled
+at the gate. Receiving or cancelling from Deliveries while a load stands at the gate
+updates the pending entry through events instead of leaving two open records, and an
+administrator's later weight correction is copied onto the accepted entry the same way,
+with the reason appended to its note.
 
 ## Module 6: Heap (built)
 

@@ -34,9 +34,23 @@ export function DashboardHeader({ filters, onChange, rangeIncomplete }: Dashboar
   const [exportOpen, setExportOpen] = useState(false);
 
   return (
-    <header className="flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
-      <h1 className="text-xl font-semibold tracking-[-0.01em] text-ink">Home</h1>
+    <header className="flex flex-col gap-3">
+      {/* Row 1: title + export button always together */}
+      <div className="flex items-center justify-between gap-3">
+        <h1 className="text-xl font-semibold tracking-[-0.01em] text-ink">Home</h1>
+        <Button
+          type="button"
+          variant="primary"
+          size="sm"
+          leftIcon={<Download className="h-4 w-4" />}
+          onClick={() => setExportOpen(true)}
+        >
+          <span className="hidden sm:inline">Export Data</span>
+          <span className="sm:hidden">Export</span>
+        </Button>
+      </div>
 
+      {/* Row 2: filters — wrap neatly on small screens */}
       <div className="flex flex-wrap items-center gap-2" aria-label="Home filters" role="group">
         <SegmentedControl
           aria-label="Crop programme"
@@ -45,20 +59,24 @@ export function DashboardHeader({ filters, onChange, rangeIncomplete }: Dashboar
           options={CROPS}
           size="sm"
         />
-        <Select
-          aria-label="Season year"
-          value={String(filters.season)}
-          options={seasonOptions(filters.season)}
-          onChange={(e) => onChange({ season: e.target.value })}
-          className="h-8 w-[76px] text-xs"
-        />
-        <Select
-          aria-label="Date range"
-          value={filters.range}
-          options={RANGES.map((r) => ({ value: r, label: RANGE_LABELS[r] }))}
-          onChange={(e) => onChange({ range: e.target.value })}
-          className="h-9 w-[146px]"
-        />
+        <div className="w-fit">
+          <Select
+            aria-label="Season year"
+            value={String(filters.season)}
+            options={seasonOptions(filters.season)}
+            onChange={(e) => onChange({ season: e.target.value })}
+            className="h-9 w-[76px] text-xs"
+          />
+        </div>
+        <div className="w-fit">
+          <Select
+            aria-label="Date range"
+            value={filters.range}
+            options={RANGES.map((r) => ({ value: r, label: RANGE_LABELS[r] }))}
+            onChange={(e) => onChange({ range: e.target.value })}
+            className="h-9 w-[146px]"
+          />
+        </div>
         {filters.range === 'custom' && (
           <>
             <DatePicker
@@ -77,19 +95,10 @@ export function DashboardHeader({ filters, onChange, rangeIncomplete }: Dashboar
             />
           </>
         )}
-        <Button
-          type="button"
-          variant="primary"
-          size="sm"
-          leftIcon={<Download className="h-4 w-4" />}
-          onClick={() => setExportOpen(true)}
-        >
-          Export Data
-        </Button>
       </div>
 
       {rangeIncomplete && (
-        <p className="w-full text-sm text-muted" role="status">
+        <p className="text-sm text-muted" role="status">
           Pick both dates.
         </p>
       )}

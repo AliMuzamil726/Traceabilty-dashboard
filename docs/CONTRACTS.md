@@ -8,7 +8,7 @@ prompts fill in the bodies, not the names.
 | Topic | Contract |
 | --- | --- |
 | Base paths | Module routes under `/api/v1/<prefix>`; health at `/api/health`. |
-| Module prefixes | 1 `/api/v1/dashboard`, 2 `/api/v1/register`, 3 `/api/v1/fieldbook`, 4 `/api/v1/radar`, 5 `/api/v1/deliveries`, 6 `/api/v1/heaps`, 7 `/api/v1/qr`. Settings (8) has no routes yet. |
+| Module prefixes | 1 `/api/v1/dashboard`, 2 `/api/v1/register`, 3 `/api/v1/fieldbook`, 4 `/api/v1/radar`, 5 `/api/v1/deliveries`, 6 `/api/v1/heaps`, 7 `/api/v1/qr`, 8 `/api/v1/settings`, 9 `/api/v1/gate`. |
 | Shared routes | `/api/v1/master`, `/api/v1/officers`, `/api/v1/offices`, `/api/health`. |
 | JSON | snake_case keys. Dates `YYYY-MM-DD`; timestamps ISO 8601 in UTC with offset (`2026-10-19T11:07:44Z`). |
 | IDs | Always strings. |
@@ -154,7 +154,7 @@ officers' deliveries read only, `can_act` false).
 | `GET /{id}` | One delivery with `history` and the crop's `thresholds`. Any officer may read; acting is scoped. |
 | `PUT /{id}` | Edit site, date, driver, phone, vehicle or note, only while `scheduled`. |
 | `POST /{id}/dispatch` | `scheduled` to `in_transit`; optional `field_weight_kg`, `note`. |
-| `POST /{id}/receive` | `in_transit` to `delivered`; `weighbridge_weight_kg` (> 0), `moisture_pct` (0 to 100), `note` (required when the variance is flagged). Returns `{ delivery, warnings }`. |
+| `POST /{id}/receive` | `in_transit` to `delivered`; `weighbridge_weight_kg` (> 0), `moisture_pct` (0 to 100), `note` (required when the variance is flagged). Returns `{ delivery, warnings }`. Closes the load's Radar request (`mark_pickup_fulfilled`), so the field can be requested again. |
 | `POST /{id}/cancel` | `{ reason }`; from `scheduled` or `in_transit`. Also cancels the Radar request (`mark_pickup_cancelled`), so the field can be requested again. |
 | `POST /{id}/correct` | Administrators: `{ reason, weighbridge_weight_kg?, moisture_pct?, field_weight_kg? }` on a `delivered` record. Asks guard `delivery.can_correct`; audited with before and after. |
 | `GET /{id}/slip.pdf` | One-page PDF for the driver with a QR of the delivery number. |
@@ -228,6 +228,25 @@ Checks: `fieldbooks_submitted` (every contributing field has a submitted fieldbo
 season), `deliveries_weighed` (every delivery is delivered with a weighbridge weight),
 `heap_closed`, and `mass_balance` (active bale weight does not exceed expected output).
 
+### Module 9 endpoints (built), under `/api/v1/gate`
+
+Every route takes `site_id` (and optional `crop`) except the entry routes, which are
+addressed by key. Accepting calls Module 5's `receive_at_gate`; rejecting calls
+`cancel_at_gate`, so the delivery and the gate entry never disagree.
+
+| Method and path | Purpose |
+| --- | --- |
+| `GET /summary?site_id=&crop=` | `inbound`, `pending`, `accepted_today`, `rejected_today`, `net_kg_today` for the site |
+| `GET /inbound?site_id=&crop=` | In-transit deliveries due at the site with no gate entry yet, longest wait first, with the farmer's name, field, vehicle and reference weight |
+| `GET /entries?site_id=&status=&crop=&limit=&offset=` | `{ items, total }`, newest arrival first. `status` is `pending`, `accepted`, `rejected` or `decided` (either decision); `limit` at most 100 |
+| `POST /entries` | `{ delivery_id, note? }` (201). Only an `in_transit` delivery without an entry. Publishes `gate.entry_created` |
+| `GET /entries/{entry_id}` | One gate entry with the site code and name, and for a pending entry its reference weight and the tolerances in force |
+| `POST /entries/{entry_id}/accept` | `{ gross_weight_kg, tare_weight_kg, moisture_pct, note? }`. Net = gross - tare; the delivery is received with that net weight. Returns `{ entry, warnings }`; a flagged variance needs a note (Module 5's rule) |
+| `POST /entries/{entry_id}/reject` | `{ rejection_reason }` (3 to 500 characters). The delivery is cancelled with the same reason and the Radar request released |
+
+`can_accept` and `can_reject` are true only while the entry is `pending`. A load
+received or cancelled from the Deliveries screen resolves its pending gate entry too.
+
 ### Shared endpoints (built)
 
 | Method and path | Response |
@@ -245,7 +264,8 @@ season), `deliveries_weighed` (every delivery is delivered with a weighbridge we
 
 Every route needs role `admin` (`admin_required`, 403) except `GET /public`, which is
 open because the web app reads map tiles and the QR base URL before anyone is
-identified, and `GET|PUT /me/preferences`, which every officer uses for their own row.
+identified, and `GET /me/preferences` and `PUT /me/preferences`, which every officer uses
+for their own row.
 Every write is audited and publishes `config.changed`.
 
 | Method and path | Purpose |
@@ -296,7 +316,7 @@ Every write is audited and publishes `config.changed`.
 | `GET /system/dummy`, `POST /system/dummy/remove` | Seeded placeholders, and removing the unused ones |
 | `POST /qr/test-url` | Check the public base URL answers |
 | `POST /map/test-tiles` | Fetch one tile from a provider |
-| `GET|PUT /me/preferences` | The acting officer's own display choices |
+| `GET /me/preferences`, `PUT /me/preferences` | The acting officer's own display choices |
 
 
 ### Stable error codes
@@ -410,6 +430,22 @@ Skip codes in a scheduling result: `pickup_not_found`, `pickup_not_waiting`,
 | `qr_bale_not_active` | 409 or 422 | Regenerating for a voided bale, or printing a bale with no active code |
 | `qr_reason_required`, `qr_reason_too_long`, `qr_query_empty`, `qr_no_bales`, `qr_too_many` | 422 | Input rules (at most 480 labels at a time) |
 
+### Module 9 error codes (built)
+
+| Code | HTTP | Meaning |
+| --- | --- | --- |
+| `gate_entry_not_found` | 404 | Unknown gate entry |
+| `gate_entry_exists` | 409 | That delivery already has a gate entry |
+| `invalid_gate_status` | 409 | Accepting or rejecting an entry that is already decided |
+| `gate_delivery_not_in_transit` | 422 | Only an in-transit delivery can arrive at the gate |
+| `gate_weight_invalid` | 422 | Gross is not above tare, so the net is zero or less |
+| `gate_reason_required`, `gate_reason_too_long` | 422 | Rejecting needs a reason of 3 to 500 characters |
+| `gate_note_too_long` | 422 | The note is over 1,000 characters |
+| `site_not_found` | 422 | Unknown or inactive site |
+
+Accepting and rejecting surface Module 5's own codes (`delivery_flag_note_required`,
+`invalid_transition`) because Module 5 decides whether the delivery may move.
+
 ### Module 4 error codes (built)
 
 | Code | HTTP | Meaning |
@@ -479,12 +515,13 @@ with `event.officer_id` and `event.occurred_at`.
 | `delivery.dispatched` | 5 | the same identity fields plus `{ dispatched_at, field_weight_kg }` |
 | `delivery.delivered` | 5 | the same identity fields plus `{ weighbridge_weight_kg, moisture_pct, variance_level, delivered_at }` |
 | `delivery.cancelled` | 5 | the same identity fields plus `{ reason, previous_status }` |
+| `delivery.corrected` | 5 | the same identity fields plus `{ weighbridge_weight_kg, moisture_pct, reason }`; an administrator's correction of a delivered record |
 | `heap.opened` | 6 | `{ heap_pk, heap_id, kind, crop, site_id }` (`kind` is `heap` or `batch`) |
 | `heap.closed` | 6 | `{ heap_pk, heap_id, crop, site_id, total_input_kg, bale_count, with_remainder }` |
 | `bale.created` | 6 | `{ bale_id, bale_serial, heap_id, heap_pk, weight_kg, crop }`, one event per bale |
 | `bale.voided` | 6 | `{ bale_id, bale_serial, heap_id, reason }` |
 | `qr.scanned` | 7 | `{ qr_token_id, token_type, heap_id, bale_serial, channel, scanned_at }`, published from the scan's own session after the response |
-| `config.changed` | 8 | `{ key, group }`; `key` is a setting key (`map.tile_provider`), a config block key (`config.crop_clock`) or a reference-data name (`sites`). Every cache of a resolved value drops it. |
+| `config.changed` | 8 | `{ key, group }`; `key` is a setting key (`map.tile_provider`), a config block key (`config.crop_clock`) or a reference-data name (`sites`). Every cache of a resolved value drops it. Crop-clock blocks published by Modules 3, 5 and 6 also name `crops` (the crops whose clock changed). |
 | `officer.created` | 8 | `{ officer_id, code, full_name, role }` |
 | `officer.updated` | 8 | `{ officer_id, code, changed: string[] }` |
 | `officer.deactivated` | 8 | `{ officer_id, code, active }` (also published when an officer is activated again) |
@@ -492,6 +529,9 @@ with `event.officer_id` and `event.occurred_at`.
 | `location.changed` | 8 | `{ country, level }` |
 | `backup.created` | 8 | `{ filename, size_bytes, kind }` (`kind` is `manual` or `safety`) |
 | `backup.restored` | 8 | `{ filename, safety_backup }` |
+| `gate.entry_created` | 9 | `{ gate_entry_id, delivery_id, delivery_no, site_id, crop, status, net_weight_kg, moisture_pct }` (weights null on arrival) |
+| `gate.entry_accepted` | 9 | the same plus `{ warnings }` from the delivery receipt |
+| `gate.entry_rejected` | 9 | the same plus `{ reason }` |
 
 Naming in payloads: `*_id` is the UUID primary key and `*_code`, `*_no` or `sawie_id`
 the human-readable business ID. Two exceptions keep the prompt's names: `heap_id` is the
@@ -506,7 +546,7 @@ Planned subscriptions (registered in each module's `events.register`):
 | Subscriber | Listens to | Purpose |
 | --- | --- | --- |
 | 3 Fieldbook (registered) | `field.deleted` | soft-remove that field's draft fieldbooks (a submitted book blocks the delete) |
-| 4 Harvest Radar (registered) | `fieldbook.ready_for_pickup`, `fieldbook.step_saved`, `field.updated` | drop cached radar views (now and after the publisher commits) |
+| 4 Harvest Radar (registered) | `fieldbook.ready_for_pickup`, `fieldbook.step_saved`, `field.created`, `field.updated` | drop cached radar views (now and after the publisher commits) |
 | 4 Harvest Radar (registered) | `field.deleted` | cancel the field's open pickup requests (an administrator override; the guard normally blocks the delete) |
 | 5 Deliveries (registered) | `pickup.cancelled` | cancel the delivery still moving for that request |
 | 5 Deliveries (registered) | `field.deleted` | cancel deliveries still moving for a removed field (administrator override) |
@@ -514,6 +554,8 @@ Planned subscriptions (registered in each module's `events.register`):
 | 7 QR Tracing (registered) | `heap.opened`, `bale.created` | issue the code, once (idempotent) |
 | 7 QR Tracing (registered) | `bale.voided` | revoke the bale's code |
 | 7 QR Tracing (registered) | `heap.closed` | drop cached public pages for that heap |
+| 9 Gate Reception (registered) | `delivery.delivered`, `delivery.cancelled` | resolve a still-pending gate entry when the load was received or cancelled in Deliveries, so it never stays open twice |
+| 9 Gate Reception (registered) | `delivery.corrected` | copy an administrator's corrected weight and moisture onto the accepted gate entry, and note the correction |
 | 1 Dashboard (registered) | every event | drop the cached sections, now and after the publisher commits |
 
 ## 3. Guards
@@ -666,7 +708,7 @@ after sowing above the window end. Expected ready = sowing date + ready day.
 ### Module 5 Deliveries (built)
 ```python
 @dataclass(frozen=True)
-class DeliveryDTO: id: str; delivery_no: str; pickup_request_id: str; farmer_id: str; field_id: str; field_code: str; crop: str; season_year: int; status: str; site_id: str; heap_id: str | None; scheduled_date: date; vehicle_no: str; dispatched_at: datetime | None; delivered_at: datetime | None; estimated_quantity_kg: float | None; field_weight_kg: float | None; weighbridge_weight_kg: float | None; moisture_pct: float | None; variance_pct: float | None; variance_level: str | None
+class DeliveryDTO: id: str; delivery_no: str; pickup_request_id: str; farmer_id: str; field_id: str; field_code: str; crop: str; season_year: int; status: str; site_id: str; heap_id: str | None; scheduled_date: date; vehicle_no: str; driver_name: str; dispatched_at: datetime | None; delivered_at: datetime | None; estimated_quantity_kg: float | None; field_weight_kg: float | None; weighbridge_weight_kg: float | None; moisture_pct: float | None; variance_pct: float | None; variance_level: str | None
 @dataclass(frozen=True)
 class DeliveryQuery: crop: str | None = None; status: str | None = None; site_id: str | None = None; heap_id: str | None = None; farmer_id: str | None = None
 
@@ -678,11 +720,15 @@ def unassign_heap(session, delivery_id: str, officer_id: str | None, reason: str
 def list_by_heap(session, heap_id: str) -> list[DeliveryDTO]
 def get_delivery_stats(session, query: DeliveryQuery | None = None) -> DeliveryStatsDTO   # total, by_status, delivered_kg, delivered_maunds, weight_flags
 def get_farmer_delivery_summary(session, farmer_id: str) -> FarmerDeliverySummaryDTO   # deliveries, delivered, delivered_kg, fields, heaps
+def receive_at_gate(session, delivery_id, officer_id, *, gross_weight_kg, tare_weight_kg, moisture_pct, note=None) -> tuple[DeliveryDTO, list[str]]
+def cancel_at_gate(session, delivery_id, officer_id, reason) -> DeliveryDTO
 ```
-`assign_heap` and `unassign_heap` change state in the caller's transaction (no commit).
-`assign_heap` accepts only a delivered delivery without a heap, at the heap's site and
-crop (`delivery_not_delivered`, `delivery_already_assigned`, `delivery_wrong_site`,
-`delivery_wrong_crop`).
+`assign_heap`, `unassign_heap`, `receive_at_gate` and `cancel_at_gate` change state in the
+caller's transaction (no commit). `assign_heap` accepts only a delivered delivery without
+a heap, at the heap's site and crop (`delivery_not_delivered`, `delivery_already_assigned`,
+`delivery_wrong_site`, `delivery_wrong_crop`). `receive_at_gate` records the net weight
+(gross minus tare) through the same receipt rules as `POST /deliveries/{id}/receive`,
+including the flagged-variance note; Module 9 commits.
 
 ### Module 6 Heap (built)
 ```python
@@ -718,6 +764,16 @@ def count_active_tokens(session, query: TokenQuery | None = None) -> int
 ```
 `get_trace_for_token(public=False)` returns the internal chain as the administrator sees
 it; callers must not show that to the public.
+
+### Module 9 Gate Reception (built)
+```python
+@dataclass(frozen=True)
+class GateEntryDTO: id; delivery_id; delivery_no; site_id; crop; status; arrived_at; net_weight_kg; moisture_pct; accepted_at; rejected_at; rejection_reason
+
+def get_entry_for_delivery(session, delivery_id: str) -> GateEntryDTO | None   # whatever its status
+def pending_count(session, site_id: str) -> int                               # loads waiting at the gate
+```
+Reads only. Every write goes through Module 9's router, which owns the transaction.
 
 ### Functions added for Module 1 (D-096)
 All compute in SQL or from the module's own cached dataset, with a fixed number of
@@ -826,4 +882,6 @@ directly instead, so nothing has to import Module 8 to read a value.
   and turns every failure into `ApiError { status, code, message, details, fieldErrors }`.
 * `useMasterList(listKey, { country, crop })` is the only source of dropdown options.
 * A module is imported only through its `index.ts` (enforced by ESLint
-  `no-restricted-imports`), which exports `meta` and the default page component.
+  `no-restricted-imports`), which exports `meta` and the default page component, plus any
+  read-only API a screen of another module needs (Module 3's fieldbook lists, Module 8's
+  staff list, Module 1's notifications).

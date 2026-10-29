@@ -214,8 +214,10 @@ export function FieldRenderer(props: FieldRendererProps) {
       error={error ?? Object.values(partErrors ?? {})[0]}
       hint={hintFor(field, warning)}
     >
-      {control}
-      {showSuggestion && <SuggestionButton field={field} suggestion={suggestion} onApply={() => onChange(suggestion)} />}
+      <div className="flex min-w-0 flex-col gap-1.5">
+        {control}
+        {showSuggestion && <SuggestionButton field={field} suggestion={suggestion} onApply={() => onChange(suggestion)} />}
+      </div>
     </FormField>
   );
 }

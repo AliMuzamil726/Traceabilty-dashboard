@@ -48,7 +48,7 @@ export function KpiRow({ data, loading }: KpiRowProps) {
       label: 'Fieldbooks submitted',
       icon: <ClipboardCheck />,
       value: percent(k.fieldbooks.submitted_pct, 1),
-      hint: `${formatNumber(k.fieldbooks.submitted)} of ${pluralise(k.fieldbooks.fields, 'field')}`,
+      hint: `${formatNumber(k.fieldbooks.submitted)} of ${pluralise(k.fieldbooks.fields, 'field')} — this season`,
     },
     {
       label: 'Ready for pickup now',
@@ -56,7 +56,7 @@ export function KpiRow({ data, loading }: KpiRowProps) {
       value: <Counted value={k.ready_now.fields} render={(n) => formatNumber(n)} />,
       hint:
         k.ready_now.fields === 0
-          ? 'Nothing waiting'
+          ? 'Nothing waiting right now'
           : `${formatCompact(k.ready_now.estimated_kg)} kg estimated, ${formatNumber(
               k.ready_now.awaiting_pickup,
             )} not requested`,
@@ -78,7 +78,7 @@ export function KpiRow({ data, loading }: KpiRowProps) {
       label: 'Mapped area',
       icon: <MapPin />,
       value: area(k.fields.area, areaUnit, 2),
-      hint: `${formatNumber(k.fields.total)} fields, ${formatNumber(k.farmers.total)} farmers`,
+      hint: `${formatNumber(k.fields.total)} fields, ${formatNumber(k.farmers.total)} farmers — this season`,
     },
   ];
 

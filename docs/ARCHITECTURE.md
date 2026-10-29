@@ -10,14 +10,14 @@
    app/        composition root: create_app, lifespan, explicit module registry
    core/       config, database, errors, events, guards, ids, audit, logging, pagination, deps
    shared/     officers, field offices, master lists, locations, audit log, id counters
-   module_1..7 one package per product module (module_8 Settings: meta only)
+   module_1..9 one package per product module (8 Settings, 9 Gate Reception)
    |
    v
  SQLAlchemy 2  ->  SQLite file backend/data/sawie.db   (later: Supabase Postgres)
 ```
 
 The product is a modular monolith: one deployable backend and one SPA, split into
-eight modules with hard boundaries that are checked by tests.
+nine modules with hard boundaries that are checked by tests.
 
 ## 2. Backend layering
 
@@ -74,24 +74,37 @@ On SQLite every transaction starts with `BEGIN IMMEDIATE` (write lock up front, 
 busy timeout, WAL journal). That makes `core.ids` counters race-free. On Postgres the
 same `UPDATE ... RETURNING` takes a row lock, so no code changes are needed.
 
+A module normally writes only its own tables. Where a screen has to settle another
+module's record, it does so through that module's public API in one transaction and lets
+the owner commit: Gate Reception (9) accepts or rejects a load with Module 5's
+`receive_at_gate` / `cancel_at_gate`, so the delivery, its history, audit, warnings and
+events are exactly those of the Deliveries screen. The reverse direction is an event:
+when a load is received or cancelled from Deliveries, Module 9's handler closes the
+pending gate entry.
+
 ### Officer context
 
-No login yet. `core.deps.get_current_officer` reads `X-Officer-Id`:
+The sign-in screen checks a password (`POST /api/v1/officers/sign-in`) and remembers the
+chosen account in the browser. Requests do not carry a session yet: `core.deps.get_current_officer`
+reads `X-Officer-Id`:
 
 * header present: the officer must exist (401 `officer_not_found`) and be active (403);
 * header absent in development/test: the officer with `DEFAULT_OFFICER_CODE`;
 * header absent in production: 401 `officer_required`.
 
-`require_admin` builds on it. When login arrives, this dependency and the frontend
-OfficerSwitcher are the only pieces that change.
+`require_admin` builds on it. Real sessions (a signed cookie or token) will replace the
+header; this dependency and the frontend OfficerSwitcher are the only pieces that change.
 
 ### Startup sequence (`app/lifespan.py`)
 
 1. Create `backend/data` and the upload folder.
 2. Import every model (`app.registry.import_all_models`) and `create_all` tables.
 3. Clear and register event handlers and guards for every module.
-4. If `SEED_ON_START=true`, run the idempotent reference seed (it inserts only missing
-   rows), then each module's own `seed.run(session)` (D-049).
+4. If `SEED_ON_START=true` and `APP_ENV` is development or test, run the idempotent
+   reference seed (it inserts only missing rows), then each module's own
+   `seed.run(session)` (D-049). Production refuses `SEED_ON_START=true` and a placeholder
+   `QR_IP_SALT` at startup, because the demo seed creates officers with a known default
+   password (`Settings.check_production`).
 
 Shutdown clears handlers and disposes the engine.
 
@@ -113,10 +126,10 @@ src/
   core/           api client and errors, query client, stores (officer, ui), hooks, utils
   design-system/  tokens.css, components, motion
   shared/         cross-module components (OfficerSwitcher, ModulePlaceholder, ErrorBoundary, NotFound, PipelineTracker)
-  module_1..8/    index.ts, module.meta.ts, pages, components, hooks, api, store, types, tests
+  module_1..9/    index.ts, module.meta.ts, pages, components, hooks, api, store, types, tests
 ```
 
-* **Routing**: `moduleRegistry.ts` lists all eight modules (number, name, icon, path,
+* **Routing**: `moduleRegistry.ts` lists all nine modules (number, name, icon, path,
   status, loader). `router.tsx` creates one lazy route per routable module, each wrapped
   in an ErrorBoundary and a Suspense skeleton, plus a NotFound catch-all. A module is
   mounted at `<path>/*` and owns the routes beneath it, so Module 2's own `<Routes>`
@@ -145,7 +158,8 @@ src/
 | 5 | Deliveries | **active** | 4 |
 | 6 | Heap | **active** | 5 |
 | 7 | QR Tracing | **active** (plus the public page `/trace/:token`, outside the app shell) | 6 |
-| 8 | Settings | deferred (meta only, disabled in the sidebar) | later |
+| 8 | Settings | **active** | 8 |
+| 9 | Gate Reception | **active** | 9 |
 
 When a module is built, set `STATUS = "active"` in `backend/module_N/meta.py` and
 `status: 'active'` in `frontend/src/module_N/module.meta.ts`; the sidebar pill

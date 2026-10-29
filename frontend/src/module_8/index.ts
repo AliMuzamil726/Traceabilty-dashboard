@@ -10,3 +10,7 @@ export { default } from './pages/SettingsLayout';
 export { useAppConfig, useMapConfig, FALLBACK_TILES } from './hooks/useAppConfig';
 export { usePreferences } from './hooks/useSettings';
 export type { PublicConfig, TileLayer, Preferences } from './api/types';
+
+/** Staff and administrator lists the Register export offers. */
+export { settingsApi, settingsKeys } from './api/client';
+export type { Officer } from './api/types';

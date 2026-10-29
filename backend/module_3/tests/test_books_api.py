@@ -142,8 +142,9 @@ class TestScoping:
         mine = client.get(f"{FB}/selectors/officers", headers=as_officer("PK-MUL-01")).json()
         assert [o["code"] for o in mine] == ["PK-MUL-01"]
         every = client.get(f"{FB}/selectors/officers", headers=as_officer("ADMIN-01")).json()
-        assert len(every) == 10
-        assert all(o["role"] == "officer" for o in every)
+        seeded = client.get("/api/v1/officers", params={"page_size": 200}).json()["items"]
+        assert {o["code"] for o in every} == {o["code"] for o in seeded}
+        assert {"PK-MUL-01", "STAFF-01", "ADMIN-01"} <= {o["code"] for o in every}
 
     def test_farmer_selector_lists_only_that_officers_farmers(
         self,

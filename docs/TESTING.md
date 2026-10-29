@@ -39,7 +39,7 @@ never touch `backend/data/sawie.db`.
 | `module_2/tests/test_farmers_api.py` | SAWIE IDs from 1001, one ID number never getting two, lookup returning personal data only, crop mismatch blocked, the notice when another officer registered the farmer, lookup rate limiting, both crop forms, master-list validation, office country matching, officer scoping, masking in lists and on the profile, search, update, season profiles, completeness |
 | `module_2/tests/test_fields_api.py` | field ID sequence per farmer, numbers not reused after a delete, pins, geometry rejections at save, overlap rejected at save (including between farmers), touching edges accepted, reshape and re-pin, guards blocking delete and reshape, soft delete, the map layer with clustering, bbox and crop filters |
 | `module_2/tests/test_concurrency.py` | 50 threads allocating SAWIE IDs with no duplicates and no gaps, a rolled-back registration not consuming a number, 20 concurrent field saves, and two concurrent overlapping saves where exactly one succeeds |
-| `module_2/tests/test_locations_api.py` | 7 provinces, 36 Punjab districts, districts scoped to their province, tehsils for cotton-belt districts, manual entry offered everywhere, village suggestions |
+| `module_2/tests/test_locations_api.py` | 7 provinces, every seeded Punjab district (42, read from the seed file rather than hard-coded), districts scoped to their province, tehsils for cotton-belt districts, manual entry offered everywhere, village suggestions |
 | `module_2/tests/test_postcode.py` | the bundled area table, postcodes.io preferred and cached, every kind of API failure falling back, unresolved postcodes opening manual entry, and manual county and region accepted only then |
 | `module_2/tests/test_events_audit.py` | every documented event and payload, no event when nothing changed, audit entries for farmer, season profile and field creates, updates and deletes, and `created_by` on every write |
 | `module_2/tests/test_public_api.py` | frozen DTOs, the sensitive-data gate for each kind of caller, officer scoping, lookups by key or business ID, soft-deleted fields disappearing, and that no ORM row escapes |
@@ -70,7 +70,7 @@ never touch `backend/data/sawie.db`.
 | File | Covers |
 | --- | --- |
 | `module_5/tests/test_weights.py` | variance at 2.99, 3, 4.99 and 5 percent, both signs, for both crops; field weight before the estimate; no reference; moisture limits per crop; maunds |
-| `module_5/tests/test_deliveries_api.py` | the inbox; scheduling and the Radar request following; bulk partial success with a reason per skip; site and crop mismatch; schedule validation (past date, phones per country, vehicle, name); the happy path and its history; every invalid transition; cancelling with a reason releasing the request; editing only while scheduled; weight, moisture and flag-note rules; warnings; officer scoping and read-only rows; immutability of delivered records and the audited administrator correction; the slip PDF; stats and list filters; CSV; the sites endpoint |
+| `module_5/tests/test_deliveries_api.py` | the inbox; scheduling and the Radar request following; bulk partial success with a reason per skip; site and crop mismatch; schedule validation (past date, phones per country, vehicle, name); the happy path and its history; every invalid transition; cancelling with a reason releasing the request; receiving closing the request and freeing the field for the next one; editing only while scheduled; weight, moisture and flag-note rules; warnings; officer scoping and read-only rows; immutability of delivered records and the audited administrator correction; the slip PDF; stats and list filters; CSV; the sites endpoint |
 | `module_5/tests/test_events_guards.py` | every transition's event; a cancelled Radar request cancelling the delivery; the field delete and reshape guards; `field.deleted` cancelling moving deliveries; heap assignment rules (wrong site, wrong crop, not delivered, already assigned); unassigning through the guard; the stats DTO |
 
 ### Module 6 (Heap)
@@ -99,6 +99,12 @@ submitted cotton fieldbooks, so these tests take a little longer than the others
 | `module_8/tests/test_reference_data.py` | list values added with a derived key, labels corrected while the key stays, duplicates refused, reorder saved, deactivate keeping existing records, delete refused while in use; CSV dry run changing nothing and a commit adding rows; formula-safe export; sites and their locked codes; officers, including a Unicode name and no password field anywhere; locations renamed and merged, moving every farmer in one transaction |
 | `module_8/tests/test_config_and_system.py` | crop clock defaults, ordering rules, stale version, the impact preview writing nothing; delivery and heap defaults matching the constants; alerts read-only through the config API; the audit log filtered, paged and formula-safe, with no route that edits it; backups taken, downloaded, restored with an integrity check and a safety copy, and maintenance mode clearing itself; system information masking credentials; dummy data removed only where unreferenced |
 
+### Module 9 (Gate Reception)
+
+| File | Covers |
+| --- | --- |
+| `module_9/tests/test_gate_api.py` | the meta; inbound lists only in-transit loads without an entry; arrival copying the vehicle and driver and refusing a duplicate (409); accepting receiving the delivery with the net weight (weighbridge, history, audit, event); a gross weight at or below the tare refused; rejecting cancelling the delivery with the reason; receiving in Deliveries closing the pending gate entry; cancelling in Deliveries rejecting it; the summarised counts; the `decided` filter returning accepted and rejected in one list; a correction in Deliveries updating the accepted entry's weight, moisture and note |
+
 ## Frontend
 
 From `frontend/`:
@@ -120,8 +126,8 @@ npm run check:colors  :: brand colour audit (run after build to include the buil
 | `src/core/utils/units.test.ts` | area and mass conversions, units per crop |
 | `src/core/utils/dates.test.ts` | ISO date parsing, day arithmetic, relative days |
 | `src/core/api/client.test.ts` | URL building, officer header, error envelope to ApiError, stale officer reset, network errors |
-| `src/app/moduleRegistry.test.ts` | 8 unique numbers, paths, folders and prefixes; fixed names; Settings deferred; pipeline order; status pills |
-| `src/app/layout/Sidebar.test.tsx` | 8 items in order, Settings disabled with "Coming later", links and active state, collapse to rail |
+| `src/app/moduleRegistry.test.ts` | 9 unique numbers, paths, folders and prefixes; fixed names; every module built including Settings and Gate Reception; the six-stage pipeline; no status pill left |
+| `src/app/layout/Sidebar.test.tsx` | 9 items in order, Settings pinned below the rule and enabled, links and active state, collapse to rail |
 | `src/module_2/tests/format.test.ts` | the CNIC mask as it is typed and on paste, hemp ID grouping, Pakistani and UK phone normalisation, postcode formatting, and that each formatter is stable on its own output |
 | `src/module_2/tests/schemas.test.ts` | both crop forms: what each requires, what it ignores from the other programme, the tehsil rule that spans two fields, and county and region required only when the postcode lookup failed |
 | `src/module_2/tests/LocationCascade.test.tsx` | each level enabled only once the one above is chosen, the district, tehsil and village cleared when the province changes, manual entry offered for every district, and a village typed freely with suggestions |
@@ -138,6 +144,8 @@ npm run check:colors  :: brand colour audit (run after build to include the buil
 | `src/module_5/tests/dialogs.test.tsx` | the Schedule dialog showing every problem and sending nothing until fixed; the Receive dialog previewing ok, check and flag, the moisture warning, and requiring a note when flagged; the Assign to heap control; status-dependent actions on the detail panel |
 | `src/module_6/tests/heaps.test.tsx` | HeapPicker listing open heaps and opening a new one, and saying batch for hemp; Record bales validation before the server is called; Close button states for officers and administrators; the Heap and Batch wording |
 | `src/module_7/tests/qr.test.tsx` | the public page for a valid bale (outside the app shell, no personal data), a revoked or unknown code (one request, never retried) and a failed check; the localhost warning for `localhost` and `127.0.0.1` but not a network address; Find a code classifying and resolving a code, a bale serial and a trace link, the not-found message, and the camera fallback message |
+| `src/module_9/tests/logic.test.ts` | net weight from gross and tare, the reference weight (field weight before the estimate), the variance at the thresholds and against the estimate, accept validation (gross above tare, moisture range, a note only when flagged), reject reason length, kilograms and maunds |
+| `src/module_9/tests/dialogs.test.tsx` | the accept dialog showing the net weight and variance before confirming and holding a flagged load for a note, then sending gross, tare, moisture and the note; the reject dialog refusing an empty reason and sending it |
 
 The Module 3 tests import the backend's `cotton.json`, `hemp.json` and master-list seed
 directly, so a change to a definition that the screen cannot render fails here.
@@ -232,7 +240,9 @@ radar page itself pays the same cost. Both are recorded for the audit.
   Register Farmer, deactivates it and sees it gone from new forms; a crop-clock change
   previews its effect and saves; a field officer is refused Settings but keeps their
   own preferences.
-* `backend/tests/test_contracts.py`: `docs/CONTRACTS.md` against events, public APIs and routes.
+* `backend/tests/test_contracts.py`: `docs/CONTRACTS.md` against events (names and every
+  documented payload key, checked against the `bus.publish(...)` call sites), public APIs
+  and routes for Modules 1 to 9.
 * `backend/tests/test_architecture.py`: module isolation, including bare imports.
 
 See `docs/AUDIT_REPORT.md` for findings and what was not exercised.

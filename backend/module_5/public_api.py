@@ -37,6 +37,7 @@ class DeliveryDTO:
     heap_id: str | None
     scheduled_date: date
     vehicle_no: str
+    driver_name: str
     dispatched_at: datetime | None
     delivered_at: datetime | None
     estimated_quantity_kg: float | None
@@ -122,6 +123,7 @@ def _dto(d: Delivery) -> DeliveryDTO:
         heap_id=d.heap_id,
         scheduled_date=d.scheduled_date,
         vehicle_no=d.vehicle_no,
+        driver_name=d.driver_name,
         dispatched_at=d.dispatched_at,
         delivered_at=d.delivered_at,
         estimated_quantity_kg=d.estimated_quantity_kg,
@@ -195,6 +197,39 @@ def unassign_heap(
     return _dto(
         DeliveryService(session).unassign_heap(delivery_id, officer_id=officer_id, reason=reason)
     )
+
+
+def receive_at_gate(
+    session: Session,
+    delivery_id: str,
+    officer_id: str | None,
+    *,
+    gross_weight_kg: float,
+    tare_weight_kg: float,
+    moisture_pct: float,
+    note: str | None = None,
+) -> tuple[DeliveryDTO, list[str]]:
+    """Gate receipt inside the caller's transaction (Module 9 commits).
+
+    The delivery records the net weight (gross minus tare). Returns the delivery and
+    any variance or moisture warnings, exactly as :meth:`DeliveryService.receive`.
+    """
+    d, warnings = DeliveryService(session).receive_at_gate(
+        delivery_id,
+        officer_id,
+        gross_weight_kg=gross_weight_kg,
+        tare_weight_kg=tare_weight_kg,
+        moisture_pct=moisture_pct,
+        note=note,
+    )
+    return _dto(d), warnings
+
+
+def cancel_at_gate(
+    session: Session, delivery_id: str, officer_id: str | None, reason: str
+) -> DeliveryDTO:
+    """Refuse a load at the gate inside the caller's transaction (Module 9 commits)."""
+    return _dto(DeliveryService(session).cancel_at_gate(delivery_id, officer_id, reason))
 
 
 def list_by_heap(session: Session, heap_id: str) -> list[DeliveryDTO]:
@@ -329,6 +364,7 @@ __all__ = [
     "DeliveryTotalsDTO",
     "FarmerDeliverySummaryDTO",
     "assign_heap",
+    "cancel_at_gate",
     "count_deliveries",
     "delivered_rows_in_range",
     "delivered_totals_by_heap",
@@ -340,6 +376,7 @@ __all__ = [
     "list_by_heap",
     "list_delivered_unassigned",
     "list_deliveries",
+    "receive_at_gate",
     "unassign_heap",
     "update_config",
 ]

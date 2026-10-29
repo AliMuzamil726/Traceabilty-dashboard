@@ -40,10 +40,14 @@ DELIVERY_SCHEDULED = "delivery.scheduled"
 DELIVERY_DISPATCHED = "delivery.dispatched"
 DELIVERY_DELIVERED = "delivery.delivered"
 DELIVERY_CANCELLED = "delivery.cancelled"
+DELIVERY_CORRECTED = "delivery.corrected"
 HEAP_OPENED = "heap.opened"
 HEAP_CLOSED = "heap.closed"
 BALE_CREATED = "bale.created"
 BALE_VOIDED = "bale.voided"
+GATE_ENTRY_CREATED = "gate.entry_created"
+GATE_ENTRY_ACCEPTED = "gate.entry_accepted"
+GATE_ENTRY_REJECTED = "gate.entry_rejected"
 QR_SCANNED = "qr.scanned"
 CONFIG_CHANGED = "config.changed"
 OFFICER_CREATED = "officer.created"
@@ -70,10 +74,14 @@ KNOWN_EVENTS: frozenset[str] = frozenset(
         DELIVERY_DISPATCHED,
         DELIVERY_DELIVERED,
         DELIVERY_CANCELLED,
+        DELIVERY_CORRECTED,
         HEAP_OPENED,
         HEAP_CLOSED,
         BALE_CREATED,
         BALE_VOIDED,
+        GATE_ENTRY_CREATED,
+        GATE_ENTRY_ACCEPTED,
+        GATE_ENTRY_REJECTED,
         QR_SCANNED,
         CONFIG_CHANGED,
         OFFICER_CREATED,

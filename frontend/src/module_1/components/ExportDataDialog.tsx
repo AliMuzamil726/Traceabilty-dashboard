@@ -21,10 +21,10 @@ import { Dialog } from '@/design-system/components/Dialog';
 import { SegmentedControl } from '@/design-system/components/SegmentedControl';
 import { Skeleton } from '@/design-system/components/Skeleton';
 import { toast } from '@/design-system/components/toastStore';
-import { fieldbookApi, fieldbookKeys } from '@/module_3/api/client';
-import type { FarmerOption, OfficerOption } from '@/module_3/api/types';
-import { settingsApi, settingsKeys } from '@/module_8/api/client';
-import type { Officer } from '@/module_8/api/types';
+import { fieldbookApi, fieldbookKeys } from '@/module_3';
+import type { FarmerOption, OfficerOption } from '@/module_3';
+import { settingsApi, settingsKeys } from '@/module_8';
+import type { Officer } from '@/module_8';
 import type { CropFilter } from '../api/types';
 
 export interface ExportDataDialogProps {
@@ -44,12 +44,12 @@ const GROUPS: { key: Group; label: string }[] = [
   { key: 'admins', label: 'Administrators' },
 ];
 
-const RECORD_TYPE: Record<string, string> = {
+const RECORD_TYPE = {
   farmer: 'Farmer',
   officer: 'Field officer',
   staff: 'Staff',
   admin: 'Administrator',
-};
+} as const;
 
 interface ExportRow {
   record_type: string;

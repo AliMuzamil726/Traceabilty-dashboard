@@ -48,7 +48,7 @@ function NavItem({ entry, collapsed, onNavigate }: { entry: ModuleEntry; collaps
               aria-hidden
             />
           )}
-          <Icon className={cn('h-5 w-5 shrink-0 transition-all duration-base group-hover:scale-[1.08]', isActive ? 'text-wheat-300 drop-shadow-[0_0_6px_rgba(255,200,100,0.25)]' : 'text-forest-100/70 group-hover:text-forest-100')} aria-hidden />
+          <Icon className={cn('h-5 w-5 shrink-0 transition-all duration-base group-hover:scale-[1.08]', isActive ? 'text-wheat-300 drop-shadow-[0_0_6px_rgba(227,196,121,0.25)]' : 'text-forest-100/70 group-hover:text-forest-100')} aria-hidden />
           {!collapsed && (
             <>
               <span className="min-w-0 flex-1 truncate">{entry.name}</span>
@@ -105,7 +105,7 @@ export interface SidebarContentProps {
 }
 
 /**
- * Brand block plus the eight module items.
+ * Brand block plus the module items.
  *
  * Narrower desktop rail (228px expanded, 68px collapsed) with larger item sizing and
  * balanced vertical distribution so navigation items comfortably fill the sidebar height.
@@ -135,7 +135,7 @@ export function SidebarContent({ collapsed = false, onNavigate, showCollapseTogg
       </div>
 
       <nav aria-label="Primary" className="flex min-h-0 flex-1 flex-col justify-between overflow-y-auto overflow-x-hidden px-2.5 py-4">
-        <ul className="flex flex-1 flex-col justify-evenly gap-2 py-1">
+        <ul className="flex flex-1 flex-col justify-evenly gap-1 py-1">
           {main.map((m) => (
             <li key={m.number}>
               <NavItem entry={m} collapsed={collapsed} onNavigate={onNavigate} />

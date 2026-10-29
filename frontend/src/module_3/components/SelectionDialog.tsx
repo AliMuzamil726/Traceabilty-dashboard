@@ -149,7 +149,7 @@ export function SelectionDialog({ open, onClose, initialFarmerId, initialFieldId
           </FormField>
         )}
 
-        <FormField label="Season" required className="max-w-[12rem]">
+        <FormField label="Season" required className="w-full max-w-[12rem]">
           <NumberInput value={season} onValueChange={(v) => setSeason(v ?? new Date().getFullYear())} decimals={0} min={2000} max={2100} />
         </FormField>
 

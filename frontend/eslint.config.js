@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const MODULES = [1, 2, 3, 4, 5, 6, 7, 8];
+const MODULES = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default tseslint.config(
   { ignores: ['dist', 'node_modules', 'coverage'] },

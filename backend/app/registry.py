@@ -39,6 +39,9 @@ import module_7.router as m7_router
 import module_8.events as m8_events
 import module_8.meta as m8_meta
 import module_8.router as m8_router
+import module_9.events as m9_events
+import module_9.meta as m9_meta
+import module_9.router as m9_router
 from core.events import EventBus
 from core.guards import GuardRegistry
 from shared.routers import health, master, officers, offices, sites
@@ -84,6 +87,7 @@ MODULES: tuple[ModuleEntry, ...] = (
     ModuleEntry.build(m6_meta, m6_router.router, m6_events.register),
     ModuleEntry.build(m7_meta, m7_router.router, m7_events.register),
     ModuleEntry.build(m8_meta, m8_router.router, m8_events.register),
+    ModuleEntry.build(m9_meta, m9_router.router, m9_events.register),
 )
 
 SHARED_ROUTERS: tuple[APIRouter, ...] = (

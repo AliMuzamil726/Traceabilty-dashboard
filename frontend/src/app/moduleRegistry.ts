@@ -7,6 +7,7 @@ import { meta as m5 } from '@/module_5/module.meta';
 import { meta as m6 } from '@/module_6/module.meta';
 import { meta as m7 } from '@/module_7/module.meta';
 import { meta as m8 } from '@/module_8/module.meta';
+import { meta as m9 } from '@/module_9/module.meta';
 import type { ModuleMeta } from '@/shared/types';
 
 export type ModuleLoader = () => Promise<{ default: ComponentType }>;
@@ -17,8 +18,9 @@ export interface ModuleEntry extends ModuleMeta {
 }
 
 /**
- * Every module, in sidebar order. Adding a module = add its meta import and an
- * entry here (see README "How to add a new module").
+ * Every module, in navigation order: the farm-to-bale flow, with Gate Reception
+ * straight after Deliveries and Settings last. Adding a module = add its meta import
+ * and an entry here (see README "How to add a new module").
  */
 export const MODULES: readonly ModuleEntry[] = [
   { ...m1, loader: () => import('@/module_1') },
@@ -26,6 +28,7 @@ export const MODULES: readonly ModuleEntry[] = [
   { ...m3, loader: () => import('@/module_3') },
   { ...m4, loader: () => import('@/module_4') },
   { ...m5, loader: () => import('@/module_5') },
+  { ...m9, loader: () => import('@/module_9') },
   { ...m6, loader: () => import('@/module_6') },
   { ...m7, loader: () => import('@/module_7') },
   { ...m8, loader: () => import('@/module_8') },

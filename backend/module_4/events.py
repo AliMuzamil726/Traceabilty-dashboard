@@ -24,7 +24,9 @@ PUBLISHES: tuple[str, ...] = (PICKUP_REQUESTED, PICKUP_CANCELLED)
 
 SUBSCRIBES: tuple[str, ...] = (
     events.FIELDBOOK_READY_FOR_PICKUP,
+    events.FIELDBOOK_SUBMITTED,
     events.FIELDBOOK_STEP_SAVED,
+    events.FIELD_CREATED,
     events.FIELD_DELETED,
     events.FIELD_UPDATED,
 )
@@ -89,7 +91,9 @@ _open_request_check.__qualname__ = "module_4.field_has_pickup_request"
 
 def register(bus: EventBus, guards: GuardRegistry) -> None:
     bus.subscribe(events.FIELDBOOK_READY_FOR_PICKUP, on_data_changed)
+    bus.subscribe(events.FIELDBOOK_SUBMITTED, on_data_changed)
     bus.subscribe(events.FIELDBOOK_STEP_SAVED, on_data_changed)
+    bus.subscribe(events.FIELD_CREATED, on_data_changed)
     bus.subscribe(events.FIELD_UPDATED, on_data_changed)
     bus.subscribe(events.FIELD_DELETED, on_field_deleted)
     guards.register(FIELD_CAN_DELETE, _open_request_check, owner=OWNER)

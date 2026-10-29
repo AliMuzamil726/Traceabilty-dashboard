@@ -15,24 +15,23 @@ describe('Sidebar', () => {
   });
   afterEach(() => vi.restoreAllMocks());
 
-  it('renders all eight modules in order', async () => {
+  it('renders all nine modules in order', async () => {
     renderWithProviders(<SidebarContent />);
     const nav = screen.getByRole('navigation', { name: 'Primary' });
     await within(nav).findByText('Settings');
-    // The eight modules, then My profile and Sign out (the collapse toggle only on the rail).
+    // The nine module items in flow order; Settings is pinned at the foot of the list.
     const items = within(nav).getAllByRole('listitem');
-    expect(items).toHaveLength(10);
+    expect(items).toHaveLength(9);
     expect(items.map((li) => li.textContent)).toEqual([
       expect.stringContaining('Home'),
       expect.stringContaining('Register Farmer'),
       expect.stringContaining('Fieldbook'),
       expect.stringContaining('Harvest Radar'),
       expect.stringContaining('Deliveries'),
+      expect.stringContaining('Gate Reception'),
       expect.stringContaining('Heap'),
       expect.stringContaining('QR Tracing'),
       expect.stringContaining('Settings'),
-      expect.stringContaining('My profile'),
-      expect.stringContaining('Sign out'),
     ]);
   });
 
@@ -51,15 +50,16 @@ describe('Sidebar', () => {
     const links = within(nav)
       .getAllByRole('link')
       .filter((a) => a.hasAttribute('href'));
-    expect(links.map((a) => a.getAttribute('href'))).toEqual(['/', '/register', '/fieldbook', '/radar', '/deliveries', '/heaps', '/qr', '/settings', '/profile']);
+    expect(links.map((a) => a.getAttribute('href'))).toEqual(['/', '/register', '/fieldbook', '/radar', '/deliveries', '/gate', '/heaps', '/qr', '/settings']);
     expect(screen.getByRole('link', { name: /Register Farmer/ })).toHaveAttribute('aria-current', 'page');
-    // Modules 1 to 7 are all built, so no In build or Planned pill is left.
+    // Every module is built, so no In build or Planned pill is left.
     expect(screen.getByRole('link', { name: /Register Farmer/ })).not.toHaveTextContent('In build');
     expect(screen.getByRole('link', { name: /Fieldbook/ })).not.toHaveTextContent('In build');
     expect(screen.getByRole('link', { name: /Harvest Radar/ })).not.toHaveTextContent('In build');
     expect(screen.getByRole('link', { name: /Deliveries/ })).not.toHaveTextContent('In build');
     expect(screen.getByRole('link', { name: /Heap/ })).not.toHaveTextContent('In build');
     expect(screen.getByRole('link', { name: /QR Tracing/ })).not.toHaveTextContent('In build');
+    expect(screen.getByRole('link', { name: /Gate Reception/ })).not.toHaveTextContent('In build');
     expect(screen.getByRole('link', { name: /Home/ })).not.toHaveTextContent('In build');
     expect(screen.queryByText('Planned')).toBeNull();
   });
