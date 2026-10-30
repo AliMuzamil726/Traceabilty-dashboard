@@ -29,6 +29,16 @@ export interface Officer {
   active: boolean;
 }
 
+/** What the sign-in picker sees: no email or phone. */
+export interface OfficerDirectoryEntry {
+  id: string;
+  full_name: string;
+  role: Role;
+  country: string;
+  field_office: FieldOfficeRef | null;
+  active: boolean;
+}
+
 export interface CurrentOfficer {
   id: string;
   code: string;
@@ -44,6 +54,13 @@ export interface CurrentOfficer {
   is_admin: boolean;
   /** Administrator or staff: works on every officer's records. */
   sees_all?: boolean;
+}
+
+export interface SignInResponse {
+  /** Send as `Authorization: Bearer <token>` on every later request. */
+  token: string;
+  expires_at: string;
+  officer: CurrentOfficer;
 }
 
 export interface MasterOption {

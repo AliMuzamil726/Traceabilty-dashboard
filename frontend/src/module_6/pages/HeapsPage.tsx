@@ -45,9 +45,9 @@ export default function HeapsPage() {
   const selected = params.get('heap');
   const sites = useSites(crop);
   const requestedSite = params.get('site');
-  const siteId = requestedSite && (sites.data ?? []).some((s) => s.id === requestedSite)
-    ? requestedSite
-    : sites.data?.[0]?.id ?? '';
+  /* No ginner chosen means every ginner. Defaulting to the first one hides the other
+     sites' heaps and looks like the site filter has stopped working. */
+  const siteId = requestedSite && (sites.data ?? []).some((s) => s.id === requestedSite) ? requestedSite : '';
   const w = words(crop);
   const [opening, setOpening] = useState(false);
   const [receiving, setReceiving] = useState(false);
@@ -62,7 +62,7 @@ export default function HeapsPage() {
       return next;
     }, { replace: true });
 
-  const heaps = useHeaps({ crop, site_id: siteId || undefined, status: status === 'all' ? undefined : status }, Boolean(siteId));
+  const heaps = useHeaps({ crop, site_id: siteId || undefined, status: status === 'all' ? undefined : status });
   const detail = useHeapDetail(selected);
   const heap = detail.data;
 
@@ -78,8 +78,13 @@ export default function HeapsPage() {
         <SegmentedControl aria-label="Crop" value={crop} onChange={(c) => set({ crop: c, site: null, heap: null })}
           options={[{ value: 'cotton', label: 'Cotton' }, { value: 'hemp', label: 'Hemp' }]} />
         <div className="min-w-0 min-w-[200px] flex-1 sm:flex-none sm:w-60">
-          <Select aria-label={w.site} value={siteId} options={(sites.data ?? []).map((s) => ({ value: s.id, label: `${s.name} (${s.code})` }))}
-            onChange={(e) => set({ site: e.target.value, heap: null })} />
+          <Select
+            aria-label={w.site}
+            value={siteId}
+            placeholder={`All ${w.siteLower}s`}
+            options={(sites.data ?? []).map((s) => ({ value: s.id, label: `${s.name} (${s.code})` }))}
+            onChange={(e) => set({ site: e.target.value, heap: null })}
+          />
         </div>
         <div role="group" aria-label="Status" className="flex gap-1.5">
           {(['open', 'closed', 'all'] as const).map((s) => (
@@ -94,43 +99,61 @@ export default function HeapsPage() {
       </section>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(260px,320px)_minmax(0,1fr)]">
-        <HeapList crop={crop} heaps={heaps.data ?? []} loading={heaps.isLoading} selected={selected} onSelect={(id) => set({ heap: id })} />
-        {!selected ? (
-          <EmptyState title={`Choose a ${w.lotLower}`} description={`Select a ${w.lotLower} on the left, or open a new one.`} />
-        ) : detail.error ? (
-          <EmptyState title={`This ${w.lotLower} cannot be opened`} description={toApiError(detail.error).message} />
-        ) : !heap ? (
-          <Skeleton className="h-96 w-full" shape="block" />
+        {!heaps.isLoading && (heaps.data ?? []).length === 0 && !selected ? (
+          <div className="lg:col-span-2">
+            <EmptyState
+              title={`No ${w.lots.toLowerCase()}${siteId ? ` at this ${w.siteLower}` : ' yet'}`}
+              description={`Open a ${w.lotLower} to start gathering deliveries.`}
+            />
+          </div>
         ) : (
-          <Card padding="lg" as="section" aria-label={heap.heap_id} className="flex flex-col gap-6">
-            <HeapHeader heap={heap} />
-            <HeapKpis heap={heap} />
-            <section aria-labelledby="deliveries-h" className="flex flex-col gap-3">
-              <SectionHeader as="h3" id="deliveries-h" title="Deliveries"
-                actions={heap.permissions.can_add_deliveries && (
-                  <Button size="sm" variant="secondary" leftIcon={<Inbox className="h-4 w-4" />} onClick={() => setReceiving(true)}>
-                    Receive deliveries ({heap.pending_deliveries.length})
+          <>
+            <HeapList
+              crop={crop}
+              heaps={heaps.data ?? []}
+              loading={heaps.isLoading}
+              selected={selected}
+              onSelect={(id) => set({ heap: id })}
+              siteName={(h) => (sites.data ?? []).find((s) => s.id === h.site_id)?.name ?? null}
+            />
+            {!selected ? (
+              <EmptyState title={`Choose a ${w.lotLower}`} description={`Select a ${w.lotLower} on the left, or open a new one.`} />
+            ) : detail.error ? (
+              <EmptyState title={`This ${w.lotLower} cannot be opened`} description={toApiError(detail.error).message} />
+            ) : !heap ? (
+              <Skeleton className="h-96 w-full" shape="block" />
+            ) : (
+              <Card padding="lg" as="section" aria-label={heap.heap_id} className="flex flex-col gap-6">
+                <HeapHeader heap={heap} />
+                <HeapKpis heap={heap} />
+                <section aria-labelledby="deliveries-h" className="flex flex-col gap-3">
+                  <SectionHeader as="h3" id="deliveries-h" title="Deliveries"
+                    actions={heap.permissions.can_add_deliveries && (
+                      <Button size="sm" variant="secondary" leftIcon={<Inbox className="h-4 w-4" />} onClick={() => setReceiving(true)}>
+                        Receive deliveries ({heap.pending_deliveries.length})
+                      </Button>
+                    )} />
+                  <DeliveriesTable heap={heap} />
+                </section>
+                <section aria-labelledby="contrib-h" className="flex flex-col gap-3">
+                  <SectionHeader as="h3" id="contrib-h" title="Farmer contribution" />
+                  <ContributionTable rows={heap.contributions} />
+                </section>
+                <section aria-labelledby="bales-h" className="flex flex-col gap-3">
+                  <SectionHeader as="h3" id="bales-h" title="Bales" />
+                  <BalesPanel heap={heap} />
+                </section>
+                <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
+                  <Button size="sm" variant="ghost" leftIcon={<Download className="h-4 w-4" />}
+                    onClick={() => downloadCsv(heap.id).catch((e: unknown) => toast.error('The export failed', toApiError(e).message))}>
+                    Export CSV
                   </Button>
-                )} />
-              <DeliveriesTable heap={heap} />
-            </section>
-            <section aria-labelledby="contrib-h" className="flex flex-col gap-3">
-              <SectionHeader as="h3" id="contrib-h" title="Farmer contribution" />
-              <ContributionTable rows={heap.contributions} />
-            </section>
-            <section aria-labelledby="bales-h" className="flex flex-col gap-3">
-              <SectionHeader as="h3" id="bales-h" title="Bales" />
-              <BalesPanel heap={heap} />
-            </section>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
-              <Button size="sm" variant="ghost" leftIcon={<Download className="h-4 w-4" />}
-                onClick={() => downloadCsv(heap.id).catch((e: unknown) => toast.error('The export failed', toApiError(e).message))}>
-                Export CSV
-              </Button>
-              <CloseHeapDialog heap={heap} />
-            </div>
-            <ReceiveDeliveriesDrawer heap={heap} open={receiving} onClose={() => setReceiving(false)} />
-          </Card>
+                  <CloseHeapDialog heap={heap} />
+                </div>
+                <ReceiveDeliveriesDrawer heap={heap} open={receiving} onClose={() => setReceiving(false)} />
+              </Card>
+            )}
+          </>
         )}
       </div>
       <OpenHeapDialog crop={crop} siteId={siteId} open={opening} onClose={() => setOpening(false)} onOpened={(id) => set({ heap: id, status: null })} />

@@ -14,7 +14,13 @@ from fastapi.responses import JSONResponse, Response
 from sqlalchemy.orm import Session
 
 from core.config import Settings
-from core.deps import CurrentOfficer, get_current_officer, get_db, get_settings_dep
+from core.deps import (
+    CurrentOfficer,
+    get_current_officer,
+    get_db,
+    get_settings_dep,
+    get_write_db,
+)
 from core.errors import AppError, NotFoundError
 from module_7 import meta, services
 from module_7.models import CHANNEL_INTERNAL, CHANNEL_PUBLIC
@@ -40,6 +46,13 @@ class RateLimitedError(AppError):
 def get_service(
     session: Session = Depends(get_db), settings: Settings = Depends(get_settings_dep)
 ) -> services.QrService:
+    return services.QrService(session, settings)
+
+
+def get_write_service(
+    session: Session = Depends(get_write_db), settings: Settings = Depends(get_settings_dep)
+) -> services.QrService:
+    """For the GET routes that count a print or record a scan."""
     return services.QrService(session, settings)
 
 
@@ -205,7 +218,7 @@ def label_sheet(
 def label_png(
     serial: str = Path(..., max_length=48),
     officer: CurrentOfficer = Depends(get_current_officer),
-    service: services.QrService = Depends(get_service),
+    service: services.QrService = Depends(get_write_service),
 ) -> Response:
     return Response(
         service.label_png(serial, officer),

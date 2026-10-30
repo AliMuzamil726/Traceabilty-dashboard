@@ -47,18 +47,20 @@ LATENCY_BUDGET_MS = 3_000
 
 
 class QueryCounter:
-    """Counts every statement the engine runs."""
+    """Counts every statement the request runs, on the read and the write engine."""
 
     def __init__(self, database: Database) -> None:
-        self.engine = database.engine
+        self.engines = {database.engine, database.read_engine}
         self.count = 0
 
     def __enter__(self) -> QueryCounter:
-        event.listen(self.engine, "before_cursor_execute", self._seen)
+        for engine in self.engines:
+            event.listen(engine, "before_cursor_execute", self._seen)
         return self
 
     def __exit__(self, *_: object) -> None:
-        event.remove(self.engine, "before_cursor_execute", self._seen)
+        for engine in self.engines:
+            event.remove(engine, "before_cursor_execute", self._seen)
 
     def _seen(self, *_: Any, **__: Any) -> None:
         self.count += 1

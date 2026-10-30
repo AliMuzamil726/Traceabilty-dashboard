@@ -6,7 +6,6 @@ import {
   MapPinPlus,
   NotebookPen,
   Save,
-  UserPlus,
 } from 'lucide-react';
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -50,6 +49,12 @@ export default function FieldMapPage() {
   const [fullscreen, setFullscreen] = useState(false);
   const [vertexField, setVertexField] = useState<Field | null>(null);
   const [savedField, setSavedField] = useState<Field | null>(null);
+
+  /* A saved field belongs to one farmer: opening another farmer must not keep its
+     measurements or the "saved" card on screen. */
+  useEffect(() => {
+    setSavedField(null);
+  }, [farmerId]);
 
   const selectedFieldId = useMapStore((s) => s.selectedFieldId);
   const selectField = useMapStore((s) => s.selectField);
@@ -175,6 +180,13 @@ export default function FieldMapPage() {
   const nextFieldId = fields.data?.next_field_id_preview ?? '';
   const result = validation.result;
 
+  /* After a save the draft is empty, so the measurements come from the saved field
+     instead of resetting to dashes. */
+  const savedStats =
+    !draft.geometry && savedField
+      ? { area: savedField.area_acre, corners: savedField.vertex_count, saved: true as const }
+      : null;
+
   const startNew = () => {
     setSavedField(null);
     setDraft(EMPTY_DRAFT);
@@ -280,6 +292,7 @@ export default function FieldMapPage() {
           >
             <Suspense fallback={<Skeleton className="h-full w-full" shape="block" />}>
               <FieldMap
+                key={farmerId}
                 farmerId={farmerId}
                 farmerName={farmer.name}
                 farmerSawieId={farmer.sawie_id}
@@ -305,19 +318,32 @@ export default function FieldMapPage() {
               value={
                 result?.area_acre != null
                   ? `${formatDecimal(result.area_acre, 2)} acres`
-                  : draft.geometry
-                    ? 'Measuring'
-                    : '-'
+                  : savedStats
+                    ? `${formatDecimal(savedStats.area, 2)} acres`
+                    : draft.geometry
+                      ? 'Measuring'
+                      : '-'
               }
             />
             <Measure
               label="Corners"
-              value={result?.vertex_count != null ? formatNumber(result.vertex_count) : '-'}
+              value={
+                result?.vertex_count != null
+                  ? formatNumber(result.vertex_count)
+                  : savedStats
+                    ? formatNumber(savedStats.corners)
+                    : '-'
+              }
             />
-            <Measure label="Pin" value={draft.pin ? 'Placed' : 'Centre of the field'} />
+            <Measure
+              label="Pin"
+              value={draft.pin || savedStats ? 'Placed' : 'Centre of the field'}
+            />
             <span className="ml-auto">
               {validation.checking ? (
                 <Badge tone="neutral">Checking</Badge>
+              ) : savedStats ? (
+                <Badge tone="success">Saved</Badge>
               ) : validation.canSave ? (
                 <Badge tone="success">No overlap</Badge>
               ) : draft.geometry ? (
@@ -345,13 +371,6 @@ export default function FieldMapPage() {
                     onClick={startNew}
                   >
                     Add another field
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    leftIcon={<UserPlus className="h-4 w-4" />}
-                    onClick={() => navigate('/register/new')}
-                  >
-                    Register new farmer
                   </Button>
                   <Button
                     variant="secondary"

@@ -32,7 +32,7 @@ class TestOpening:
         assert book["schema_version"] == "2026.1"
         assert book["field_code"] == farm["field"]["field_id"]
         assert next(s["key"] for s in book["steps"]) == "field_info"
-        assert len(book["steps"]) == 11
+        assert len(book["steps"]) == 10
         assert book["defaults"]["field.area_acre"] == pytest.approx(9.88, rel=0.01)
         assert book["defaults"]["season.variety"] == "fh-142"
 
@@ -392,8 +392,8 @@ class TestSaving:
         )
         # A second officer still holding the old version.
         r = client.put(
-            f"{FB}/books/{book['id']}/steps/transport",
-            json={"data": cotton_steps()["transport"]},
+            f"{FB}/books/{book['id']}/steps/labour_social",
+            json={"data": cotton_steps()["labour_social"]},
             headers=stale,
         )
         assert r.status_code == 409

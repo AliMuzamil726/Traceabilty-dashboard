@@ -27,6 +27,21 @@ export function LotOverview({ lot }: { lot: Overview }) {
         <StatCard label="Public scans" value={formatNumber(lot.scans_public)} />
         <StatCard label="Last scan" value={lot.last_scan_at ? formatDateTime(lot.last_scan_at) : 'None yet'} />
       </div>
+      <section aria-label="Farmers in this lot" className="flex flex-col gap-2">
+        <SectionHeader as="h3" id="lot-farmers" title={`Farmers (${lot.farmers.length})`} />
+        {lot.farmers.length ? (
+          <ul className="flex flex-wrap gap-1.5" aria-labelledby="lot-farmers">
+            {lot.farmers.map((f) => (
+              <li key={f.farmer_id} className="flex items-center gap-2 rounded-full border border-line bg-canvas px-3 py-1 text-sm text-ink">
+                <span>{f.farmer_name ?? 'Unnamed farmer'}</span>
+                <span className="text-xs text-muted">{f.sawie_id ? `SAWIE ${f.sawie_id}` : 'No SAWIE ID'} · {formatNumber(f.kg)} kg</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-sm text-muted">No deliveries have reached this {lot.kind.toLowerCase()} yet.</p>
+        )}
+      </section>
     </Card>
   );
 }

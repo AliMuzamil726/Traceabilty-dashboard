@@ -140,8 +140,11 @@ export default function FarmerProfilePage() {
         <StatCard label="Fields mapped" value={completeness.field_count} />
         <StatCard
           label="Total area"
-          value={`${formatDecimal(completeness.total_area_acre, 2)} acres`}
-          hint={`${formatDecimal(completeness.total_area_ha, 2)} hectares`}
+          value={
+            farmer.crop === 'cotton'
+              ? `${formatDecimal(completeness.total_area_acre, 2)} acres`
+              : `${formatDecimal(completeness.total_area_ha, 2)} ha`
+          }
         />
         <StatCard label="Seasons recorded" value={seasons.length} />
         <StatCard

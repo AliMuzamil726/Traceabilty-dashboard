@@ -6,6 +6,7 @@ import { cn } from '@/core/utils/cn';
 import { dialogVariants, overlayVariants, transition } from '../motion/tokens';
 import { IconButton } from './IconButton';
 import { useFocusTrap } from './internal/useFocusTrap';
+import { useLockBodyScroll } from './internal/useLockBodyScroll';
 
 export interface DialogProps {
   open: boolean;
@@ -27,6 +28,7 @@ export function Dialog({ open, onClose, title, description, children, footer, si
   const titleId = `dlg${useId().replace(/:/g, '')}`;
   const descId = description ? `${titleId}-desc` : undefined;
   useFocusTrap(ref, open, dismissible ? onClose : undefined);
+  useLockBodyScroll(open);
 
   return createPortal(
     <AnimatePresence>
@@ -94,6 +96,7 @@ export function Drawer({ open, onClose, title, children, footer, side = 'right',
   const ref = useRef<HTMLDivElement>(null);
   const titleId = `drw${useId().replace(/:/g, '')}`;
   useFocusTrap(ref, open, onClose);
+  useLockBodyScroll(open);
   const offset = side === 'right' ? '100%' : '-100%';
 
   return createPortal(
@@ -119,20 +122,20 @@ export function Drawer({ open, onClose, title, children, footer, side = 'right',
             animate={{ x: 0, transition: transition('slow') }}
             exit={{ x: offset, transition: transition('base') }}
             className={cn(
-              'absolute top-0 flex h-full max-w-[90vw] flex-col bg-surface shadow-2 focus:outline-none',
+              'absolute top-0 flex h-[100dvh] max-w-[90vw] flex-col bg-surface shadow-2 focus:outline-none',
               side === 'right' ? 'right-0 border-l border-line' : 'left-0',
               width,
               className,
             )}
           >
-            <div className={cn('flex items-center justify-between border-b border-line px-5 py-4', hideHeader && 'sr-only')}>
+            <div className={cn('flex shrink-0 items-center justify-between border-b border-line px-5 py-4', hideHeader && 'sr-only')}>
               <h2 id={titleId} className="text-lg font-semibold text-ink">
                 {title}
               </h2>
               {!hideHeader && <IconButton label="Close" icon={<X className="h-4 w-4" />} size="sm" onClick={onClose} />}
             </div>
-            <div className="min-h-0 flex-1 overflow-y-auto">{children}</div>
-            {footer && <div className="flex justify-end gap-2 border-t border-line px-5 py-4">{footer}</div>}
+            <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">{children}</div>
+            {footer && <div className="flex shrink-0 justify-end gap-2 border-t border-line px-5 py-4">{footer}</div>}
           </motion.div>
         </div>
       )}

@@ -6,6 +6,7 @@ import { toApiError } from '@/core/api/errors';
 import type { CurrentOfficer } from '@/core/api/types';
 import { useCurrentOfficer } from '@/core/hooks/useSharedData';
 import { roleLabel } from '@/core/utils/format';
+import { isPhoneForCountry, phoneInput } from '@/core/utils/validators';
 import { Button } from '@/design-system/components/Button';
 import { Card, SectionHeader } from '@/design-system/components/Card';
 import { FormField } from '@/design-system/components/FormField';
@@ -25,6 +26,9 @@ interface Details {
 
 const BLANK_PASSWORD = { current_password: '', new_password: '', repeat: '' };
 
+/** What a number looks like where the officer works; the only hint worth giving. */
+const MOBILE_EXAMPLE: Record<string, string> = { PK: '0300-1234567', GB: '07700 900123' };
+
 /**
  * A person's own account: photo, contact details, password, and sign-out option.
  * Enabled profile photo upload (Add photo / Change photo / Remove) for all roles
@@ -38,6 +42,7 @@ export default function ProfilePage() {
   const fileInput = useRef<HTMLInputElement>(null);
 
   const [details, setDetails] = useState<Details>({ full_name: '', email: '', phone: '' });
+  const [detailsError, setDetailsError] = useState<string | null>(null);
   const [password, setPassword] = useState(BLANK_PASSWORD);
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [cropSrc, setCropSrc] = useState<string | null>(null);
@@ -190,8 +195,21 @@ export default function ProfilePage() {
           <SectionHeader title="My details" />
           <form
             className="mt-4 flex flex-col gap-4"
+            noValidate
             onSubmit={(e) => {
               e.preventDefault();
+              const mobile = details.phone.trim();
+              if (!mobile) {
+                setDetailsError('A mobile number is required so an administrator can reach you.');
+                return;
+              }
+              if (!isPhoneForCountry(mobile, officer.country)) {
+                setDetailsError(
+                  `Enter a valid mobile number, for example ${MOBILE_EXAMPLE[officer.country] ?? '0300-1234567'}.`,
+                );
+                return;
+              }
+              setDetailsError(null);
               saveDetails.mutate();
             }}
           >
@@ -216,11 +234,22 @@ export default function ProfilePage() {
                   maxLength={254}
                 />
               </FormField>
-              <FormField label="Mobile">
+              <FormField
+                label="Mobile"
+                required
+                error={detailsError}
+                hint={`Digits only, for example ${MOBILE_EXAMPLE[officer.country] ?? '0300-1234567'}.`}
+              >
                 <Input
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
                   value={details.phone}
-                  onChange={(e) => setDetails({ ...details, phone: e.target.value })}
-                  maxLength={32}
+                  onChange={(e) => {
+                    setDetails({ ...details, phone: phoneInput(e.target.value) });
+                    if (detailsError) setDetailsError(null);
+                  }}
+                  maxLength={16}
                 />
               </FormField>
             </div>

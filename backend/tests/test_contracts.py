@@ -110,7 +110,7 @@ def _helper_keys(tree: ast.Module, node: ast.expr) -> set[str] | None:
     if not name:
         return None
     for candidate in ast.walk(tree):
-        if not isinstance(candidate, (ast.FunctionDef, ast.AsyncFunctionDef)):
+        if not isinstance(candidate, ast.FunctionDef | ast.AsyncFunctionDef):
             continue
         if candidate.name != name:
             continue
@@ -132,7 +132,7 @@ def _helper_keys(tree: ast.Module, node: ast.expr) -> set[str] | None:
 def _payload_keys(node: ast.expr, tree: ast.Module) -> set[str] | None:
     if isinstance(node, ast.Dict):
         keys: set[str] = set()
-        for key, value in zip(node.keys, node.values):
+        for key, value in zip(node.keys, node.values, strict=True):
             if key is None:
                 unpacked = _helper_keys(tree, value)
                 if unpacked is None:

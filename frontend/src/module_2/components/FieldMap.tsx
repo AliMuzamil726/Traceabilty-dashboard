@@ -100,6 +100,28 @@ function MapResizeHandler() {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Follow the officer's position when the farmer has no fields yet             */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Leaflet reads ``MapContainer``'s centre once, when it mounts, so a GPS fix that
+ * arrives afterwards would leave a new farmer's map on the region centre. Follow the
+ * first fix instead, unless this farmer already has a field to fit.
+ */
+function CentreOnPosition({ position, enabled }: { position: Position | null; enabled: boolean }) {
+  const map = useMap();
+  const followed = useRef(false);
+  useEffect(() => {
+    if (!enabled || followed.current || !position) return;
+    followed.current = true;
+    map.flyTo([position.lat, position.lng], Math.max(map.getZoom(), GEOMETRY_ZOOM), {
+      duration: 0.8,
+    });
+  }, [enabled, position, map]);
+  return null;
+}
+
+/* -------------------------------------------------------------------------- */
 /* Context layer: every field in the database + all fields of current farmer   */
 /* -------------------------------------------------------------------------- */
 
@@ -142,6 +164,7 @@ function AllFieldsLayer({
   farmerId,
   farmerName,
   farmerSawieId,
+  country,
   farmerFields,
   editingFieldId,
   selectedFieldId,
@@ -151,6 +174,7 @@ function AllFieldsLayer({
   farmerId: string;
   farmerName?: string;
   farmerSawieId?: number;
+  country: string;
   farmerFields: Field[];
   editingFieldId?: string | null;
   selectedFieldId: string | null;
@@ -222,7 +246,7 @@ function AllFieldsLayer({
           farmer_id: field.farmer_id,
           farmer_name: farmerName ?? 'Current farmer',
           sawie_id: farmerSawieId ?? 0,
-          crop: 'cotton',
+          crop: country === 'GB' ? 'hemp' : 'cotton',
           area_acre: field.area_acre,
           area_ha: field.area_ha,
           pin_lat: field.pin_lat,
@@ -230,14 +254,17 @@ function AllFieldsLayer({
           geometry: field.geometry,
         }),
       );
-      layer.bindTooltip(`${field.field_id} (${formatDecimal(field.area_acre, 2)} ac)`, {
-        permanent: zoom >= 15,
-        direction: 'center',
-      });
+      layer.bindTooltip(
+        `${field.field_id} (${country === 'GB' ? `${formatDecimal(field.area_ha, 2)} ha` : `${formatDecimal(field.area_acre, 2)} ac`})`,
+        {
+          permanent: zoom >= 15,
+          direction: 'center',
+        },
+      );
       layer.on('click', () => onSelectField(field.id));
       ownGroup.addLayer(layer);
     }
-  }, [farmerFields, farmerName, farmerSawieId, editingFieldId, selectedFieldId, onSelectField, zoom]);
+  }, [farmerFields, farmerName, farmerSawieId, country, editingFieldId, selectedFieldId, onSelectField, zoom]);
 
   // 2. Render all other mapped fields across the officer's database
   useEffect(() => {
@@ -302,6 +329,10 @@ function escapeHtml(value: string): string {
 
 /** Popup for any field on the map: which field, whose, and how big. */
 function popupHtml(feature: MapFeature): string {
+  const area =
+    feature.crop === 'hemp'
+      ? `${formatDecimal(feature.area_ha, 2)} ha`
+      : `${formatDecimal(feature.area_acre, 2)} acres`;
   return [
     '<div style="min-width:170px">',
     `<div class="mono-id" style="font-weight:600">${escapeHtml(feature.field_id)}</div>`,
@@ -309,7 +340,7 @@ function popupHtml(feature: MapFeature): string {
     feature.sawie_id
       ? `<div style="margin-top:2px;color:#5B675F">SAWIE ID <span class="mono-id">${feature.sawie_id}</span></div>`
       : '',
-    `<div style="margin-top:4px" class="tabular">${formatDecimal(feature.area_acre, 2)} acres · ${formatDecimal(feature.area_ha, 2)} ha</div>`,
+    `<div style="margin-top:4px" class="tabular">${area}</div>`,
     '</div>',
   ].join('');
 }
@@ -666,14 +697,14 @@ export function FieldMap({
   const showLabels = useMapStore((s) => s.showLabels);
   const [features, setFeatures] = useState<MapFeature[]>([]);
 
+  // Never fall back to another farmer's field here: a new farmer must open on their
+  // own position or their region, not on somebody else's plot.
   const centre = useMemo(() => {
     const first = farmerFields[0];
     if (first) return { lat: first.pin_lat, lng: first.pin_lng, zoom: DEFAULT_ZOOM };
     if (position) return { lat: position.lat, lng: position.lng, zoom: DEFAULT_ZOOM };
-    const anyMapped = features[0];
-    if (anyMapped) return { lat: anyMapped.pin_lat, lng: anyMapped.pin_lng, zoom: DEFAULT_ZOOM };
     return REGION_CENTRES[country] ?? { lat: 30.1575, lng: 71.5249, zoom: DEFAULT_ZOOM };
-  }, [position, farmerFields, features, country]);
+  }, [position, farmerFields, country]);
 
   const layers = useTileLayers();
   const base = baseLayer === 'street' ? layers.street : layers.satellite;
@@ -691,6 +722,10 @@ export function FieldMap({
       attributionControl
     >
       <MapResizeHandler />
+      <CentreOnPosition
+        position={position}
+        enabled={farmerFields.length === 0 && !editingFieldId}
+      />
       <TileLayer
         key={base.id}
         url={base.url}
@@ -715,6 +750,7 @@ export function FieldMap({
         farmerId={farmerId}
         farmerName={farmerName}
         farmerSawieId={farmerSawieId}
+        country={country}
         farmerFields={farmerFields}
         editingFieldId={editingFieldId}
         selectedFieldId={selectedFieldId}

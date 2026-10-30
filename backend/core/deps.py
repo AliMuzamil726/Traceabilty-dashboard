@@ -4,10 +4,10 @@ Transaction rule: :func:`get_db` never commits. Service methods that write call
 ``session.commit()`` themselves, so a commit failure always surfaces as an error
 response. Anything left uncommitted is rolled back when the session closes.
 
-Officer context (until login exists): the ``X-Officer-Id`` header selects the acting
-officer. In development, a missing header falls back to the seeded default officer
-(``DEFAULT_OFFICER_CODE``). In production the header is required. When login
-arrives, only :func:`get_current_officer` and the frontend OfficerSwitcher change.
+Officer context: sign-in mints a signed token (``core.sessions``) that the client sends
+as ``Authorization: Bearer ...``. In development and tests the ``X-Officer-Id`` header
+still selects the acting officer, so the officer switcher and every test keep working;
+in production the header is ignored and only a token counts.
 """
 
 from __future__ import annotations
@@ -19,6 +19,7 @@ from typing import Any, TypeVar
 from fastapi import Depends, Header, Request
 from sqlalchemy.orm import Session
 
+from core import sessions
 from core.config import Settings
 from core.database import Database
 from core.errors import ForbiddenError, UnauthorizedError
@@ -40,7 +41,27 @@ def get_database(request: Request) -> Database:
     return database
 
 
-def get_db(database: Database = Depends(get_database)) -> Iterator[Session]:
+def get_db(request: Request, database: Database = Depends(get_database)) -> Iterator[Session]:
+    """A session for this request: read-only for GET/HEAD, write-capable otherwise."""
+    if request.method in ("GET", "HEAD"):
+        factory = database.read_session_factory
+    else:
+        factory = database.session_factory
+    session = factory()
+    try:
+        yield session
+    except Exception:
+        session.rollback()
+        raise
+    finally:
+        session.close()
+
+
+def get_write_db(
+    request: Request, database: Database = Depends(get_database)
+) -> Iterator[Session]:
+    """A write-capable session for the few GET routes that record something."""
+    del request
     session = database.session_factory()
     try:
         yield session
@@ -107,31 +128,43 @@ class CurrentOfficer:
 
 
 def get_current_officer(
+    authorization: str | None = Header(default=None, alias="Authorization"),
     x_officer_id: str | None = Header(default=None, alias=OFFICER_HEADER),
     session: Session = Depends(get_db),
     settings: Settings = Depends(get_settings_dep),
 ) -> CurrentOfficer:
-    repo = OfficerRepository(session)
-    officer_id = (x_officer_id or "").strip()
-    if officer_id:
-        officer = repo.get_with_office(officer_id)
-        if officer is None:
-            raise UnauthorizedError(
-                "The selected officer does not exist.",
-                code="officer_not_found",
-                details={"officer_id": officer_id},
-            )
+    bearer = sessions.bearer_token(authorization)
+    token_officer_id = sessions.verify(settings, bearer) if bearer else None
+    if bearer and token_officer_id is None:
+        raise UnauthorizedError(
+            "Your session is no longer valid. Sign in again.", code="session_invalid"
+        )
+
+    header_id = (x_officer_id or "").strip()
+    if header_id and settings.is_dev:
+        officer_id = header_id
+    elif token_officer_id:
+        officer_id = token_officer_id
     elif settings.is_dev:
-        officer = repo.get_by_code(settings.default_officer_code)
+        officer = OfficerRepository(session).get_by_code(settings.default_officer_code)
         if officer is None:
             raise UnauthorizedError(
                 "No officer selected and the default development officer is missing. "
                 "Run the seed script.",
                 code="officer_required",
             )
+        if not officer.active:
+            raise ForbiddenError("This officer is inactive.", code="officer_inactive")
+        return CurrentOfficer.from_model(officer)
     else:
+        raise UnauthorizedError("Sign in to continue.", code="officer_required")
+
+    officer = OfficerRepository(session).get_with_office(officer_id)
+    if officer is None:
         raise UnauthorizedError(
-            f"The {OFFICER_HEADER} header is required.", code="officer_required"
+            "The selected officer does not exist.",
+            code="officer_not_found",
+            details={"officer_id": officer_id},
         )
     if not officer.active:
         raise ForbiddenError("This officer is inactive.", code="officer_inactive")

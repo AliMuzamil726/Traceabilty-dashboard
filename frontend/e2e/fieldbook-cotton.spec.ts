@@ -2,7 +2,7 @@ import { expect, test, type APIRequestContext, type Page } from '@playwright/tes
 
 /**
  * The smoke test for Module 3: a cotton farmer's fieldbook, filled in through every one
- * of its 11 steps, submitted, and then shown read only.
+ * of its 10 steps, submitted, and then shown read only.
  *
  * The farmer and the field are set up through Module 2's API (the map is Module 2's own
  * smoke test), on fresh ground each run so repeat runs never overlap. Everything after
@@ -137,22 +137,22 @@ test('a cotton fieldbook is filled in, submitted and locked', async ({ page, req
   await page.getByLabel('Nothing to record for this step').click();
   await expect(page.getByLabel('Nothing to record for this step')).toBeChecked();
   await expect(page.getByText('Marked as nothing to record.')).toBeVisible();
+  await nextStep(page, 'Energy');
+
+  // 8. Energy.
+  await answerAll(page, { total_diesel: 180, grid_electricity: 0 });
+  await nextStep(page, 'Labour and social');
+
+  // 9. Labour and social.
+  await answerAll(page, { family_labour: 3, hired_labour: 10, women_pickers: 8, picking_wage: 1200, training_attended: 'yes' });
+  await answer(page, 'training_name', 'Better Cotton field school');
   await nextStep(page, 'Harvest');
 
-  // 8. Harvest: one picking, ready for pickup.
+  // 10. Harvest: one picking, ready for pickup.
   await addEntry(page, {
     picking_date: day(20), picking_number: '1st', harvest_method: 'manual_picking', yield: 12, moisture: 9,
     storage_material: 'cotton_cloth', ready_for_pickup: 'yes',
   });
-  await nextStep(page, 'Energy');
-
-  // 9 to 11.
-  await answerAll(page, { total_diesel: 180, grid_electricity: 0 });
-  await nextStep(page, 'Transport');
-  await answerAll(page, { transport_distance: 35, transport_mode: 'tractor_trolley' });
-  await nextStep(page, 'Labour and social');
-  await answerAll(page, { family_labour: 3, hired_labour: 10, women_pickers: 8, picking_wage: 1200, training_attended: 'yes' });
-  await answer(page, 'training_name', 'Better Cotton field school');
 
   // The last step submits, through a confirmation.
   await expect(page.getByRole('button', { name: 'Save and Next' })).toHaveCount(0);

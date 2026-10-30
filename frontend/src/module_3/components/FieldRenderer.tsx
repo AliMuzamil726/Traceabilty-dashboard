@@ -2,6 +2,7 @@ import { Lightbulb } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { useMasterList } from '@/core/hooks/useSharedData';
 import { cn } from '@/core/utils/cn';
+import { todayIsoDate } from '@/core/utils/dates';
 import { DatePicker, FormField, Input, NumberInput, Select } from '@/design-system/components';
 import type { FieldDef } from '../api/types';
 import { DateListInput } from './DateListInput';
@@ -24,7 +25,7 @@ export interface FieldRendererProps {
   photos?: ReactNode;
 }
 
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => todayIsoDate();
 
 function hintFor(field: FieldDef, warning?: string): ReactNode {
   if (warning) return <span className="text-wheat-600">{warning}</span>;

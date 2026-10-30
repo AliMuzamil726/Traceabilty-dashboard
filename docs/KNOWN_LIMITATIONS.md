@@ -1,11 +1,11 @@
 # Known limitations
 
-* **Sign-in is not authentication yet.** The sign-in screen does check a password
-  against a stored PBKDF2 hash, but it hands back no session: every request afterwards
-  still names the acting officer in an `X-Officer-Id` header, which is not a secret and
-  can be spoofed. Officer scoping (mine or all) and the ownership rule (D-110) are real
-  checks but only as trustworthy as that header. Do not expose the API to an untrusted
-  network until a session layer exists.
+* **Sessions are signed tokens, not server-side sessions.** Sign-in checks the password
+  and mints an HMAC-signed token (12 hours) that proves the officer id; the token is not
+  encrypted, so it carries only the id and timestamps. The `X-Officer-Id` header still
+  works in development (the officer switcher), but production ignores it. There is no
+  revocation list yet: signing out forgets the token on the device, and a stolen token
+  stays valid until it expires, so keep `SESSION_TTL_SECONDS` short if that matters.
 * **Every account starts on the same password** (`12345678`), set by the seed, and the
   product does not force a change on first sign-in. An administrator adding an officer
   in Settings creates them on that password too.

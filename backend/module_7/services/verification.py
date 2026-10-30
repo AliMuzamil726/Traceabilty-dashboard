@@ -22,12 +22,14 @@ def checks(
     heap_status: str,
     bales_weight_kg: Decimal,
     expected_output_kg: Decimal,
+    crop: str = "cotton",
 ) -> list[Check]:
     """``fieldbook_statuses``: one per contributing field and season (None when missing).
     ``deliveries``: (status, weighbridge kg) for each delivery in the heap."""
     submitted = sum(1 for s in fieldbook_statuses if s == "submitted")
     total_books = len(fieldbook_statuses)
     weighed = sum(1 for status, kg in deliveries if status == "delivered" and kg and kg > 0)
+    lot_word = "Heap" if crop == "cotton" else "Batch"
     return [
         Check(
             "fieldbooks_submitted",
@@ -43,7 +45,7 @@ def checks(
         ),
         Check(
             "heap_closed",
-            "Processing lot closed",
+            f"{lot_word} closed after processing",
             heap_status == "closed",
             "Closed" if heap_status == "closed" else "Still open",
         ),

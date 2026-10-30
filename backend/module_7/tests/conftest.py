@@ -110,7 +110,6 @@ def cotton_steps() -> dict[str, Any]:
             }
         ],
         "energy": {"total_diesel": 180, "grid_electricity": 0},
-        "transport": {"transport_distance": 35, "transport_mode": "tractor_trolley"},
         "labour_social": {
             "family_labour": 3,
             "hired_labour": 10,

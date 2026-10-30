@@ -84,16 +84,19 @@ pending gate entry.
 
 ### Officer context
 
-The sign-in screen checks a password (`POST /api/v1/officers/sign-in`) and remembers the
-chosen account in the browser. Requests do not carry a session yet: `core.deps.get_current_officer`
-reads `X-Officer-Id`:
+The sign-in screen checks a password (`POST /api/v1/officers/sign-in`), which mints an
+HMAC-signed token (12 hours, key from `SESSION_SECRET` or `QR_IP_SALT`) that the browser
+stores and sends as `Authorization: Bearer ...`. `core.deps.get_current_officer`:
 
-* header present: the officer must exist (401 `officer_not_found`) and be active (403);
-* header absent in development/test: the officer with `DEFAULT_OFFICER_CODE`;
-* header absent in production: 401 `officer_required`.
+* token present and valid: the officer it names (401 `session_invalid`, 403 if inactive);
+* token absent, `X-Officer-Id` present in development/test: that officer (the officer
+  switcher and the test fixtures rely on it; production ignores the header);
+* neither, in development/test: the officer with `DEFAULT_OFFICER_CODE`;
+* neither, in production: 401 `officer_required`.
 
-`require_admin` builds on it. Real sessions (a signed cookie or token) will replace the
-header; this dependency and the frontend OfficerSwitcher are the only pieces that change.
+The account picker reads the public `GET /api/v1/officers/directory`, which carries no
+email or phone; the full list and one-officer routes need a signed-in caller.
+`require_admin` builds on the dependency.
 
 ### Startup sequence (`app/lifespan.py`)
 

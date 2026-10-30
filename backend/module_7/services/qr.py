@@ -114,6 +114,7 @@ class QrService:
             [token.id] if token else []
         )
         total, public, last = self.scans.summary(ids)
+        lineage = heaps.get_heap_lineage(self.session, heap.heap_id)
         return {
             "heap_id": heap.heap_id,
             "crop": heap.crop,
@@ -133,6 +134,18 @@ class QrService:
             "scans_total": total,
             "scans_public": public,
             "last_scan_at": last,
+            # The people behind the lot: the officer at the gate needs the names, not
+            # just an aggregate, to answer "whose cotton is in this heap?".
+            "farmers": [
+                {
+                    "farmer_id": f.farmer_id,
+                    "sawie_id": f.sawie_id,
+                    "farmer_name": f.farmer_name,
+                    "kg": float(f.kg),
+                    "pct": float(f.pct),
+                }
+                for f in (lineage.farmers if lineage else ())
+            ],
             "base_url": self.base_url,
             "base_url_is_local": images.is_local(self.base_url),
         }

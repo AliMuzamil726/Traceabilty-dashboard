@@ -93,6 +93,16 @@ class TestTokensFromEvents:
         assert len({r["token"] for r in rows} | {overview["token"]}) == 21
         assert all(r["bale_serial"] not in r["token"] for r in rows)
 
+    def test_overview_names_the_farmers_in_the_lot(
+        self, client: TestClient, lot: Callable[..., Json]
+    ) -> None:
+        data = lot()
+        overview = client.get(f"{QR}/lots/{data['heap']['heap_id']}/overview").json()
+        names = [f["farmer_name"] for f in overview["farmers"]]
+        assert len(names) == 3
+        assert all(names)
+        assert sum(f["kg"] for f in overview["farmers"]) == pytest.approx(10_000.0)
+
     def test_creation_is_idempotent(self, client: TestClient, lot: Callable[..., Json]) -> None:
         heap = lot(close=False, bales=1)["heap"]
         db = client.app.state.db  # type: ignore[attr-defined]

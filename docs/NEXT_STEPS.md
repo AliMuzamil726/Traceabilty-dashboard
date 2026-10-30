@@ -1,9 +1,11 @@
 # Next steps
 
-1. **Real sessions.** The sign-in screen checks passwords already; replace the
-   `X-Officer-Id` header with a signed session (cookie or token), add rotation and lockout,
-   and keep `get_current_officer` as the single seam so no module changes.
-   Settings already holds the officer records and the role matrix this needs (D-121).
+1. **Session hardening.** Sign-in now mints a signed token (`core/sessions.py`), production
+   ignores the development `X-Officer-Id` header, and sign-in attempts are rate limited;
+   `get_current_officer` stayed the single seam. Still to do: a revocation list (so a
+   stolen token can be cut short), shorter lifetimes with refresh, and lockout after
+   repeated failures. The default password (`12345678`) is still set by the seed, so a
+   forced change on first sign-in belongs here too.
 2. **Supabase or PostgreSQL migration.** The models avoid SQLite-only features. Steps:
    point `DATABASE_URL` at Postgres, run the migrations, replace the `BEGIN IMMEDIATE`
    counter locking with `SELECT ... FOR UPDATE` in `core/ids.py`, rerun the whole suite

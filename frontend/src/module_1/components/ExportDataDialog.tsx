@@ -81,8 +81,13 @@ const CSV_COLUMNS: { header: string; key: keyof ExportRow }[] = [
   { header: 'Traceability Status', key: 'traceability_status' },
 ];
 
+const FORMULA_TRIGGER = /^[=+\-@\t\r]/;
+const PLAIN_NUMBER = /^[+-]?\d+(\.\d+)?$/;
+
+/** Excel runs a cell that starts with = + - @ (OWASP CSV injection), so prefix it. */
 function escapeCsvCell(value: string | number | null | undefined): string {
-  const str = value == null ? '' : String(value);
+  const raw = value == null ? '' : String(value);
+  const str = FORMULA_TRIGGER.test(raw) && !PLAIN_NUMBER.test(raw) ? `'${raw}` : raw;
   if (/[",\n\r]/.test(str)) {
     return `"${str.replace(/"/g, '""')}"`;
   }

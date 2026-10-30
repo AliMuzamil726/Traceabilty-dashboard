@@ -184,8 +184,29 @@ class TestDistribution:
         cotton = dashboard("distribution", as_officer("ADMIN-01"), scope="all", crop="cotton")
         hemp = dashboard("distribution", as_officer("ADMIN-01"), scope="all", crop="hemp")
 
-        assert len(cotton["fieldbook_funnel"]) == 11
-        assert len(hemp["fieldbook_funnel"]) == 9
+        assert [s["step_key"] for s in cotton["fieldbook_funnel"]] == [
+            "field_info",
+            "land_preparation",
+            "sowing",
+            "nutrient_management",
+            "irrigation",
+            "weed_management",
+            "pest_disease",
+            "energy",
+            "labour_social",
+            "harvest",
+        ]
+        assert [s["step_key"] for s in hemp["fieldbook_funnel"]] == [
+            "field_info",
+            "land_preparation",
+            "sowing",
+            "nutrient_management",
+            "crop_monitoring",
+            "weeds_pests",
+            "harvest",
+            "retting",
+            "baling",
+        ]
         sowing = next(s for s in cotton["fieldbook_funnel"] if s["step_key"] == "sowing")
         assert sowing["complete"] == 1
 

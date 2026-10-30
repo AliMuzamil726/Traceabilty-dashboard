@@ -50,14 +50,14 @@ def test_cotton_book_through_the_public_api(
     fill(book, farm["headers"], cotton_steps())
     summary = q(db, api.get_fieldbook_summary, fid, year)
     assert summary is not None
-    assert summary.steps_complete == summary.steps_total == 11
+    assert summary.steps_complete == summary.steps_total == 10
     assert q(db, api.get_sowing_date, fid, year) == date.today() - timedelta(days=SOWING_DAYS_AGO)
     assert q(db, api.get_crop_status, fid, year).status == "harvested"  # type: ignore[union-attr]
     assert q(db, api.get_crop_clock, "cotton").ready_day == 135  # type: ignore[union-attr]
     ready = q(db, api.list_ready_for_pickup, crop="cotton")
     assert [(r.field_id, r.picking_number) for r in ready] == [(fid, "1st")]
     assert q(db, api.get_estimated_yield, fid, year).estimated_kg == 12 * 9.5 * 40  # type: ignore[union-attr]
-    assert len(q(db, api.get_activity_timeline, fid, year)) >= 11
+    assert len(q(db, api.get_activity_timeline, fid, year)) >= 10
     assert q(db, api.is_submitted, fid) is False
     client.post(f"{FB}/books/{book['id']}/submit", headers=farm["headers"])
     assert q(db, api.is_submitted, fid) is True

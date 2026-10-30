@@ -30,8 +30,9 @@ export function buildUrl(path: string, query?: Record<string, QueryValue>): stri
  */
 export async function apiRequest<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const { method = 'GET', query, body, signal, headers = {} } = options;
-  const officerId = useOfficerStore.getState().officerId;
+  const { officerId, token } = useOfficerStore.getState();
   const finalHeaders: Record<string, string> = { Accept: 'application/json', ...headers };
+  if (token) finalHeaders.Authorization = `Bearer ${token}`;
   if (officerId) finalHeaders[OFFICER_HEADER] = officerId;
   if (body !== undefined && !(body instanceof FormData)) finalHeaders['Content-Type'] = 'application/json';
 
@@ -58,8 +59,14 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
 
   if (!response.ok) {
     if (isErrorBody(data)) {
-      // A stale officer id (e.g. after a database reset): forget it and fall back.
-      if (data.error.code === 'officer_not_found' && officerId) {
+      // A stale officer id or an expired session: forget it and fall back to sign-in.
+      if (
+        officerId &&
+        (data.error.code === 'officer_not_found' ||
+          data.error.code === 'session_invalid' ||
+          data.error.code === 'session_expired' ||
+          data.error.code === 'officer_required')
+      ) {
         useOfficerStore.getState().clearOfficer();
       }
       throw new ApiError(response.status, data.error);

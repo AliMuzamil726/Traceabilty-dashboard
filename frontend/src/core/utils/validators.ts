@@ -43,6 +43,11 @@ export function isPkMobile(value: string): boolean {
   return /^(03\d{9}|\+923\d{9}|00923\d{9})$/.test(compact);
 }
 
+/** Keep only what a phone keypad sends, so a pasted letter cannot reach the field. */
+export function phoneInput(value: string, maxLength = 16): string {
+  return value.replace(/[^\d\s\-()+]/g, '').slice(0, maxLength);
+}
+
 /** UK phone: 0 followed by 10 digits, or +44 followed by 10 digits. */
 export function isUkPhone(value: string): boolean {
   const compact = value.replace(/[\s\-()]/g, '');

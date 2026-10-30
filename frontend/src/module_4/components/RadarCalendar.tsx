@@ -1,5 +1,6 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/core/utils/cn';
+import { todayIsoDate } from '@/core/utils/dates';
 import { formatNumber } from '@/core/utils/format';
 import { IconButton, Skeleton } from '@/design-system/components';
 import type { CalendarData } from '../api/types';
@@ -23,7 +24,7 @@ function kg(value: number): string {
 /** Expected-ready dates for a month. Clicking a day filters the table to that day. */
 export function RadarCalendar({ month, data, loading, selectedDay, onMonthChange, onPickDay }: RadarCalendarProps) {
   const byDay = new Map((data?.days ?? []).map((d) => [d.date, d]));
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayIsoDate();
   const title = new Date(`${month}-01T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 
   return (

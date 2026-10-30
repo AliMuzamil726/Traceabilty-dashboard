@@ -11,7 +11,13 @@ from fastapi import APIRouter, Depends, Path, Query, Request, Response
 from sqlalchemy.orm import Session
 
 from core.config import Settings
-from core.deps import CurrentOfficer, get_current_officer, get_db, get_settings_dep
+from core.deps import (
+    CurrentOfficer,
+    get_current_officer,
+    get_db,
+    get_settings_dep,
+    get_write_db,
+)
 from core.errors import AppError
 from core.pagination import Page, PageParams, page_params
 from module_2 import meta, services
@@ -55,7 +61,9 @@ def get_location_service(session: Session = Depends(get_db)) -> services.Locatio
     return services.LocationService(session)
 
 
-def get_postcode_service(session: Session = Depends(get_db)) -> services.PostcodeService:
+def get_postcode_service(
+    session: Session = Depends(get_write_db),
+) -> services.PostcodeService:
     return services.PostcodeService(session)
 
 

@@ -117,7 +117,7 @@
         {
           "key": "passes",
           "label": "Number of passes",
-          "help": "How many times the machine crossed the field (e.g. 2 = ploughed twice).",
+          "help": "One pass is one trip across the field with this machine. Ploughed twice = 2 passes.",
           "type": "number",
           "integer": true,
           "min": 1,
@@ -127,6 +127,7 @@
         {
           "key": "tillage_depth",
           "label": "Tillage depth",
+          "help": "How deep the soil was worked, in centimetres. A chisel plough usually reaches 20–30 cm.",
           "type": "number",
           "unit": "cm",
           "min": 0,
@@ -136,6 +137,7 @@
         {
           "key": "area_covered",
           "label": "Area covered per operation",
+          "help": "Acres covered in this entry. Enter the field's area when the whole field was worked.",
           "type": "number",
           "unit": "acres",
           "min": 0,
@@ -145,6 +147,7 @@
         {
           "key": "diesel_per_pass",
           "label": "Diesel per pass",
+          "help": "Litres of diesel for one pass over one acre. Not asked for manual or bullock-drawn work.",
           "type": "number",
           "unit": "L per acre",
           "min": 0,
@@ -161,6 +164,7 @@
         {
           "key": "residue_handling",
           "label": "Previous crop residue",
+          "help": "What happened to the last crop's stalks — removed, grazed, burnt or mixed into the soil.",
           "type": "select",
           "list_key": "residue_handling",
           "required": true
@@ -224,11 +228,11 @@
         {
           "key": "seed_rate",
           "label": "Seed rate",
-          "help": "Typical: 8–12 kg/acre broadcast, 5–8 kg/acre drill. Up to 100 kg accepted.",
+          "help": "Varies by variety and method — 5–12 kg/acre is usual for cotton. Enter what you actually used; up to 200 kg/acre is accepted.",
           "type": "number",
           "unit": "kg per acre",
           "min": 0,
-          "max": 100,
+          "max": 200,
           "required": true
         },
         {
@@ -979,34 +983,6 @@
           "message": "This picking number is already recorded in this fieldbook."
         }
       ]
-    },
-    {
-      "key": "transport",
-      "title": "Transport",
-      "order": 11,
-      "repeatable": false,
-      "required": true,
-      "allow_not_applicable": false,
-      "summary": "{transport_distance} km by {transport_mode}",
-      "fields": [
-        {
-          "key": "transport_distance",
-          "label": "Transport distance to ginner",
-          "type": "number",
-          "unit": "km",
-          "min": 0,
-          "max": 2000,
-          "required": true
-        },
-        {
-          "key": "transport_mode",
-          "label": "Transport mode",
-          "type": "select",
-          "list_key": "transport_mode_cotton",
-          "required": true
-        }
-      ],
-      "rules": []
     }
   ]
 }

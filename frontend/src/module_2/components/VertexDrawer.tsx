@@ -83,7 +83,7 @@ export function VertexDrawer({ field, open, onClose }: VertexDrawerProps) {
           <caption className="sr-only">
             Every corner of field {field.field_id} with its latitude and longitude
           </caption>
-          <thead>
+          <thead className="sticky top-0 z-10 bg-surface">
             <tr className="border-b border-line text-sm text-muted">
               <th scope="col" className="py-2 text-left font-medium">
                 #

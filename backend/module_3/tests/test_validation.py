@@ -124,9 +124,9 @@ class TestTypes:
         assert result.ok, errors(result)
 
     def test_selects_accept_only_list_values(self) -> None:
-        s = step("cotton", "transport")
-        r = fs.validate_entry(s, {"transport_distance": 10, "transport_mode": "rocket"}, ctx())
-        assert errors(r)["transport_mode"] == "Choose a transport mode from the list."
+        s = step("cotton", "pest_disease")
+        r = fs.validate_entry(s, {"product_type": "rocket"}, ctx())
+        assert errors(r)["product_type"] == "Choose a product type from the list."
 
     def test_multiselect_checks_each_value_and_drops_duplicates(self) -> None:
         s = step("cotton", "pest_disease")

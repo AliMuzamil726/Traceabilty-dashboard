@@ -44,6 +44,10 @@ class Settings(BaseSettings):
     public_base_url: str = Field(default="http://localhost:5173")
     #: Salt for hashing scanner IP addresses (QR scan log). Change it per deployment.
     qr_ip_salt: str = Field(default="sawie-dev-salt-change-me")
+    #: Optional signing key for session tokens; falls back to ``qr_ip_salt``.
+    session_secret: str = Field(default="")
+    #: How long a sign-in lasts before the officer must sign in again.
+    session_ttl_seconds: int = Field(default=12 * 60 * 60, ge=300, le=7 * 24 * 60 * 60)
     upload_dir: str = Field(default="./storage")
     seed_on_start: bool = False
     default_officer_code: str = Field(
@@ -74,6 +78,10 @@ class Settings(BaseSettings):
             raise ValueError(
                 "SEED_ON_START must be false when APP_ENV=production: the demo seed creates "
                 "offices and officers with a known default password."
+            )
+        if self.session_secret and len(self.session_secret) < 32:
+            raise ValueError(
+                "SESSION_SECRET must be at least 32 characters when it is set."
             )
 
     @property

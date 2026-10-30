@@ -12,13 +12,15 @@ export function HeapStatusPill({ status }: { status: 'open' | 'closed' }) {
   );
 }
 
-export function HeapList({ crop, heaps, loading, selected, onSelect }: { crop: Crop; heaps: HeapListItem[]; loading: boolean; selected: string | null; onSelect: (id: string) => void }) {
+export function HeapList({ crop, heaps, loading, selected, onSelect, siteName }: { crop: Crop; heaps: HeapListItem[]; loading: boolean; selected: string | null; onSelect: (id: string) => void; siteName?: (heap: HeapListItem) => string | null }) {
   const w = words(crop);
   if (loading && !heaps.length) return <Skeleton className="h-64 w-full" shape="block" />;
   if (!heaps.length) return <EmptyState compact title={`No ${w.lots.toLowerCase()}`} description={`Open a ${w.lotLower} to start gathering deliveries.`} />;
   return (
     <ul aria-label={w.lots} className="flex flex-col gap-1.5">
-      {heaps.map((h) => (
+      {heaps.map((h) => {
+        const site = siteName?.(h);
+        return (
         <li key={h.id}>
           <button type="button" aria-current={selected === h.id || undefined} onClick={() => onSelect(h.id)}
             className={cn('flex w-full flex-col gap-1 rounded-control border px-3 py-2 text-left', selected === h.id ? 'border-forest-700 bg-forest-50' : 'border-line bg-surface hover:border-forest-500')}>
@@ -26,12 +28,14 @@ export function HeapList({ crop, heaps, loading, selected, onSelect }: { crop: C
               <span className="font-mono text-sm font-semibold text-ink">{h.heap_id}</span>
               <HeapStatusPill status={h.status} />
             </span>
+            {site && <span className="text-xs text-ink">{site}</span>}
             <span className="text-xs text-muted">
               {h.deliveries} {h.deliveries === 1 ? 'delivery' : 'deliveries'}, {kgText(h.input_kg)}, opened {formatDate(h.opened_at)}
             </span>
           </button>
         </li>
-      ))}
+        );
+      })}
     </ul>
   );
 }

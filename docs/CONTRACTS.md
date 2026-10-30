@@ -15,8 +15,8 @@ prompts fill in the bodies, not the names.
 | Lists | `{ "items": [...], "total": n, "page": p, "page_size": s }`; query `page` (1-based) and `page_size` (1 to 200, default 25). |
 | Errors | `{ "error": { "code", "message", "details" } }` for every non-2xx response. |
 | Validation | HTTP 422, `code = "validation_error"`, `details.fields = [{ field, location, message, type }]`. |
-| Sign-in | `POST /api/v1/officers/sign-in` `{officer_id, password}` checks the password and returns the account (401 `invalid_credentials`). No session is issued. |
-| Acting officer | Header `X-Officer-Id`, set by the sign-in screen. Development falls back to `DEFAULT_OFFICER_CODE`; production requires the header. Roles: `officer` (own farmers only), `staff` (every officer's records, no Settings), `admin` (everything). `GET /officers/me` returns `is_admin` and `sees_all`. |
+| Sign-in | `POST /api/v1/officers/sign-in` `{officer_id, password}` checks the password and returns `{token, expires_at, officer}` (401 `invalid_credentials`, 403 `officer_inactive`, 429 `rate_limited`). |
+| Acting officer | Send the token as `Authorization: Bearer <token>` on every request. Development and tests also honour `X-Officer-Id` (the officer switcher); production ignores that header. Development falls back to `DEFAULT_OFFICER_CODE` when neither is sent. Roles: `officer` (own farmers only), `staff` (every officer's records, no Settings), `admin` (everything). `GET /officers/me` returns `is_admin` and `sees_all`. |
 | Tracing | Every response carries `X-Request-Id` (echoes the request header if sent). |
 | Module meta | Every built module exposes `GET <prefix>/meta` returning its number, name, prefixes, status, build order and purpose. |
 
@@ -24,13 +24,15 @@ prompts fill in the bodies, not the names.
 
 | Method and path | Purpose |
 | --- | --- |
-| `POST /sign-in` | Check a password and return the account. 401 `invalid_credentials`; 403 `officer_inactive`. |
+| `POST /sign-in` | Check a password and mint a signed token (12 h, `SESSION_TTL_SECONDS`). 401 `invalid_credentials`; 403 `officer_inactive`; 429 `rate_limited` after 10 attempts a minute from one client and account. |
+| `GET /directory` | Public account picker for the sign-in screen: `id`, `full_name`, `role`, `country`, `field_office`, `active` only. No email or phone. |
 | `GET /me` | The acting officer, with `email`, `phone`, `has_photo`, `is_admin` and `sees_all`. |
 | `PUT /me` | Change my own email and phone. `full_name` is accepted from an administrator only (403 `name_admin_only`). Audited. |
 | `POST /me/password` | Change my own password: current password plus a new one of at least 8 characters (401 `invalid_credentials`, 422 `password_too_short`). Audited without the hash. |
 | `POST /me/photo` | Upload my profile photo (JPEG, PNG or WebP, 5 MB). Refused for a field officer (403 `photo_not_allowed`). Squared to 320px and re-encoded. Audited. |
 | `DELETE /me/photo` | Remove my profile photo. Audited. |
-| `GET /{officer_id}/photo` | That officer's photo, or 404 `photo_not_found`. |
+| `GET /{officer_id}/photo` | That officer's photo, or 404 `photo_not_found`. Public so `<img>` tags can load it. |
+| `GET /` and `GET /{officer_id}` | Signed-in callers only; these include `email` and `phone`. |
 
 ### Module 1 endpoints (built), under `/api/v1/dashboard`
 
@@ -325,8 +327,10 @@ Every write is audited and publishes `config.changed`.
 | --- | --- | --- |
 | `bad_request` | 400 | Malformed request |
 | `unauthorized` | 401 | Generic authentication failure |
-| `officer_required` | 401 | No `X-Officer-Id` (production) or default officer missing (development) |
-| `officer_not_found` | 401 | `X-Officer-Id` does not match an officer (the frontend clears its stored choice) |
+| `officer_required` | 401 | No token (production) or no `X-Officer-Id`/default officer (development) |
+| `officer_not_found` | 401 | The token or `X-Officer-Id` names an officer that does not exist (the frontend clears its stored choice) |
+| `session_invalid` | 401 | `Authorization: Bearer` token is malformed, forged or expired (the frontend signs out) |
+| `rate_limited` | 429 | Too many attempts from one client (sign-in, public QR lookup) |
 | `forbidden` | 403 | Generic permission failure |
 | `officer_inactive` | 403 | Acting officer is deactivated |
 | `admin_required` | 403 | Endpoint needs role `admin` |
@@ -878,8 +882,9 @@ directly instead, so nothing has to import Module 8 to read a value.
 
 ## 5. Frontend contracts
 
-* `src/core/api/client.ts` is the only place that calls `fetch`. It sends `X-Officer-Id`
-  and turns every failure into `ApiError { status, code, message, details, fieldErrors }`.
+* `src/core/api/client.ts` is the only place that calls `fetch`. It sends the session
+  token (`Authorization: Bearer`) plus `X-Officer-Id` (development convenience) and
+  turns every failure into `ApiError { status, code, message, details, fieldErrors }`.
 * `useMasterList(listKey, { country, crop })` is the only source of dropdown options.
 * A module is imported only through its `index.ts` (enforced by ESLint
   `no-restricted-imports`), which exports `meta` and the default page component, plus any

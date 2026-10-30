@@ -1,6 +1,7 @@
 import { CheckCircle2, MinusCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { toApiError } from '@/core/api/errors';
+import { todayIsoDate } from '@/core/utils/dates';
 import { formatDecimal, formatNumber } from '@/core/utils/format';
 import { Button, DatePicker, Dialog, FormField, KeyValueList, Textarea } from '@/design-system/components';
 import type { Crop, PickupResult, RadarRow } from '../api/types';
@@ -37,7 +38,7 @@ export function RequestPickupDialog({ open, rows, crop, season, unit, onClose, o
   const area = rows.reduce((sum, r) => sum + areaOf(r, unit), 0);
   const kg = rows.reduce((sum, r) => sum + (r.estimated_kg ?? 0), 0);
   const anyEstimate = rows.some((r) => r.estimate_is_benchmark);
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayIsoDate();
 
   const confirm = () => {
     setError(null);

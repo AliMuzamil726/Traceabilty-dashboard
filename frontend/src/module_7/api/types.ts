@@ -19,6 +19,14 @@ export interface LotsResponse {
   base_url_is_local: boolean;
 }
 
+export interface LotFarmer {
+  farmer_id: string;
+  sawie_id: number | null;
+  farmer_name: string | null;
+  kg: number;
+  pct: number;
+}
+
 export interface LotOverview {
   heap_id: string;
   crop: Crop;
@@ -38,6 +46,7 @@ export interface LotOverview {
   scans_total: number;
   scans_public: number;
   last_scan_at: string | null;
+  farmers: LotFarmer[];
   base_url: string;
   base_url_is_local: boolean;
 }

@@ -103,7 +103,6 @@ function toSortState(sort: string): SortState {
 export function RadarTable(props: RadarTableProps) {
   const { rows, total, page, pageSize, unit, sort, loading, selected, onSelectedChange, onSortChange, onPageChange } = props;
   const navigate = useNavigate();
-  const other = unit === 'acre' ? 'ha' : 'acres';
 
   const columns: Column<RadarRow>[] = [
     { key: 'sawie_id', header: 'SAWIE ID', sortable: true, mono: true, cell: (r) => r.sawie_id },
@@ -117,14 +116,9 @@ export function RadarTable(props: RadarTableProps) {
       header: `Area (${unit === 'acre' ? 'acres' : 'ha'})`,
       sortable: true,
       numeric: true,
-      cell: (r) => (
-        <span className="whitespace-nowrap">
-          {formatDecimal(unit === 'acre' ? r.area_acre : r.area_ha)}
-          <span className="ml-1 text-xs text-muted">
-            {formatDecimal(unit === 'acre' ? r.area_ha : r.area_acre)} {other}
-          </span>
-        </span>
-      ),
+      // One unit per programme: a second unit in every row made the column read as two
+      // numbers and invited comparisons in the wrong one.
+      cell: (r) => formatDecimal(unit === 'acre' ? r.area_acre : r.area_ha),
     },
     { key: 'sowing_date', header: 'Sowing date', sortable: true, cell: (r) => (r.sowing_date ? formatDate(r.sowing_date) : '-') },
     {

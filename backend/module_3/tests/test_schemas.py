@@ -21,7 +21,6 @@ COTTON_STEPS = [
     "energy",
     "labour_social",
     "harvest",
-    "transport",
 ]
 HEMP_STEPS = [
     "field_info",
@@ -45,7 +44,7 @@ def test_each_crop_has_its_steps_in_order(crop: str, keys: list[str]) -> None:
 
 
 def test_cotton_has_11_steps_and_hemp_has_9() -> None:
-    assert len(fs.load_definition("cotton")["steps"]) == 11
+    assert len(fs.load_definition("cotton")["steps"]) == 10
     assert len(fs.load_definition("hemp")["steps"]) == 9
 
 
@@ -117,7 +116,8 @@ def test_the_schema_endpoint_serves_the_file_unchanged(client: TestClient) -> No
 
 def test_the_last_steps_follow_the_season() -> None:
     cotton = fs.load_definition("cotton")["steps"]
-    assert [s["key"] for s in cotton[-3:]] == ["labour_social", "harvest", "transport"]
+    assert [s["key"] for s in cotton[-2:]] == ["labour_social", "harvest"]
+    assert "transport" not in {s["key"] for s in cotton}
     assert fs.load_definition("hemp")["steps"][-1]["key"] == "baling"
 
 

@@ -20,7 +20,7 @@ export function AppShell() {
   const mobileNavOpen = useUiStore((s) => s.mobileNavOpen);
   const setMobileNavOpen = useUiStore((s) => s.setMobileNavOpen);
 
-  const signedIn = useOfficerStore((s) => s.signedIn && Boolean(s.officerId));
+  const signedIn = useOfficerStore((s) => s.signedIn && Boolean(s.officerId) && Boolean(s.token));
   const me = useCurrentOfficer();
   const role = me.data?.role;
 

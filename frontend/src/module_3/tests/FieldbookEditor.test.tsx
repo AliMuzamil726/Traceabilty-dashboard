@@ -89,8 +89,8 @@ describe('editor buttons', () => {
   });
 
   it('offers Save and Submit only on the last step', async () => {
-    renderEditor('transport');
-    expect(await screen.findByText(/Step 11 of 11/)).toBeInTheDocument();
+    renderEditor('harvest');
+    expect(await screen.findByText(/Step 10 of 10/)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Save and Submit' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Save and Next' })).toBeNull();
   });

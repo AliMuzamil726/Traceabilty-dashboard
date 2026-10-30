@@ -18,10 +18,9 @@ export default function QrTracingPage() {
   const crop: Crop = params.get('crop') === 'hemp' ? 'hemp' : 'cotton';
   const sites = useSites(crop);
   const requestedSite = params.get('site');
-  const siteId = requestedSite && (sites.data ?? []).some((s) => s.id === requestedSite)
-    ? requestedSite
-    : sites.data?.[0]?.id ?? '';
-  const lots = useLots({ crop, site_id: siteId || undefined }, Boolean(siteId));
+  /* Every ginner's lots by default: the first site alone hides the rest and looks empty. */
+  const siteId = requestedSite && (sites.data ?? []).some((s) => s.id === requestedSite) ? requestedSite : '';
+  const lots = useLots({ crop, site_id: siteId || undefined });
   const lotId = params.get('lot');
   const trace = params.get('trace');
   const overview = useLotOverview(lotId);
@@ -57,9 +56,13 @@ export default function QrTracingPage() {
         <SegmentedControl aria-label="Crop" value={crop} onChange={(c) => set({ crop: c, site: null, lot: null, trace: null })}
           options={[{ value: 'cotton', label: 'Cotton' }, { value: 'hemp', label: 'Hemp' }]} />
         <div className="min-w-[220px]">
-          <Select aria-label={crop === 'cotton' ? 'Ginner' : 'Processor'} value={siteId}
+          <Select
+            aria-label={crop === 'cotton' ? 'Ginner' : 'Processor'}
+            value={siteId}
+            placeholder={`All ${crop === 'cotton' ? 'ginners' : 'processors'}`}
             options={(sites.data ?? []).map((s) => ({ value: s.id, label: `${s.name} (${s.code})` }))}
-            onChange={(e) => set({ site: e.target.value, lot: null, trace: null })} />
+            onChange={(e) => set({ site: e.target.value, lot: null, trace: null })}
+          />
         </div>
         <div className="min-w-[200px]">
           <Select aria-label={kind} value={lotId ?? ''} placeholder={lots.data?.items.length ? `Choose a ${kind.toLowerCase()}` : `No ${kind.toLowerCase()}s yet`}

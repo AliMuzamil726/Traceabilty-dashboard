@@ -2,6 +2,7 @@ import { CheckCircle2, MinusCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { toApiError } from '@/core/api/errors';
 import { useSites } from '@/core/hooks/useSharedData';
+import { phoneInput } from '@/core/utils/validators';
 import { Button, DatePicker, Dialog, FormField, Input, Textarea } from '@/design-system/components';
 import type { Crop, Delivery, DeliveryDetail, InboxItem, Skipped } from '../api/types';
 import { useSchedule, useTransition } from '../hooks/useTransition';
@@ -114,8 +115,8 @@ export function ScheduleDialog({ open, onClose, requests = [], delivery, onDone 
           <FormField label="Driver name" required error={errors.driver_name}>
             <Input value={values.driver_name} maxLength={120} onChange={(e) => set('driver_name')(e.target.value)} />
           </FormField>
-          <FormField label="Driver phone" required error={errors.driver_phone} hint={country === 'GB' ? 'UK mobile' : country === 'PK' ? 'Pakistani mobile' : undefined}>
-            <Input type="tel" value={values.driver_phone} maxLength={24} onChange={(e) => set('driver_phone')(e.target.value)} />
+          <FormField label="Driver phone" required error={errors.driver_phone} hint={country === 'GB' ? 'UK mobile, for example 07700 900123.' : country === 'PK' ? 'Pakistani mobile, for example 0300 1234567.' : undefined}>
+            <Input type="tel" inputMode="tel" value={values.driver_phone} maxLength={16} onChange={(e) => set('driver_phone')(phoneInput(e.target.value))} />
           </FormField>
           <FormField label="Note" className="sm:col-span-2" hint="Optional.">
             <Textarea rows={2} maxLength={1000} value={values.note} onChange={(e) => set('note')(e.target.value)} />

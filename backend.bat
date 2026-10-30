@@ -147,7 +147,8 @@ cd /d "%BACKEND%"
 "%VPY%" -m uvicorn app.main:app --host %HOST% --port %PORT% --reload ^
   --reload-dir app --reload-dir core --reload-dir shared --reload-dir scripts ^
   --reload-dir module_1 --reload-dir module_2 --reload-dir module_3 --reload-dir module_4 ^
-  --reload-dir module_5 --reload-dir module_6 --reload-dir module_7 --reload-dir module_8
+  --reload-dir module_5 --reload-dir module_6 --reload-dir module_7 --reload-dir module_8 ^
+  --reload-dir module_9
 if errorlevel 1 (
   echo.
   echo  [ERROR] The backend stopped with an error. Read the messages above.

@@ -94,8 +94,10 @@ export function TraceExplorer({ target }: { target: TraceTarget }) {
           {tab === 'map' && focusField && (
             <p className="text-xs text-muted">
               <span className="mono-id">{focusField.field_code}</span>
-              {focusField.area_acre !== null && `, ${formatNumber(focusField.area_acre, 2)} acres`}
-              {focusField.area_ha !== null && ` (${formatNumber(focusField.area_ha, 2)} ha)`}
+              {focusField.area_acre !== null &&
+                (t.heap.crop === 'cotton'
+                  ? `, ${formatNumber(focusField.area_acre, 2)} acres`
+                  : `, ${formatNumber(focusField.area_ha ?? 0, 2)} ha`)}
             </p>
           )}
         </div>

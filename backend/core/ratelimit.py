@@ -14,6 +14,10 @@ from dataclasses import dataclass
 DEFAULT_LIMIT = 60
 DEFAULT_WINDOW_SECONDS = 60.0
 
+#: Above this many keys the limiter drops the windows that have already expired.
+#: Without it, one entry per scanner IP or token would stay in memory for ever.
+PURGE_THRESHOLD = 1024
+
 
 @dataclass
 class _Window:
@@ -34,6 +38,8 @@ class RateLimiter:
         """Count one request against ``key``. Returns ``(allowed, retry_after_seconds)``."""
         moment = now if now is not None else time.monotonic()
         with self._lock:
+            if len(self._windows) >= PURGE_THRESHOLD:
+                self._purge(moment)
             window = self._windows.get(key)
             if window is None or moment - window.started_at >= self.window_seconds:
                 self._windows[key] = _Window(started_at=moment, count=1)
@@ -43,6 +49,16 @@ class RateLimiter:
                 return False, max(retry_after, 1)
             window.count += 1
             return True, 0
+
+    def _purge(self, moment: float) -> None:
+        """Drop expired windows. Caller holds the lock."""
+        expired = [
+            key
+            for key, window in self._windows.items()
+            if moment - window.started_at >= self.window_seconds
+        ]
+        for key in expired:
+            del self._windows[key]
 
     def reset(self) -> None:
         """Clear every window (used by tests)."""

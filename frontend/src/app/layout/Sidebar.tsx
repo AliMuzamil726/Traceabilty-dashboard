@@ -107,8 +107,8 @@ export interface SidebarContentProps {
 /**
  * Brand block plus the module items.
  *
- * Narrower desktop rail (228px expanded, 68px collapsed) with larger item sizing and
- * balanced vertical distribution so navigation items comfortably fill the sidebar height.
+ * Narrower desktop rail (228px expanded, 68px collapsed). Items sit next to each other
+ * with a small gap rather than being spread down the whole height.
  */
 export function SidebarContent({ collapsed = false, onNavigate, showCollapseToggle = false }: SidebarContentProps) {
   const toggle = useUiStore((s) => s.toggleSidebar);
@@ -134,8 +134,10 @@ export function SidebarContent({ collapsed = false, onNavigate, showCollapseTogg
         )}
       </div>
 
-      <nav aria-label="Primary" className="flex min-h-0 flex-1 flex-col justify-between overflow-y-auto overflow-x-hidden px-2.5 py-4">
-        <ul className="flex flex-1 flex-col justify-evenly gap-1 py-1">
+      <nav aria-label="Primary" className="flex min-h-0 flex-1 flex-col justify-between overflow-y-auto overflow-x-hidden px-2.5 py-3">
+        {/* Items stack at their own height: spreading them down the rail left big gaps
+            between neighbours and pushed the list out of reach on a short screen. */}
+        <ul className="flex flex-col gap-1 py-1">
           {main.map((m) => (
             <li key={m.number}>
               <NavItem entry={m} collapsed={collapsed} onNavigate={onNavigate} />

@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { api } from '@/core/api/client';
 import { toApiError } from '@/core/api/errors';
-import type { CurrentOfficer, Role } from '@/core/api/types';
-import { useOfficers } from '@/core/hooks/useSharedData';
+import type { Role, SignInResponse } from '@/core/api/types';
+import { useOfficerDirectory } from '@/core/hooks/useSharedData';
 import { useOfficerStore } from '@/core/store/officerStore';
 import { Button } from '@/design-system/components/Button';
 import { FormField } from '@/design-system/components/FormField';
@@ -19,7 +19,6 @@ const ROLES: { value: Role; label: string }[] = [
   { value: 'staff', label: 'Staff' },
   { value: 'officer', label: 'Field officer' },
 ];
-
 const PICK_LABEL: Record<Role, string> = {
   admin: 'Administrator',
   staff: 'Staff member',
@@ -34,25 +33,26 @@ const PICK_LABEL: Record<Role, string> = {
 export default function LoginPage() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const signedIn = useOfficerStore((s) => s.signedIn && Boolean(s.officerId));
+  const signedIn = useOfficerStore((s) => s.signedIn && Boolean(s.officerId) && Boolean(s.token));
   const signIn = useOfficerStore((s) => s.signIn);
-  const { data, isLoading, isError } = useOfficers();
+  const { data, isLoading, isError } = useOfficerDirectory();
   const [role, setRole] = useState<Role>('admin');
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const people = useMemo(() => (data?.items ?? []).filter((o) => o.role === role && o.active), [data, role]);
+  const people = useMemo(() => (data ?? []).filter((o) => o.role === role && o.active), [data, role]);
 
   useEffect(() => {
     setUserId(people[0]?.id ?? '');
   }, [people]);
 
   const submit = useMutation({
-    mutationFn: () => api.post<CurrentOfficer>('/v1/officers/sign-in', { officer_id: userId, password }),
-    onSuccess: (officer) => {
+    mutationFn: () =>
+      api.post<SignInResponse>('/v1/officers/sign-in', { officer_id: userId, password }),
+    onSuccess: (result) => {
       queryClient.clear();
-      signIn(officer.id);
+      signIn(result.officer.id, result.token);
       navigate('/', { replace: true });
     },
     onError: (e) => setError(toApiError(e).message),

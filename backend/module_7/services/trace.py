@@ -84,6 +84,7 @@ def checks(f: HeapFacts) -> list[verification.Check]:
         heap_status=f.heap.status,
         bales_weight_kg=f.totals.bales_weight_kg,
         expected_output_kg=f.totals.expected_output_kg,
+        crop=f.heap.crop,
     )
 
 

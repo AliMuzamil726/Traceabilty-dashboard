@@ -1,12 +1,21 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from '@/core/api/client';
-import type { CurrentOfficer, Health, MasterList, Officer, Page, Site } from '@/core/api/types';
+import type {
+  CurrentOfficer,
+  Health,
+  MasterList,
+  Officer,
+  OfficerDirectoryEntry,
+  Page,
+  Site,
+} from '@/core/api/types';
 import { useOfficerStore } from '@/core/store/officerStore';
 
 export const sharedKeys = {
   health: ['health'] as const,
   me: (officerId: string | null) => ['officers', 'me', officerId] as const,
   officers: ['officers', 'all'] as const,
+  directory: ['officers', 'directory'] as const,
   sites: (crop?: string) => ['sites', crop ?? null] as const,
   master: (key: string, country?: string, crop?: string) =>
     ['master', key, country ?? null, crop ?? null] as const,
@@ -34,6 +43,33 @@ export function useOfficers() {
     queryKey: sharedKeys.officers,
     queryFn: ({ signal }) =>
       api.get<Page<Officer>>('/v1/officers', { page_size: 200 }, signal),
+    staleTime: 5 * 60_000,
+  });
+}
+
+const DIRECTORY_PAGE_SIZE = 200;
+const DIRECTORY_MAX_PAGES = 50;
+
+/**
+ * Every account for the sign-in picker, read from the public, limited directory.
+ * Follows pages so organisations with more than one page still see every account.
+ */
+export function useOfficerDirectory() {
+  return useQuery({
+    queryKey: sharedKeys.directory,
+    queryFn: async ({ signal }): Promise<OfficerDirectoryEntry[]> => {
+      const entries: OfficerDirectoryEntry[] = [];
+      for (let page = 1; page <= DIRECTORY_MAX_PAGES; page += 1) {
+        const chunk = await api.get<Page<OfficerDirectoryEntry>>(
+          '/v1/officers/directory',
+          { page, page_size: DIRECTORY_PAGE_SIZE },
+          signal,
+        );
+        entries.push(...chunk.items);
+        if (chunk.items.length === 0 || entries.length >= chunk.total) break;
+      }
+      return entries;
+    },
     staleTime: 5 * 60_000,
   });
 }

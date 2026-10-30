@@ -18,6 +18,7 @@ from typing import Any
 from sqlalchemy import DateTime, MetaData, String, create_engine, event, text
 from sqlalchemy.engine import Dialect, Engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, Session, mapped_column, sessionmaker
+from sqlalchemy.pool import NullPool
 from sqlalchemy.types import TypeDecorator
 
 NAMING_CONVENTION = {
@@ -84,12 +85,15 @@ class ActorMixin:
     updated_by: Mapped[str | None] = mapped_column(String(36), nullable=True)
 
 
-def _configure_sqlite(engine: Engine) -> None:
+def _configure_sqlite(engine: Engine, *, immediate_writes: bool) -> None:
     """Make pysqlite transactions explicit and race-safe.
 
     pysqlite's own transaction handling is disabled and every transaction is opened
-    with ``BEGIN IMMEDIATE`` so the write lock is taken up front. This makes the ID
-    counters race-free without SQLite-specific code in the repositories.
+    explicitly. Write engines use ``BEGIN IMMEDIATE`` so the write lock is taken up
+    front, which makes the ID counters race-free without SQLite-specific code in the
+    repositories. Read engines use a plain (deferred) ``BEGIN``: in WAL mode readers do
+    not block the writer nor each other, so a page load no longer waits behind an
+    unrelated write.
     """
 
     @event.listens_for(engine, "connect")
@@ -101,26 +105,36 @@ def _configure_sqlite(engine: Engine) -> None:
         cursor.execute("PRAGMA busy_timeout=30000")
         cursor.close()
 
+    begin_sql = "BEGIN IMMEDIATE" if immediate_writes else "BEGIN"
+
     @event.listens_for(engine, "begin")
     def _on_begin(conn: Any) -> None:
-        conn.exec_driver_sql("BEGIN IMMEDIATE")
+        conn.exec_driver_sql(begin_sql)
 
 
-def make_engine(url: str) -> Engine:
+def make_engine(url: str, *, immediate_writes: bool = True, pooled: bool = True) -> Engine:
     """Create an engine for ``url`` with dialect-appropriate settings."""
     if url.startswith("sqlite"):
         engine = create_engine(
             url,
             connect_args={"check_same_thread": False, "timeout": 30},
             future=True,
+            **({} if pooled else {"poolclass": NullPool}),
         )
-        _configure_sqlite(engine)
+        _configure_sqlite(engine, immediate_writes=immediate_writes)
         return engine
     return create_engine(url, pool_pre_ping=True, future=True)
 
 
 class Database:
-    """Owns one engine and its session factory."""
+    """Owns the engines and session factories.
+
+    ``session_factory`` is for work that may write (``BEGIN IMMEDIATE`` on SQLite).
+    ``read_session_factory`` is for read-only requests: it never takes the write lock,
+    so concurrent reads do not queue behind a write. Endpoints that only read use it
+    through :func:`core.deps.get_db`; the few GET routes that write ask for
+    :func:`core.deps.get_write_db` explicitly.
+    """
 
     def __init__(self, url: str) -> None:
         self.url = url
@@ -128,6 +142,20 @@ class Database:
         self.session_factory = sessionmaker(
             bind=self.engine, autoflush=False, expire_on_commit=False, class_=Session
         )
+        in_memory = url.startswith("sqlite") and ":memory:" in url
+        if url.startswith("sqlite") and not in_memory:
+            # NullPool: a finished read request closes its connection, so no idle
+            # handle keeps the WAL file open (Windows blocks the backup-restore swap
+            # otherwise).
+            self.read_engine = make_engine(url, immediate_writes=False, pooled=False)
+            self.read_session_factory = sessionmaker(
+                bind=self.read_engine, autoflush=False, expire_on_commit=False, class_=Session
+            )
+        else:
+            # Postgres has row-level locking, and an in-memory database only exists
+            # inside one engine, so both share the write factory.
+            self.read_engine = self.engine
+            self.read_session_factory = self.session_factory
 
     @property
     def dialect(self) -> str:
@@ -161,6 +189,8 @@ class Database:
             session.close()
 
     def dispose(self) -> None:
+        if self.read_engine is not self.engine:
+            self.read_engine.dispose()
         self.engine.dispose()
 
 

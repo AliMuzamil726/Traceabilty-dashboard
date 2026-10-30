@@ -42,6 +42,17 @@ class OfficerOut(OrmModel):
     active: bool
 
 
+class OfficerDirectoryOut(OrmModel):
+    """What the sign-in screen may see: enough to pick an account, no contact details."""
+
+    id: str
+    full_name: str
+    role: str
+    country: str
+    field_office: FieldOfficeRef | None
+    active: bool
+
+
 class CurrentOfficerOut(BaseModel):
     id: str
     code: str
@@ -55,6 +66,14 @@ class CurrentOfficerOut(BaseModel):
     has_photo: bool = False
     is_admin: bool
     sees_all: bool = False
+
+
+class SignInOut(BaseModel):
+    """The account plus the token later requests send as ``Authorization: Bearer``."""
+
+    token: str
+    expires_at: datetime
+    officer: CurrentOfficerOut
 
 
 class MasterOptionOut(OrmModel):

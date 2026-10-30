@@ -36,6 +36,7 @@ import { SawieIdChip } from '../components/SawieIdChip';
 import { CROP_COUNTRY } from '../format';
 import { useFarmerLookup, isLookupReady } from '../hooks/useFarmerLookup';
 import { useFieldOffices } from '../hooks/useFieldOffices';
+import { useDistricts, useProvinces } from '../hooks/useLocations';
 
 /** Turn the flat form values into the request body for the crop that was chosen. */
 function toPayload(values: FarmerFormValues): FarmerInput {
@@ -101,13 +102,6 @@ export default function FarmerFormPage() {
   const lookup = useFarmerLookup(values.id_number, crop);
   const existing = lookup.data?.exists ? lookup.data : null;
   const blocked = Boolean(lookup.data?.crop_mismatch);
-
-  /* Default the field office to the officer's own, once, and only while it is unset. */
-  useEffect(() => {
-    const own = officer.data?.field_office_id;
-    if (!own || values.field_office_id) return;
-    if (offices.data?.some((o) => o.id === own)) setValue('field_office_id', own);
-  }, [officer.data, offices.data, values.field_office_id, setValue]);
 
   /* Pre-fill the personal half from an existing farmer. Crop data is never filled in:
      the officer enters this season's variety, tenure and previous crop. */
@@ -242,13 +236,68 @@ export default function FarmerFormPage() {
     else navigate(to);
   };
 
-  const officeOptions = useMemo(
-    () => (offices.data ?? []).map((office) => ({ value: office.id, label: office.name })),
-    [offices.data],
-  );
-
   const errors = formState.errors;
   const isCotton = crop === 'cotton';
+
+  const provinces = useProvinces(country);
+  const districts = useDistricts(isCotton ? values.province_code || null : null, country);
+
+  /* A field office covers a district, so the list starts there and widens one step at a
+     time. Listing every office in the country makes the officer pick the wrong district
+     and files the farmer against an office that cannot visit them. */
+  const officeOptions = useMemo(() => {
+    const all = offices.data ?? [];
+    const province = isCotton
+      ? provinces.data?.items.find((p) => p.value === values.province_code)?.label
+      : values.region;
+    const district = isCotton
+      ? districts.data?.items.find((d) => d.value === values.district_code)?.label
+      : values.county;
+    const same = (a: string | null | undefined, b: string | null | undefined) =>
+      Boolean(a && b && a.trim().toLowerCase() === b.trim().toLowerCase());
+    const inProvince = province ? all.filter((office) => same(office.province, province)) : [];
+    const inDistrict = district
+      ? inProvince.filter((office) => same(office.district, district))
+      : [];
+    const scoped = inDistrict.length > 0 ? inDistrict : inProvince;
+    return (scoped.length > 0 ? scoped : all).map((office) => ({
+      value: office.id,
+      label: office.name,
+    }));
+  }, [
+    offices.data,
+    provinces.data,
+    districts.data,
+    values.province_code,
+    values.district_code,
+    values.region,
+    values.county,
+    isCotton,
+  ]);
+
+  /* One office covering this location needs no choice; a location change that leaves the
+     chosen office outside the list clears it instead of silently keeping the wrong one. */
+  useEffect(() => {
+    if (officeOptions.length === 0) return;
+    if (!values.field_office_id) {
+      if (officeOptions.length === 1) {
+        setValue('field_office_id', officeOptions[0]!.value, { shouldDirty: true });
+      }
+      return;
+    }
+    if (!officeOptions.some((option) => option.value === values.field_office_id)) {
+      setValue('field_office_id', '', { shouldDirty: true });
+    }
+  }, [officeOptions, values.field_office_id, setValue]);
+
+  /* The officer's own office is the best default, but only while it covers the location. */
+  useEffect(() => {
+    const own = officer.data?.field_office_id;
+    if (!own || values.field_office_id) return;
+    if (officeOptions.some((option) => option.value === own)) {
+      setValue('field_office_id', own, { shouldDirty: false });
+    }
+  }, [officer.data, officeOptions, values.field_office_id, setValue]);
 
   return (
     <PageContainer>
@@ -460,7 +509,12 @@ export default function FarmerFormPage() {
               />
             )}
 
-            <FormField label="Field office" required error={errors.field_office_id?.message}>
+            <FormField
+              label="Field office"
+              required
+              error={errors.field_office_id?.message}
+              hint="Offices covering this district first, then the province, then the country."
+            >
               <Select
                 placeholder="Choose a field office"
                 disabled={save.isPending || offices.isLoading}
