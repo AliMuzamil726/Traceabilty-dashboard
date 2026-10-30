@@ -64,7 +64,7 @@ export default function ProfilePage() {
       api.put<CurrentOfficer>('/v1/officers/me', {
         ...(isAdmin ? { full_name: details.full_name.trim() } : {}),
         email: details.email.trim() || null,
-        phone: details.phone.trim() || null,
+        phone: details.phone.trim(),
       }),
     onSuccess: (updated) => {
       refresh(updated);

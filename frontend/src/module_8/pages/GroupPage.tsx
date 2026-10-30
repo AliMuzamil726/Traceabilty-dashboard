@@ -39,8 +39,13 @@ export function GroupPage({ group, title, description, notice, children }: Group
     // Only when the server's values change, so typing is never overwritten.
   }, [registry.dataUpdatedAt]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // A key the officer has not touched is not a draft: falling back to the saved value
+  // keeps the first render after a fetch from looking like a page full of edits.
+  const draftValue = (item: Setting) =>
+    Object.hasOwn(draft, item.key) ? draft[item.key] : item.value;
+
   const changed = items.filter(
-    (item) => JSON.stringify(draft[item.key]) !== JSON.stringify(item.value),
+    (item) => JSON.stringify(draftValue(item)) !== JSON.stringify(item.value),
   );
 
   const saveAll = async () => {
@@ -49,7 +54,7 @@ export function GroupPage({ group, title, description, notice, children }: Group
       try {
         await save.mutateAsync({
           key: item.key,
-          value: draft[item.key],
+          value: draftValue(item),
           version: item.version,
         });
       } catch (error) {
@@ -80,7 +85,7 @@ export function GroupPage({ group, title, description, notice, children }: Group
             <SettingCard
               key={item.key}
               setting={item}
-              value={draft[item.key]}
+              value={draftValue(item)}
               error={errors[item.key]}
               onChange={(value) => setDraft((current) => ({ ...current, [item.key]: value }))}
               onReset={() => reset.mutate(item.key)}
